@@ -240,7 +240,7 @@ form button {
   padding: 0.8rem 1rem;
   background: var(--primary-color);
 
-  color: #fff;
+  color: black;
 
   border-radius: 3px;
 }

@@ -40,5 +40,10 @@ namespace SampleApi.Models
         /// A user bio.
         /// </summary>
         public string Bio { get; set; }
+
+        /// <summary>
+        /// A field for user's favorites
+        /// </summary>
+        public string Favorites { get; set; }
     }
 }
