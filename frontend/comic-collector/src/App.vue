@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <site-header></site-header>
+    <site-nav></site-nav>
+    <router-view />
+    <site-footer></site-footer>
   </div>
 </template>
 
