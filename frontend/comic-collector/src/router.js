@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/home.vue"
+import Home from "./views/Home.vue";
+import Login from "./views/Login.vue";
+import CollectionsView from "./views/CollectionsView.vue";
 
 Vue.use(Router);
 
@@ -12,6 +14,22 @@ const router = new Router({
         path: "/",
         name: "home",
         component: Home,
+        meta: {
+          requiesAuth: false
+        }
+      },
+      {
+        path: "/login",
+        name: "login",
+        component: Login,
+        meta: {
+          requiesAuth: false
+        }
+      },
+      {
+        path: "/collections",
+        name: "collections",
+        component: CollectionsView,
         meta: {
           requiesAuth: false
         }
