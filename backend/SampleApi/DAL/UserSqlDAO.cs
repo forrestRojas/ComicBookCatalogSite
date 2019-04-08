@@ -144,7 +144,10 @@ namespace SampleApi.DAL
                 Username = Convert.ToString(reader["username"]),
                 Password = Convert.ToString(reader["password"]),
                 Salt = Convert.ToString(reader["salt"]),
-                Role = Convert.ToString(reader["role"])
+                Role = Convert.ToString(reader["role"]),
+                Bio = Convert.ToString(reader["bio"]),
+                Favorites = Convert.ToString(reader["favorites"]),
+                Image = Convert.ToString(reader["user_image"])
             };
         }
     }

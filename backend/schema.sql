@@ -20,7 +20,7 @@ BEGIN TRANSACTION;
 
 CREATE TABLE users
 (
-	user_id				int					identity(1,1),
+	id				int					identity(1,1),
 	username			varchar(50)			not null,
 	password			varchar(50)			not null,
 	salt				varchar(50)			not null,
@@ -29,7 +29,7 @@ CREATE TABLE users
 	favorites			varchar(150),
 	user_image			varchar(75),
 
-	constraint pk_users primary key (user_id)
+	constraint pk_users primary key (id)
 );
 
 CREATE TABLE collection
@@ -41,7 +41,7 @@ CREATE TABLE collection
 	public_access		varchar(100)		not null,
 
 	CONSTRAINT pk_collection PRIMARY KEY (collection_id),
-	FOREIGN KEY (user_id) REFERENCES users (user_id)
+	FOREIGN KEY (user_id) REFERENCES users (id)
 
 );
 
@@ -78,7 +78,7 @@ CREATE TABLE friends
 	friend_id			int					not null,
 
 	CONSTRAINT pk_friends PRIMARY KEY (user_id, friend_id),
-	FOREIGN KEY (user_id) REFERENCES users (user_id),
-	FOREIGN KEY (friend_id) REFERENCES users (user_id)
+	FOREIGN KEY (user_id) REFERENCES users (id),
+	FOREIGN KEY (friend_id) REFERENCES users (id)
 );
 COMMIT TRANSACTION;
