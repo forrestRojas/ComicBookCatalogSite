@@ -8,12 +8,16 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SiteHeader from './components/layout/SiteHeader.vue';
+import SiteNav from './components/layout/SiteNav.vue';
+import SiteFooter from './components/layout/SiteFooter.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    SiteHeader,
+    SiteNav,
+    SiteFooter
   }
 }
 </script>
