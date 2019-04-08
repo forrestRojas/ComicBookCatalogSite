@@ -24,11 +24,10 @@ CREATE TABLE users
 	username			varchar(50)			not null,
 	password			varchar(50)			not null,
 	salt				varchar(50)			not null,
-	role				varchar(50)			default('user'),
-	hash				varchar(50)			not null,
-	bio					varchar(500)		not null,
-	favorites			varchar(150)		not null,
-	user_image			varchar(75)			not null,
+	role				varchar(50)			default('standard'),
+	bio					varchar(500),
+	favorites			varchar(150),
+	user_image			varchar(75),
 
 	constraint pk_users primary key (user_id)
 );
