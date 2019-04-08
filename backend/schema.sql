@@ -25,7 +25,6 @@ CREATE TABLE users
 	password			varchar(50)			not null,
 	salt				varchar(50)			not null,
 	role				varchar(50)			default('standard'),
-	hash				varchar(50)			not null,
 	bio					varchar(500),
 	favorites			varchar(150),
 	user_image			varchar(75),
