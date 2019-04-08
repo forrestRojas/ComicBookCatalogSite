@@ -37,4 +37,19 @@ const router = new Router({
     ]
   });
 
-export default router;
+  router.beforeEach((to, from, next) => {
+    // Determine if the route requires Authentication
+    const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+    const user = auth.getUser();
+  
+    // If it does and they are not logged in, send the user to "/login"
+    if (requiresAuth && !user) {
+      next("/login");
+    } else {
+      // Else let them go to their next destination
+      next();
+    }
+  });
+  
+  export default router;
+  
