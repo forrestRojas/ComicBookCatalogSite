@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import CollectionsView from "./views/CollectionsView.vue";
+import auth from "./shared/auth";
 
 Vue.use(Router);
 

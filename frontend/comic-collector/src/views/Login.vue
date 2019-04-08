@@ -1,10 +1,10 @@
 <template>
   <div id="login">
     <section id="content">
-      <h1>TEGram</h1>
+      <h1>Comic Collection Catalog</h1>
       <p>
-        Create an account or log in to TEGram &mdash; A simple, fun &amp; creative way to capture,
-        edit &amp; share photos, videos &amp; messages with friends &amp; family.
+        Create an account or log in to CCC &mdash; A simple, fun &amp; creative way to capture,
+        edit &amp; share your comic collection with friends &amp; family.
       </p>
     </section>
     <section id="login-signup" v-bind:class="{ showSignupForm: !showLoginForm }">
