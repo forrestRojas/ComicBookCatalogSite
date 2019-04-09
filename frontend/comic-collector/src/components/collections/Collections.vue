@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style scoped>
-.collection-list {
+.collections-list {
 	display: grid;
 	grid-auto-rows: auto-fill, 1fr;
 }
