@@ -17,19 +17,16 @@ export default {
       collections: []
     };
   },
+  created() {
+    fetch(`${process.env.VUE_APP_REMOTE_API}/collections`, {
+      method: 'GET'
+    })
+    .then(response => response.json())
+    .then(json => {
+      this.collections = json;
+    });
+  },
   methods: {
-    created() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/collections`, {
-        method: 'GET',
-        headers: {
-
-        }
-      })
-      .then(response => response.json())
-      .then(json => {
-        this.collections = json;
-      });
-    }
   }
 }
 </script>
