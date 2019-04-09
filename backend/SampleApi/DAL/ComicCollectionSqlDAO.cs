@@ -61,7 +61,7 @@ namespace SampleApi.DAL
         {
             ComicCollection covertedCollection = new ComicCollection
             {
-                Id = Convert.ToInt32(reader["id"]),
+                Id = Convert.ToInt32(reader["collection_id"]),
                 UserId = Convert.ToInt32(reader["user_id"]),
                 Title = Convert.ToString(reader["title"]),
                 Description = Convert.ToString(reader["description"]),
