@@ -78,7 +78,36 @@ namespace SampleApi.DAL
         /// <returns>A bool indicating if the transaction was succefull.</returns>
         public bool SaveCollections(IList<ComicCollection> collections)
         {
-            throw new NotImplementedException();
+            bool isSuccessful = false;
+
+            
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                conn.Open();
+                SqlTransaction transaction = conn.BeginTransaction();
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("INSERT INTO collections (user_id, title, description, public_access) VALUES (@user_id, @title, @description, @public_access)", conn, transaction);
+                    foreach (ComicCollection collection in collections)
+                    {
+                        cmd.Parameters.AddWithValue("@user_id", collection.UserId);
+                        cmd.Parameters.AddWithValue("@title", collection.Title);
+                        cmd.Parameters.AddWithValue("@description", collection.Description);
+                        cmd.Parameters.AddWithValue("@public_access", collection.AccessLevel);
+                        isSuccessful = cmd.ExecuteNonQuery() == 1;
+                    }
+                    transaction.Commit();
+                }
+                catch (SqlException)
+                {
+                    // LOG LEVEL: Error 
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+
+            return isSuccessful;
         }
     }
 }
