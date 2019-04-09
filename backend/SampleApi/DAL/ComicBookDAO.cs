@@ -116,7 +116,7 @@ namespace SampleApi.DAL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                                                                  //Does comic_id and @ID need to be switched
+                                                                  //Do comic_id and @ID need to be switched
                     SqlCommand cmd = new SqlCommand("SELECT * FROM comic WHERE comic_id = @ID", conn);
                                                 //@comic_id might need to be @ID?
                     cmd.Parameters.AddWithValue("@comic_id", id);
