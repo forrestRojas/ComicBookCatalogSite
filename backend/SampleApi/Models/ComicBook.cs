@@ -51,5 +51,7 @@ namespace SampleApi.Models
         /// Credits for the creators
         /// </summary>
         public string Credits { get; set; }
+
+        public string Publisher { get; set; }
     }
 }

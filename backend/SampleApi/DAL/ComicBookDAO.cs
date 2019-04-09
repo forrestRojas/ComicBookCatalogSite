@@ -58,6 +58,7 @@ namespace SampleApi.DAL
             ComicBook book = new ComicBook();
             book.ID = Convert.ToInt32(reader["coimc_id"]);
             book.Description = Convert.ToString(reader["description"]);
+            book.Publisher = Convert.ToString(reader["publisher"]);
             book.Deck = Convert.ToString(reader["deck"]);
             book.Image = Convert.ToString(reader["image"]);
             book.IssueNumber = Convert.ToInt32(reader["issue_number"]);
@@ -81,8 +82,9 @@ namespace SampleApi.DAL
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO comic VALUES (@description, @deck, @image, @issue_number, @name, @volume, @cover_date, @person_credits);", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO comic VALUES (@description, @publisher, @deck, @image, @issue_number, @name, @volume, @cover_date, @person_credits);", conn);
                     cmd.Parameters.AddWithValue("@description", book.Description);
+                    cmd.Parameters.AddWithValue("@publisher", book.Publisher);
                     cmd.Parameters.AddWithValue("@deck", book.Deck);
                     cmd.Parameters.AddWithValue("@image", book.Image);
                     cmd.Parameters.AddWithValue("@issue_number", book.IssueNumber);

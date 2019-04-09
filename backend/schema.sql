@@ -48,18 +48,17 @@ CREATE TABLE collection
 CREATE TABLE comic
 (
 	comic_id			int					identity(1,1),
-	description			varchar(500)		not null,
-	deck				varchar(500)		not null,
-	image				varchar(100)		not null,
+	description			varchar(500),		
+	publisher			varchar(100),		
+	deck				varchar(500),		
+	image				varchar(100),		
 	issue_number		int					not null,
-	name				varchar(150)		not null,
+	name				varchar(150),	
 	volume				int					not null,
-	cover_date			date				not null,
-	person_credits		varchar(500)		not null
+	cover_date			date,				
+	person_credits		varchar(500),		
 
 	CONSTRAINT pk_comic PRIMARY KEY (comic_id),
-	
-
 );
 
 CREATE TABLE collection_comic
@@ -86,15 +85,12 @@ COMMIT TRANSACTION;
 INSERT INTO comic (description, deck, image, issue_number, name, volume, cover_date, person_credits)
 VALUES ('Man looking to find his dog', 'dog finder', '=)', '1', 'Dog Finder Man', '2', '1/1/2019', 'Forrest Rojas')
 
-SELECT * FROM collection
-SELECT * FROM comic
-
 INSERT INTO users (username, password, salt, role, bio, favorites, user_image)
 VALUES ('frojas', '123456', '1a2b3c4d5e6f', 'standard', 'I wear Free Hug shirts', 'Dog Finder Man', '=0')
 
 INSERT INTO collection (user_id, title, description, public_access)
-VALUES ('2', 'Forrest Favorties', 'My favorite comic book', 'standard')
+VALUES ('1', 'Forrest Favorties', 'My favorite comic book', 'standard')
 
 INSERT INTO collection_comic (collection_id, comic_id)
-VALUES ('2', '1')
+VALUES ('1', '1')
 
