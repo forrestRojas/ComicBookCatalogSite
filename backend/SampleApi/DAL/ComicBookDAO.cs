@@ -126,6 +126,7 @@ namespace SampleApi.DAL
                     while (reader.Read())
                     {
                         ComicBook book = ConvertReaderToComicBook(reader);
+                        // possibly incorrect?
                         comicbook = book;
                     }
                 }
