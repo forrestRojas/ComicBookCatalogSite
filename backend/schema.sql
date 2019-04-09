@@ -82,19 +82,3 @@ CREATE TABLE friends
 	FOREIGN KEY (friend_id) REFERENCES users (id)
 );
 COMMIT TRANSACTION;
-
-INSERT INTO comic (description, deck, image, issue_number, name, volume, cover_date, person_credits)
-VALUES ('Man looking to find his dog', 'dog finder', '=)', '1', 'Dog Finder Man', '2', '1/1/2019', 'Forrest Rojas')
-
-SELECT * FROM collection
-SELECT * FROM comic
-
-INSERT INTO users (username, password, salt, role, bio, favorites, user_image)
-VALUES ('frojas', '123456', '1a2b3c4d5e6f', 'standard', 'I wear Free Hug shirts', 'Dog Finder Man', '=0')
-
-INSERT INTO collection (user_id, title, description, public_access)
-VALUES ('2', 'Forrest Favorties', 'My favorite comic book', 'standard')
-
-INSERT INTO collection_comic (collection_id, comic_id)
-VALUES ('2', '1')
-

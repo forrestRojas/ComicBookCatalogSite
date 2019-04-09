@@ -1,11 +1,12 @@
 <template>
-	<section class="collections-list">
-		<comic-collection
-				v-for="collection in comicCollections" 
-				v-bind:key="collection.id"
-				v-bind:collection="collection"
-		></comic-collection>
-	</section>
+		<section>
+				<comic-collection
+						v-for="collection in comicCollections" 
+						v-bind:key="collection.id"
+						v-bind:collection="collection"
+						v-bind:userName="userName"
+				></comic-collection>
+		</section>
 </template>
 
 <script>
@@ -17,14 +18,21 @@ export default {
 		ComicCollection
 	},
 	props: {
-		comicCollections: Array,
+		comicCollections: Array
+	},
+	data() {
+		return {
+			userName: ""
+		}
+	},
+	methods: {
+		created() {
+			
+		}
 	}
 }
 </script>
 
-<style scoped>
-.collection-list {
-	display: grid;
-	grid-auto-rows: auto-fill, 1fr;
-}
+<style>
+
 </style>
