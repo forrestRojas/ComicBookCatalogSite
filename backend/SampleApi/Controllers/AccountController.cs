@@ -56,7 +56,7 @@ namespace SampleApi.Controllers
             var passwordHash = passwordHasher.ComputeHash(model.Password);
 
             // Create a user object
-            var user = new User { Password = passwordHash.Password, Salt = passwordHash.Salt, Role = "User", Username = model.Username };
+            var user = new User { Password = passwordHash.Password, Salt = passwordHash.Salt, Role = "Standard", Username = model.Username };
 
             // Save the user
             userDao.CreateUser(user);
