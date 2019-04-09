@@ -1,5 +1,5 @@
 <template>
-	<article class="collection">
+	<article class="collection" v-on:click="GotoCollection">
 		<picture class="collection-img">
 			<source v-bind:srcset="collection.imageName" />
 			<img v-bind:src="collection.imageName" alt="Collection image." />
@@ -15,6 +15,11 @@ export default {
 	name: 'comic-collection',
 	props: {
 			collection: Object,
+	},
+	methods: {
+		GotoCollection() {
+			this.$router.push({ name: 'collections', params: { id: this.collection.id } });
+		}
 	}
 }
 </script>

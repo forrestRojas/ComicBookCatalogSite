@@ -1,5 +1,5 @@
 <template>
-	<section class="collections-list">
+	<section class="collections-grid">
 		<comic-collection
 				v-for="collection in comicCollections" 
 				v-bind:key="collection.id"
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style scoped>
-.collections-list {
+.collections-grid {
 	display: grid;
 	grid-auto-rows: auto-fill, 1fr;
 }
