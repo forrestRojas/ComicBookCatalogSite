@@ -35,6 +35,14 @@ const router = new Router({
           requiesAuth: false
         }
       },
+      {
+        path: "/collections/:id",
+        name: "collection",
+        component: CollectionsView,
+        meta: {
+          requiesAuth: false
+        }
+      },
     ]
   });
 
