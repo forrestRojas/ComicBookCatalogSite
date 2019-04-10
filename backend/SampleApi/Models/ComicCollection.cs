@@ -39,5 +39,10 @@ namespace SampleApi.Models
         /// The Level of access needed to view this collection.
         /// </summary>
         public string AccessLevel { get; set; }
+
+        /// <summary>
+        /// The list of comics in the collection
+        /// </summary>
+        public IList<ComicBook> Comics { get; set; }
     }
 }

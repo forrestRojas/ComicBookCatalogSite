@@ -111,5 +111,32 @@ namespace SampleApi.DAL
 
             return isSuccessful;
         }
+
+        public ComicCollection GetASingleCollection(int id)
+        {
+            ComicCollection collection = new ComicCollection();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM collection WHERE @id = collection_id;", conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        collection = ConvertSqlToCollection(reader);
+                    }
+                }
+                // LOG LEVEL:Info Query successfull Collections retrived.
+            }
+            catch (SqlException)
+            {
+                // LOG LEVEL Error
+                throw;
+            }
+
+            return collection;
+        }
     }
 }

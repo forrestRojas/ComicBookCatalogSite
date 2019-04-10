@@ -141,6 +141,46 @@ namespace SampleApi.DAL
             }
             return comicbook;
         }
+
+        /// <summary>
+        /// Returns a list of comics in a collection
+        /// </summary>
+        /// <param name="id">the collection ID</param>
+        /// <returns>A list of comic book objects</returns>
+        public IList<ComicBook> GetComicsByCollectionID(int id)
+        {
+            IList<ComicBook> comics = new List<ComicBook>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    //Do comic_id and @ID need to be switched
+                    SqlCommand cmd = new SqlCommand(@"SELECT * FROM comic 
+                                                    JOIN collection_comic ON comic.comic_id = collection_comic.comic_id
+                                                    WHERE collection_id = @ID", conn);
+                    //@comic_id might need to be @ID?
+                    cmd.Parameters.AddWithValue("@ID", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        ComicBook book = ConvertReaderToComicBook(reader);
+                        // possibly incorrect?
+                        comics.Add(book);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred retrieving the comic book by the ID.");
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            return comics;
+        }
     }
 }
 

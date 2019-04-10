@@ -20,5 +20,13 @@ namespace SampleApi.DAL
         /// <param name="collections">The List to be saved.</param>
         /// <returns>A Bool indicating if the transaction was succesfull.</returns>
         bool SaveCollections(IList<ComicCollection> collections);
+
+        /// <summary>
+        /// Returns a single comic collection
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        ComicCollection GetASingleCollection(int id);
+
     }
 }
