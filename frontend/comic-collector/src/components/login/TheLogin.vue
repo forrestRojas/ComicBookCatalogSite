@@ -42,5 +42,6 @@ export default {
 <style>
   a {
     text-decoration: none;
+    color: var(--carmine-pink);
   }
 </style>
