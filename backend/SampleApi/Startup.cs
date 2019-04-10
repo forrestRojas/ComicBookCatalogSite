@@ -83,7 +83,7 @@ namespace SampleApi
             services.AddSingleton<IPasswordHasher>(ph => new PasswordHasher());
             services.AddTransient<IUserDAO>(m => new UserSqlDAO(Configuration.GetConnectionString("Default")));
             services.AddTransient<IComicCollectionDAO>(dao => new ComicCollectionSqlDAO(Configuration.GetConnectionString("Default")));
-
+            services.AddTransient<IComicBookDAO>(cb => new ComicBookSQLDAO(Configuration.GetConnectionString("Default")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
