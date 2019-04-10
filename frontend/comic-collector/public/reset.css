@@ -10,3 +10,7 @@ body, html {
   --tufts-blue: #3F88C5;
   --verdigris: #44BBA4;
 }
+
+body {
+  background-color: var(--black-olive);
+}

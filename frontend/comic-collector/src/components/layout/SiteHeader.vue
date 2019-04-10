@@ -23,9 +23,10 @@ export default {
 </script>
 
 <style>
-   .header {
-    display: flex;
-    align-items: space-between;
+  .header {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: baseline;
     background-color: var(--black-olive);
     color: var(--carmine-pink);
     justify-content: center;
@@ -35,6 +36,6 @@ export default {
     justify-content: left;
   }
   .login {
-    align-self: flex-end;
+    justify-self: end;
   }
 </style>
