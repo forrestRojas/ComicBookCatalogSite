@@ -195,14 +195,14 @@ export default {
   display: flex;
   height: 100vh;
   flex-direction: column;
-  background-color: #F6F7EB;
-  color: #393E41;
+  background-color: var(--isabelline);
+  color: var(--black-olive);
 }
 
 #content {
   display: initial;
-  background-color: #3F88C5;
-  color: #F6F7EB;
+  background-color: var(--tufts-blue);
+  color: var(--isabelline);
 }
 
 #content,
@@ -229,7 +229,7 @@ form input {
   margin-bottom: 1rem;
 
   padding: 10px;
-  border: 1px solid #3F88C5;
+  border: 1px solid var(--tufts-blue);
   border-radius: 3px;
 }
 
@@ -241,8 +241,8 @@ form input {
 form button {
   padding: 0.8rem 1rem;
   background: var(--primary-color);
-  background-color: #3F88C5;
-  color: #F6F7EB;
+  background-color: var(--tufts-blue);
+  color: var(--isabelline);
 
   border-radius: 3px;
 }

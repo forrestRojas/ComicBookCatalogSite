@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header class="header">
         <h1>Comic Collection Catalog</h1>
         <the-login v-if="showHeader" class="login"></the-login>
     </header>
@@ -19,9 +19,16 @@ export default {
     }
   }
 }
-
 </script>
 
 <style>
-
+  .header {
+    display: flex;
+    align-items: space-between;
+    background-color: var(--black-olive);
+    color: var(--carmine-pink);
+  }
+  .login {
+    align-self: flex-end;
+  }
 </style>

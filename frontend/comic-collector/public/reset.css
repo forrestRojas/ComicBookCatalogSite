@@ -2,3 +2,11 @@ body, html {
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --isabelline: #F6F7EB;
+  --carmine-pink: #E94F37;
+  --black-olive: #393E41;
+  --tufts-blue: #3F88C5;
+  --verdigris: #44BBA4;
+}
