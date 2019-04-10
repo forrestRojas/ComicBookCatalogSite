@@ -89,7 +89,7 @@ VALUES ('Man looking to find his dog', 'dog finder', 'https://images.unsplash.co
  DECLARE @newcomic_id int = (SELECT @@IDENTITY)
 
 INSERT INTO comic (description, deck, image, issue_number, name, volume, cover_date, person_credits)
-VALUES ('Man who hates kryptonite', 'Smallville guy', 'https://www.gettyimages.com/detail/photo/superman-and-bent-metal-royalty-free-image/471592903',
+VALUES ('Man who hates kryptonite', 'Smallville guy', 'http://pngimg.com/uploads/superman/superman_PNG77.png',
  '2', 'Superman', '2', '02/02/2019', 'Ryan')
  DECLARE @newcomic2_id int = (SELECT @@IDENTITY)
 
