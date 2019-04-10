@@ -23,12 +23,13 @@ export default {
 
 <style>
   .header {
-    display: flex;
-    align-items: space-between;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: baseline;
     background-color: var(--black-olive);
     color: var(--carmine-pink);
   }
   .login {
-    align-self: flex-end;
+    justify-self: end;
   }
 </style>

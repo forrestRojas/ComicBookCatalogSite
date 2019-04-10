@@ -31,34 +31,31 @@ export default {
 </script>
 
 <style>
+:root {
+	--grad-color: var(--black-olive);
+}
+
 @keyframes gradient {
-  0% {
-    background: radial-gradient(circle at center, rgba( 255, 125 , 125, 0 ) 0%, #fff 0%, #fff 100%);
-	}
-	15% {
-    background: radial-gradient(circle at center, rgba( 255, 125, 125, 0.3 ) 14%, #fff 15%, #fff 100%);
-  }
-  25% {
-    background: radial-gradient(circle at center, rgba( 255, 125, 125, 0.3 ) 24%, #fff 25%, #fff 100%);
-	}
-	35% {
-    background: radial-gradient(circle at center, rgba( 255, 125, 125, 0.3 ) 34%, #fff 35%, #fff 100%);
-	}
-	45% {
-    background: radial-gradient(circle at center, rgba( 255, 125, 125, 0.3 ) 44%, #fff 45%, #fff 100%);
-  }
-  50% {
-    background: radial-gradient(circle at center, rgba( 255, 125, 125, 0.5 ) 49%, #fff 50%, #fff 100%);
-	}
-	55% {
-    background: radial-gradient(circle at center, rgba( 255, 125, 125, 0.5 ) 54%, #fff 55%, #fff 100%);
-  }
-  75% {
-    background: radial-gradient(circle at center, rgba( 255, 125, 125, 0.8 ) 74%, #fff 75%, #fff 100%);
-  }
+  0% 	{background: radial-gradient(circle at center, rgba(233, 79, 55, 0.0 ) 	0%, var(--grad-color)	 0%, var(--grad-color) 100%);}
+	5% 	{background: radial-gradient(circle at center, rgba(233, 79, 55, 0.3 )	4%, var(--grad-color)	 5%, var(--grad-color) 100%);}
+	10% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.3 )	9%, var(--grad-color) 10%, var(--grad-color) 100%);}
+	15% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.3 ) 14%, var(--grad-color) 15%, var(--grad-color) 100%);}
+  25% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.3 ) 24%, var(--grad-color) 25%, var(--grad-color) 100%);}
+	35% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.3 ) 34%, var(--grad-color) 35%, var(--grad-color) 100%);}
+	45% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.3 ) 44%, var(--grad-color) 45%, var(--grad-color) 100%);}
+  50% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.5 ) 49%, var(--grad-color) 50%, var(--grad-color) 100%);}
+	55% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.5 ) 54%, var(--grad-color) 55%, var(--grad-color) 100%);}
+	60% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.5 ) 59%, var(--grad-color) 60%, var(--grad-color) 100%);}
+	65% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.5 ) 64%, var(--grad-color) 65%, var(--grad-color) 100%);}
+	70% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.5 ) 69%, var(--grad-color) 70%, var(--grad-color) 100%);}
+  75% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.8 ) 74%, var(--grad-color) 75%, var(--grad-color) 100%);}
+	80% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.8 ) 79%, var(--grad-color) 80%, var(--grad-color) 100%);}
+	85% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.8 ) 84%, var(--grad-color) 85%, var(--grad-color) 100%);}
+	90% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.8 ) 89%, var(--grad-color) 90%, var(--grad-color) 100%);}
+	95% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.8 ) 94%, var(--grad-color) 95%, var(--grad-color) 100%);}
   100% {
     color: #fff;
-    background: radial-gradient(circle at center, #f88 99%, #fff 100%, #fff 100%);
+    background: radial-gradient(circle at center, var(--carmine-pink) 99%, var(--grad-color) 100%, var(--grad-color) 100%);
   }
 }
 
@@ -71,17 +68,32 @@ export default {
 .collection {
 	padding: 5%;
 	transition: background-color .4s;
-	background: #fff;
+	color: var(--isabelline);
+	background: inherit;
 }
 
 .collection:hover {
-  background: #f88;
+  background: var(--carmine-pink); /* rgba(233, 79, 55) */
 	animation: gradient 300ms ease;
 	color: #fff;
 }
 
-.collection:active {
+.collection:hover .collection-img img {
+	bottom: 4px;
+	max-width: 75%;
+	box-shadow: 5px 10px rgba(44, 14, 9, 0.671);
+}
 
+.collection:active {
+	background: #f88;
+}
+
+.collection-img img {
+	transition: all .5s ease;
+	bottom: 0;
+	position: relative;
+	max-width: 75%;
+	box-shadow: none;
 }
 
 </style>
