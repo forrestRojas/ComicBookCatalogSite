@@ -25,6 +25,8 @@ export default {
 <style scoped>
 .collections-grid {
 	display: grid;
-	grid-auto-rows: auto-fill, 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+	align-items: center;
 }
 </style>
