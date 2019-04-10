@@ -68,14 +68,14 @@ export default {
 .collection {
 	padding: 5%;
 	transition: background-color .4s;
-	color: var(--isabelline);
 	background: inherit;
+	color: var(--black-olive)
 }
 
 .collection:hover {
-  background: var(--carmine-pink); /* rgba(233, 79, 55) */
+	background: var(--carmine-pink); /* rgba(233, 79, 55) */
 	animation: gradient 300ms ease;
-	color: #fff;
+	color: var(--isabelline);
 }
 
 .collection:hover .collection-img img {

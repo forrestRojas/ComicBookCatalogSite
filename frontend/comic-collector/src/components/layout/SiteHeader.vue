@@ -26,7 +26,8 @@ export default {
   .header {
     display: grid;
     grid-auto-flow: column;
-    align-items: baseline;
+    align-items: center;
+    padding-right: 1em;
     background-color: var(--black-olive);
     color: var(--carmine-pink);
     justify-content: center;
