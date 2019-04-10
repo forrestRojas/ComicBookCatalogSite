@@ -28,7 +28,7 @@ namespace SampleApi.API
             this.seriesTitle = seriesTitle;
             this.issueNumber = issueNumber;
             this.volumeId = comicApiInfo.GetVolumeInfo(seriesTitle);
-            this.comic = comicApiInfo.GetIssueInfo(volumeId, issueNumber);
+ //           this.comic = comicApiInfo.GetIssueInfo(volumeId, issueNumber);
         }
 
 
