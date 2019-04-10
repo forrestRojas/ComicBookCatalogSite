@@ -114,7 +114,7 @@ VALUES ('frojas', '123456', '1a2b3c4d5e6f', 'standard', 'I wear Free Hug shirts'
 DECLARE @newuser_id int = (SELECT @@IDENTITY)
 
 INSERT INTO users (username, password, salt, role, bio, favorites, user_image)
-VALUES ('pscann', 'password', 'p1a2s3s4w5o6r7d8', 'standard', 'Go Browns', 'Dog Finder Man', 'https://www.gettyimages.com/detail/news-photo/baker-mayfield-of-the-cleveland-browns-celebrates-after-news-photo/1036975122')
+VALUES ('pscann', 'password', 'p1a2s3s4w5o6r7d8', 'standard', 'Go Browns', 'Dog Finder Man', 'https://media.gettyimages.com/photos/baker-mayfield-of-the-cleveland-browns-runs-off-the-field-after-a-picture-id1036976878?s=2048x2048')
 DECLARE @newuser2_id int = (SELECT @@IDENTITY)
 
 INSERT INTO collection (user_id, image, title, description, public_access)
@@ -123,7 +123,7 @@ VALUES (@newuser_id, 'https://images.unsplash.com/photo-1514329926535-7f6dbfbfb1
 DECLARE @newcollection_id int = (SELECT @@IDENTITY)
 
 INSERT INTO collection (user_id, image, title, description, public_access)
-VALUES (@newuser2_id, 'https://media.gettyimages.com/photos/baker-mayfield-of-the-cleveland-browns-runs-off-the-field-after-a-picture-id1036976878?s=2048x2048',
+VALUES (@newuser2_id, 'https://images.pexels.com/photos/53794/pexels-photo-53794.jpeg?cs=srgb&dl=catalog-comic-book-hero-53794.jpg&fm=jpg',
 'Peter Favorties', 'My favorite comic book', 'standard')
 DECLARE @newcollection2_id int = (SELECT @@IDENTITY)
 
