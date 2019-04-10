@@ -15,5 +15,46 @@ body, html {
 body {
   background-color: var(--black-olive);
   background-image: url("https://blog.booksamillion.com/wp-content/uploads/2017/03/dc-vs.-marvel-1024x661.jpg");
+  background-repeat: no-repeat, repeat;
+  background-size: cover; 
   padding-top: 5rem;
+}
+
+.dag-strips {
+  display: block;
+  position: absolute;
+  height: 420px;
+  width: 50px;
+  transform: rotate(70deg);
+  z-index: -1;
+  top: -205px;
+  left: 140px;
+  background-color: inherit;
+  box-shadow: 5px 10px rgba(44, 14, 9, 0.671);
+}
+
+.dag-strips::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: inherit;
+  width: 25px;
+  z-index: inherit;
+  top: -147px;
+  left: 110px;
+  background-color: inherit;
+  box-shadow: inherit;
+}
+
+.dag-strips::before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: inherit;
+  width: 10px;
+  z-index: inherit;
+  top: -95px;
+  left: 68px;
+  box-shadow: inherit;
+  background-color: inherit;
 }
