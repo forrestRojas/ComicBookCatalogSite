@@ -27,7 +27,9 @@ data(){
     }
     },
 created(){
-    fetch(`${process.env.VUE_APP_REMOTE_API}/comicbook/${id}`, {
+    const id = this.$route.params.id;
+    
+    fetch(`${process.env.VUE_APP_REMOTE_API}/comic/${id}`, {
         method: "GET",
     })
     .then(response => response.json())
