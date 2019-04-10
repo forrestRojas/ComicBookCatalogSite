@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import CollectionsView from "./views/CollectionsView.vue";
+import ComicDetails from "./views/ComicDetails.vue";
 import auth from "./shared/auth";
 
 Vue.use(Router);
@@ -16,7 +17,7 @@ const router = new Router({
         name: "home",
         component: Home,
         meta: {
-          requiesAuth: false
+          requiresAuth: false
         }
       },
       {
@@ -24,7 +25,7 @@ const router = new Router({
         name: "login",
         component: Login,
         meta: {
-          requiesAuth: false
+          requiresAuth: false
         }
       },
       {
@@ -32,7 +33,7 @@ const router = new Router({
         name: "collections",
         component: CollectionsView,
         meta: {
-          requiesAuth: false
+          requiresAuth: false
         }
       },
       {
@@ -40,7 +41,15 @@ const router = new Router({
         name: "collection",
         component: CollectionsView,
         meta: {
-          requiesAuth: false
+          requiresAuth: false
+        }
+      },
+      {
+        path: "/comic/:id",
+        name: "comic",
+        component: ComicDetails,
+        meta: {
+          requiresAuth: false
         }
       },
     ]

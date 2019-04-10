@@ -1,9 +1,8 @@
 <template>
    <div id="details" class="container">
-       <h2>Collection Details</h2>
+       <h2>{{comicbook.name}}</h2>
        <img v-bind:src="comicbook.image" class="comic-photo"/>
        <div class="comic-book-details">
-           <p>{{comicbook.name}}</p>
            <p>{{comicbook.description}}</p>
            <p>{{comicbook.publisher}}</p>
            <p>{{comicbook.deck}}</p>
@@ -27,7 +26,9 @@ data(){
     }
     },
 created(){
-    fetch(`${process.env.VUE_APP_REMOTE_API}/comicbook/${id}`, {
+    const id = this.$route.params.id;
+    
+    fetch(`${process.env.VUE_APP_REMOTE_API}/comic/${id}`, {
         method: "GET",
     })
     .then(response => response.json())

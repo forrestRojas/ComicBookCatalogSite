@@ -7,7 +7,7 @@ using SampleApi.Models;
 
 namespace SampleApi.DAL
 {
-    public class ComicBookDAO : IComicBookDAO
+    public class ComicBookSQLDAO : IComicBookDAO
     {
         private string connectionString;
 
@@ -15,7 +15,7 @@ namespace SampleApi.DAL
         /// Creates a new SQL-based ComicBook dao
         /// </summary>
         /// <param name="databaseConnectionString"></param>
-        public ComicBookDAO(string databaseConnectionString)
+        public ComicBookSQLDAO(string databaseConnectionString)
         {
             connectionString = databaseConnectionString;
         }
@@ -56,7 +56,7 @@ namespace SampleApi.DAL
         private ComicBook ConvertReaderToComicBook(SqlDataReader reader)
         {
             ComicBook book = new ComicBook();
-            book.ID = Convert.ToInt32(reader["coimc_id"]);
+            book.ID = Convert.ToInt32(reader["comic_id"]);
             book.Description = Convert.ToString(reader["description"]);
             book.Publisher = Convert.ToString(reader["publisher"]);
             book.Deck = Convert.ToString(reader["deck"]);
@@ -121,7 +121,7 @@ namespace SampleApi.DAL
                                                                   //Do comic_id and @ID need to be switched
                     SqlCommand cmd = new SqlCommand("SELECT * FROM comic WHERE comic_id = @ID", conn);
                                                 //@comic_id might need to be @ID?
-                    cmd.Parameters.AddWithValue("@comic_id", id);
+                    cmd.Parameters.AddWithValue("@ID", id);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
