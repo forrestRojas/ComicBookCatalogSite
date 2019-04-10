@@ -2,7 +2,7 @@
   <div id="app">
     <site-header id="site-header"></site-header>
     <site-nav id="site-nav"></site-nav>
-    <router-view id="main"/>
+    <router-view />
     <!-- <site-footer></site-footer> -->
   </div>
 </template>
@@ -36,10 +36,10 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background: inherit;
+  background: var(--isabelline);
   color: #2c3e50;
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 7fr;
   grid-template-areas: 
     "header header"
     "nav main"
@@ -53,7 +53,8 @@ export default {
 #site-nav {
   grid-area: nav;
 }
-#main {
+main {
   grid-area: main;
+  height: 100%;
 }
 </style>

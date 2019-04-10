@@ -1,7 +1,7 @@
 <template>
-  <div id="login">
+  <main id="login">
     <section id="content">
-      <h1>Comic Collection Catalog</h1>
+      <h2>Login</h2>
       <p>
         Create an account or log in to CCC &mdash; A simple, fun &amp; creative way to capture,
         edit &amp; share your comic collection with friends &amp; family.
@@ -9,7 +9,7 @@
     </section>
     <section id="login-signup" v-bind:class="{ showSignupForm: !showLoginForm }">
       <form v-if="showLoginForm" v-on:submit.prevent="login">
-        <h1>Welcome Back!</h1>
+        <h2>Welcome Back!</h2>
 
         <error-message v-bind:error="error"></error-message>
 
@@ -38,7 +38,7 @@
       </form>
 
       <form v-else v-on:submit.prevent="signup">
-        <h1>Get Started</h1>
+        <h2>Get Started</h2>
 
         <error-message :error="error"></error-message>
 
@@ -74,7 +74,7 @@
         </div>
       </form>
     </section>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -193,14 +193,18 @@ export default {
 <style scoped>
 #login {
   display: flex;
-  height: 100vh;
   flex-direction: column;
   background-color: var(--isabelline);
   color: var(--black-olive);
 }
 
+#login-signup {
+  text-align: left;
+}
+
 #content {
-  display: initial;
+  display: block;
+  text-align: right;
   background-color: var(--tufts-blue);
   color: var(--isabelline);
 }
@@ -210,12 +214,13 @@ export default {
   padding: 5vh 1rem 1rem 1rem;
 }
 
-#content h1,
-#login-signup h1 {
+#content h2,
+#login-signup h2 {
+  margin-top: 0;
   margin-bottom: 2rem;
 }
 
-form h1 {
+form h2 {
   margin-left: 0;
 }
 
