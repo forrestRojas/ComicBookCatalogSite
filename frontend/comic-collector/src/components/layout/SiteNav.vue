@@ -1,5 +1,7 @@
 <template>
-                <a href="/collections">Collections</a>
+    <nav>
+        <a href="/collections">Collections</a>
+    </nav>
 </template>
 
 <script>

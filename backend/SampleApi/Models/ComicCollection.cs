@@ -26,6 +26,11 @@ namespace SampleApi.Models
         public string Title { get; set; }
 
         /// <summary>
+        /// Image for the collection
+        /// </summary>
+        public string Image { get; set; }
+
+        /// <summary>
         /// A short description about the collection.
         /// </summary>
         public string Description { get; set; }

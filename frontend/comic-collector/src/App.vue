@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <site-header  class="header"></site-header>
-    <site-nav class="nav"></site-nav>
-    <router-view class="main"/>
+    <site-header id="site-header"></site-header>
+    <site-nav id="site-nav"></site-nav>
+    <router-view />
     <!-- <site-footer></site-footer> -->
   </div>
 </template>
@@ -23,27 +23,38 @@ export default {
 </script>
 
 <style>
+:root {
+  --isabelline: #F6F7EB;
+  --carmine-pink: #E94F37;
+  --black-olive: #393E41;
+  --tufts-blue: #3F88C5;
+  --verdigris: #44BBA4;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background: var(--isabelline);
   color: #2c3e50;
-  margin-top: 60px;
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 7fr;
   grid-template-areas: 
     "header header"
     "nav main"
     /* footer footer */
 }
-.header {
+
+
+#site-header {
   grid-area: header;
 }
-.nav {
+#site-nav {
   grid-area: nav;
 }
-.main {
+main {
   grid-area: main;
+  height: 100%;
 }
 </style>
