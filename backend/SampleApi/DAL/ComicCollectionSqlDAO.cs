@@ -64,6 +64,7 @@ namespace SampleApi.DAL
                 Id = Convert.ToInt32(reader["collection_id"]),
                 UserId = Convert.ToInt32(reader["user_id"]),
                 Title = Convert.ToString(reader["title"]),
+                Image = Convert.ToString(reader["image"]),
                 Description = Convert.ToString(reader["description"]),
                 AccessLevel = Convert.ToString(reader["public_access"])
             };
@@ -88,11 +89,12 @@ namespace SampleApi.DAL
 
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("INSERT INTO collections (user_id, title, description, public_access) VALUES (@user_id, @title, @description, @public_access)", conn, transaction);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO collections (user_id, title, image, description, public_access) VALUES (@user_id, @title, @image, @description, @public_access)", conn, transaction);
                     foreach (ComicCollection collection in collections)
                     {
                         cmd.Parameters.AddWithValue("@user_id", collection.UserId);
                         cmd.Parameters.AddWithValue("@title", collection.Title);
+                        cmd.Parameters.AddWithValue("@image", collection.Image);
                         cmd.Parameters.AddWithValue("@description", collection.Description);
                         cmd.Parameters.AddWithValue("@public_access", collection.AccessLevel);
                         isSuccessful = cmd.ExecuteNonQuery() == 1;

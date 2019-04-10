@@ -1,8 +1,8 @@
 <template>
 	<article class="collection" v-on:click="GotoCollection">
 		<picture class="collection-img">
-			<source v-bind:srcset="collection.imageName" />
-			<img v-bind:src="collection.imageName" alt="Collection image." />
+			<source v-bind:srcset="collection.image" />
+			<img v-bind:src="collection.image" alt="Collection image." />
 		</picture>
 		<h4 class="collection-name">{{collection.title}}</h4>
 		<p>UserName</p>

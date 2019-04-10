@@ -195,12 +195,14 @@ export default {
   display: flex;
   height: 100vh;
   flex-direction: column;
+  background-color: #F6F7EB;
+  color: #393E41;
 }
 
 #content {
   display: initial;
-  background-color: #00adee;
-  color: #fff;
+  background-color: #3F88C5;
+  color: #F6F7EB;
 }
 
 #content,
@@ -227,7 +229,7 @@ form input {
   margin-bottom: 1rem;
 
   padding: 10px;
-  border: 1px solid #e6ecf0;
+  border: 1px solid #3F88C5;
   border-radius: 3px;
 }
 
@@ -239,8 +241,8 @@ form input {
 form button {
   padding: 0.8rem 1rem;
   background: var(--primary-color);
-
-  color: black;
+  background-color: #3F88C5;
+  color: #F6F7EB;
 
   border-radius: 3px;
 }
