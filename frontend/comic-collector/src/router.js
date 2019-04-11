@@ -5,6 +5,7 @@ import Login from "./views/Login.vue";
 import CollectionsView from "./views/CollectionsView.vue";
 import CollectionsDetail from "./views/CollectionsDetail.vue";
 import ComicDetails from "./views/ComicDetails.vue";
+import UserDetail from "./views/UserDetail.vue";
 import auth from "./shared/auth";
 
 Vue.use(Router);
@@ -53,6 +54,15 @@ const router = new Router({
           requiresAuth: false
         }
       },
+      {
+      path: "/account/:id",
+      name: "user",
+      component: UserDetail,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
     ]
   });
 
