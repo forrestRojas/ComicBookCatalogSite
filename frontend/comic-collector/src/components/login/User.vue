@@ -16,7 +16,7 @@ props: {
 },
 data(){
     return {
-        user:[]
+        user:{}
     }
 },
 created(){

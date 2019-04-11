@@ -1,6 +1,5 @@
 <template>
     <main id="user">
-        <h1>hello</h1>
         <h2>{{user.username}}</h2>
         <picture>
            <source v-bind:src="user.image">
