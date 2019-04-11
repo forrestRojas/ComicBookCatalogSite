@@ -1,10 +1,13 @@
 <template>
     <article class="comic-summary" v-on:click="GotoComic()">
-        <img :src="comic.image"/>
-        <h1>{{comic.name}}</h1>
+        <h2>{{comic.name}}</h2>
         <h3>Publisher: {{comic.publisher}}</h3>
         <p>{{comic.issueNumber}}</p>
         <p>{{comic.deck}}</p>
+        <picture>
+          <source :src="comic.image" />
+          <img :src="comic.image" alt="" />
+        </picture>
     </article>
 </template>
 
@@ -27,9 +30,5 @@ export default {
         display: flex;
         background-color: var(--isabelline);
         margin: 10px;
-    }
-
-    img {
-      height: 200px;
     }
 </style>
