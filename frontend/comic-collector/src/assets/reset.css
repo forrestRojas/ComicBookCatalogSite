@@ -25,13 +25,15 @@ body {
   display: block;
   position: absolute;
   height: 420px;
-  width: 50px;
+  width: 22px;
   transform: rotate(70deg);
   z-index: -1;
-  top: -205px;
-  left: 140px;
+  top: -181px;
+  left: 163px;
   background-color: inherit;
   box-shadow: 5px 10px rgba(44, 14, 9, 0.671);
+  border-left: 3px solid;
+  border-left-color: var(--isabelline);
 }
 
 .dag-strips::after {
@@ -39,12 +41,13 @@ body {
   display: block;
   position: absolute;
   height: inherit;
-  width: 25px;
+  width: 29px;
   z-index: inherit;
   top: -147px;
-  left: 110px;
+  left: 61px;
   background-color: inherit;
   box-shadow: inherit;
+  border: inherit;
 }
 
 .dag-strips::before {
@@ -54,8 +57,9 @@ body {
   height: inherit;
   width: 10px;
   z-index: inherit;
-  top: -95px;
-  left: 68px;
+  top: -116px;
+  left: 30px;
   box-shadow: inherit;
+  border: inherit;
   background-color: inherit;
 }
