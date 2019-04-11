@@ -1,5 +1,5 @@
 <template>
-	<article class="collection" v-on:click="GotoCollection">
+	<article class="collection" v-on:click="GotoCollection()">
 		<picture class="collection-img">
 			<source v-bind:srcset="collection.image" />
 			<img v-bind:src="collection.image" alt="Collection image." />
@@ -24,7 +24,7 @@ export default {
 	},
 	methods: {
 		GotoCollection() {
-			this.$router.push({ name: 'collections', params: { id: this.collection.id } });
+			this.$router.push({ path: `/collections/${this.collection.id}` });
 		}
 	}
 }
