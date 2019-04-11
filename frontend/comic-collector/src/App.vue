@@ -39,6 +39,7 @@ export default {
   background: var(--isabelline);
   color: #2c3e50;
   display: grid;
+  height: 100%;
   grid-template-columns: 1fr 7fr;
   grid-template-areas: 
     "header header"
@@ -52,9 +53,9 @@ export default {
 }
 #site-nav {
   grid-area: nav;
+  background: inherit;
 }
 main {
   grid-area: main;
-  height: 100%;
 }
 </style>
