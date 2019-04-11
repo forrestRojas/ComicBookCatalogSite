@@ -1,5 +1,5 @@
 <template>
-    <article class="comic-summary">
+    <article class="comic-summary" v-on:click="GotoComic()">
         <img :src="comic.image"/>
         <h1>{{comic.name}}</h1>
         <h3>{{comic.publisher}}</h3>
@@ -13,8 +13,12 @@ export default {
   name: "comic-summary",
   props: {
     comic: Object
-  }
-
+  },
+  	methods: {
+		GotoComic() {
+			this.$router.push({ path: `/comic/${this.comic.id}` });
+		}
+	}
 }
 </script>
 
