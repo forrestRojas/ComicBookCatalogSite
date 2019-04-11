@@ -30,8 +30,6 @@ export default {
     padding-right: 1em;
     background-color: var(--black-olive);
     color: var(--carmine-pink);
-    justify-content: center;
-    padding-left: 300px;
   }
    img {
     justify-content: left;

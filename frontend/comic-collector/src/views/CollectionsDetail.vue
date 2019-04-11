@@ -3,7 +3,6 @@
     <h2>{{collection.title}}</h2>
     <comic-summary v-for="comic in collection.comics" v-bind:key="comic.id" v-bind:comic="comic"></comic-summary>
   </main>
-
 </template>
 
 <script>
