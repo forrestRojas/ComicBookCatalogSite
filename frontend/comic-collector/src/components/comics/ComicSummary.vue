@@ -2,8 +2,8 @@
     <article class="comic-summary" v-on:click="GotoComic()">
         <img :src="comic.image"/>
         <h1>{{comic.name}}</h1>
-        <h3>{{comic.publisher}}</h3>
-        <p>{{comic.IssueNumber}}</p>
+        <h3>Publisher: {{comic.publisher}}</h3>
+        <p>{{comic.issueNumber}}</p>
         <p>{{comic.deck}}</p>
     </article>
 </template>
@@ -25,5 +25,11 @@ export default {
 <style>
     .comic-summary {
         display: flex;
+        background-color: var(--isabelline);
+        margin: 10px;
+    }
+
+    img {
+      height: 200px;
     }
 </style>
