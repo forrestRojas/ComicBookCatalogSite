@@ -16,24 +16,35 @@ props: {
 },
 data(){
     return {
-        user:{}
+        user: {}
     }
 },
-created(){
-    const id = this.$route.params.id;
-
-    fetch(`${process.env.VUE_APP_REMOVE_API}/user/${id}`, {
+watch: {
+    id: function (newID, oldID){
+        if( newID === undefined || newID === oldID){
+            return;
+        }
+    fetch(`${process.env.VUE_APP_REMOTE_API}/account/${this.id}`, {
         method: "GET",
     })
-    .then(respsonse => resposne.json())
-    .then(json => {
-        this.user = json;
-    });
+    .then(response => response.json())
+    .then(json => this.user = json);
+    }
+    },
+created(){
+    if(this.id){
+    fetch(`${process.env.VUE_APP_REMOTE_API}/account/${this.id}`, {
+        method: "GET",
+    })
+    .then(response => response.json())
+    .then(json => this.user = json);
+    }
 }
 }
-
 </script>
 
-<style>
-
+<style scoped>
+    img {
+        height: 50px;
+    }
 </style>

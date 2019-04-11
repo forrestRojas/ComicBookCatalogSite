@@ -102,10 +102,22 @@ namespace SampleApi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public IActionResult User(int id)
+        public User Get(int id)
         {
-            User user = userDao.GetUserById(id);
-            return Ok(user);
+            return userDao.GetUserById(id);
         }
+
+        /// <summary>
+        /// Gets user by name
+        /// </summary>
+        /// <param name="name">user name</param>
+        /// <returns>User object</returns>
+        [HttpGet("{name}")]
+        [Route("/api/user/{name}")]
+        public User UserByName(string name)
+        {
+            return userDao.GetUser(name);
+        }
+
     }
 }
