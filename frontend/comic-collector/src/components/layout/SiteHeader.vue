@@ -30,11 +30,11 @@ export default {
     padding-right: 1em;
     background-color: var(--black-olive);
     color: var(--carmine-pink);
-    justify-content: center;
-    padding-left: 300px;
+    /* height: min-content; */
   }
-   img {
+   .header img {
     justify-content: left;
+    align-self: end;
   }
   .login {
     justify-self: end;

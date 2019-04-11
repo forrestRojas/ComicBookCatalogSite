@@ -25,6 +25,12 @@ namespace SampleApi.DAL
         /// </summary>
         /// <param name="book"></param>
         void AddComicBook(ComicBook book);
-          
+
+        /// <summary>
+        /// Returns the comics of a single collection
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A list of comic book items</returns>
+        IList<ComicBook> GetComicsByCollectionID(int id);
     }
 }

@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import CollectionsView from "./views/CollectionsView.vue";
+import CollectionsDetail from "./views/CollectionsDetail.vue";
 import ComicDetails from "./views/ComicDetails.vue";
 import auth from "./shared/auth";
 
@@ -39,7 +40,7 @@ const router = new Router({
       {
         path: "/collections/:id",
         name: "collection",
-        component: CollectionsView,
+        component: CollectionsDetail,
         meta: {
           requiresAuth: false
         }

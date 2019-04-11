@@ -1,17 +1,23 @@
 <template>
-   <div id="details" class="container">
-       <h2>{{comicbook.name}}</h2>
-       <img v-bind:src="comicbook.image" class="comic-photo"/>
-       <div class="comic-book-details">
-           <p>{{comicbook.description}}</p>
-           <p>{{comicbook.publisher}}</p>
-           <p>{{comicbook.deck}}</p>
-           <p>{{comicbook.issuenumber}}</p>
-           <p>{{comicbook.volume}}</p>
-           <p>{{comicbook.coverdate}}</p>
-           <p>{{comicbook.credits}}</p>
-       </div>
-    </div> 
+   <main id="details">
+      
+       <!-- <section class="comic-book-details"> -->
+            <h2>{{comicbook.name}}</h2>
+        <picture>
+           <source v-bind:src="comicbook.image">
+            <img v-bind:src="comicbook.image" class="comic-photo"/>
+       </picture>
+
+           <p>Description: {{comicbook.description}}</p>
+           <p>Publisher: {{comicbook.publisher}}</p>
+           <p>Deck: {{comicbook.deck}}</p>
+           <p>Issue Number: {{comicbook.issuenumber}}</p>
+           <p>Volume: {{comicbook.volume}}</p>
+           <p>Cover Date: {{comicbook.coverdate}}</p>
+           <p>Credits: {{comicbook.credits}}</p>
+       <!-- </section> -->
+        
+   </main> 
 </template>
 
 <script>
@@ -41,5 +47,7 @@ created(){
 </script>
 
 <style>
-
+.comic-photo {
+    width: 280px;
+}
 </style>

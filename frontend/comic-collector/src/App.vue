@@ -39,11 +39,13 @@ export default {
   background: var(--isabelline);
   color: #2c3e50;
   display: grid;
+  height: 100%;
+  /* min-height: -webkit-fill-available; */
   grid-template-columns: 1fr 7fr;
   grid-template-areas: 
     "header header"
     "nav main"
-    /* footer footer */
+    /* footer footer */;
 }
 
 
@@ -52,9 +54,10 @@ export default {
 }
 #site-nav {
   grid-area: nav;
+  background: inherit;
 }
 main {
   grid-area: main;
-  height: 100%;
+  background: inherit;
 }
 </style>

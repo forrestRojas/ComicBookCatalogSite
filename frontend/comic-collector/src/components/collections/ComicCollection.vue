@@ -1,30 +1,30 @@
 <template>
-	<article class="collection" v-on:click="GotoCollection">
+	<article class="collection" v-on:click="GotoCollection()">
 		<picture class="collection-img">
 			<source v-bind:srcset="collection.image" />
 			<img v-bind:src="collection.image" alt="Collection image." />
 		</picture>
 		<h4 class="collection-name">{{collection.title}}</h4>
-		<p>UserName</p>
+		<user v-bind:id="collection.userId"></user>
 		<!-- <user-name v-bind:userId="collection.userId"></user-name> -->
 		<p class="collection-description">{{collection.description}}</p>
 	</article>
 </template>
 
 <script>
-// import UserName from '@/components/user/UserName.vue';
+import User from '@/components/login/User.vue';
 
 export default {
 	name: 'comic-collection',
-	// components: {
-	// 	UserName
-	// },
+	components: {
+		User
+	},
 	props: {
 			collection: Object,
 	},
 	methods: {
 		GotoCollection() {
-			this.$router.push({ name: 'collections', params: { id: this.collection.id } });
+			this.$router.push({ path: `/collections/${this.collection.id}` });
 		}
 	}
 }

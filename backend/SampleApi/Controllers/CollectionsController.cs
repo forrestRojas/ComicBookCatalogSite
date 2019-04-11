@@ -17,14 +17,16 @@ namespace SampleApi.Controllers
     public class CollectionsController : ControllerBase
     {
         private readonly IComicCollectionDAO comicCollectionDAO;
+        private readonly IComicBookDAO comicBookDAO;
 
         /// <summary>
         /// Creates a comic collections controller.
         /// </summary>
         /// <param name="comicCollectionDAO">the comic colllection dao.</param>
-        public CollectionsController(IComicCollectionDAO comicCollectionDAO)
+        public CollectionsController(IComicCollectionDAO comicCollectionDAO, IComicBookDAO comicBookDAO)
         {
             this.comicCollectionDAO = comicCollectionDAO;
+            this.comicBookDAO = comicBookDAO;
         }
 
         /// <summary>
@@ -35,6 +37,19 @@ namespace SampleApi.Controllers
         public IEnumerable<ComicCollection> Get()
         {
             return comicCollectionDAO.GetCollections();
+        }
+
+        /// <summary>
+        /// Gets a single comic collection
+        /// </summary>
+        /// <param name="ID">collection id</param>
+        /// <returns>Comic Collection</returns>
+        [HttpGet("{id}")]
+        public ActionResult<ComicCollection> GetCollectionByID(int ID)
+        {
+            ComicCollection collection = comicCollectionDAO.GetASingleCollection(ID);
+            collection.Comics = comicBookDAO.GetComicsByCollectionID(ID);
+            return collection;
         }
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="isAuthenticated">
-          <p>Hello {{user}}</p>
+         <user v-bind:id="user.id"></user>
             <a href="/logout" v-on:click.prevent="logout">Logout</a>
         </div>
         <div v-else>
@@ -12,13 +12,17 @@
 
 <script>
 import auth from "@/shared/auth";
+import User from "@/components/login/User.vue";
 
 export default {
   name: "the-login",
+  components: {
+    User
+  },
   data() {
     return {
       isAuthenticated: auth.getUser() !== null,
-      user: auth.getUser().sub
+      user: {}
     };
   },
   methods: {
@@ -35,6 +39,13 @@ export default {
     getUser() {
       return auth.getUser();
     },
+  }, 
+  created() {
+    fetch(`${process.env.VUE_APP_REMOTE_API}/user/${auth.getUser().sub}`, {
+        method: "GET",
+    })
+    .then(response => response.json())
+    .then(json => this.user = json);
   }
 }
 </script>
