@@ -17,8 +17,8 @@ body {
   background-image: url("https://blog.booksamillion.com/wp-content/uploads/2017/03/dc-vs.-marvel-1024x661.jpg");
   background-repeat: no-repeat, repeat;
   background-size: cover; 
-  margin-top: 80px;
-  height: calc(100vh - 80px);
+  margin-top: 5em;
+  height: calc(100vh - 5em);
 }
 
 .dag-strips {

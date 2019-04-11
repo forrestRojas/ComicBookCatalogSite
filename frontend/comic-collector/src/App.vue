@@ -40,11 +40,12 @@ export default {
   color: #2c3e50;
   display: grid;
   height: 100%;
+  /* min-height: -webkit-fill-available; */
   grid-template-columns: 1fr 7fr;
   grid-template-areas: 
     "header header"
     "nav main"
-    /* footer footer */
+    /* footer footer */;
 }
 
 
@@ -57,5 +58,6 @@ export default {
 }
 main {
   grid-area: main;
+  background: inherit;
 }
 </style>
