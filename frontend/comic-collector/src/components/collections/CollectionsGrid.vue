@@ -27,6 +27,6 @@ export default {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 	grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
-	align-items: center;
+	align-items: stretch;
 }
 </style>
