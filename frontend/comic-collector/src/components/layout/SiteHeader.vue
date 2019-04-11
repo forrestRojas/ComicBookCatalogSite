@@ -1,8 +1,8 @@
 <template>
     <header class="header">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQill6dEC0mHGVaob1VliASRtz2S01DLBXTzmyOIzKXMelugikYDg">
-        <h1>Comic Collection Catalog</h1>
-        <the-login v-if="showHeader" class="login"></the-login>
+      <h1>Comic Collection Catalog</h1>
+      <the-login v-if="showHeader" class="login"></the-login>
     </header>
 </template>
 
@@ -30,11 +30,12 @@ export default {
     padding-right: 1em;
     background-color: var(--black-olive);
     color: var(--carmine-pink);
-    /* height: min-content; */
   }
    .header img {
     justify-content: left;
     align-self: end;
+    border-top: 3px solid;
+    border-top-color: var(--isabelline);
   }
   .login {
     justify-self: end;

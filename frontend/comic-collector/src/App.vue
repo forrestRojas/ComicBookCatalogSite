@@ -42,6 +42,7 @@ export default {
   height: 100%;
   /* min-height: -webkit-fill-available; */
   grid-template-columns: 1fr 7fr;
+  grid-template-rows: 1fr 6fr 1fr; 
   grid-template-areas: 
     "header header"
     "nav main"
