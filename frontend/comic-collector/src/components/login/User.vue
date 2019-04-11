@@ -1,11 +1,11 @@
 <template>
-    <main id="user">
+    <div id="user" v-on:click.stop.prevent="GotoUser()">
         <h2>{{user.username}}</h2>
         <picture>
            <source v-bind:src="user.image">
             <img v-bind:src="user.image" class="user-photo"/>
        </picture>
-    </main>
+    </div>
 </template>
 
 <script>
@@ -18,6 +18,12 @@ data(){
     return {
         user: {}
     }
+},
+methods: {
+	GotoUser() {
+		this.$router.push({ path: `/account/${this.id}` });
+	}
+
 },
 watch: {
     id: function (newID, oldID){

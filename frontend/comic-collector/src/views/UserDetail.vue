@@ -13,9 +13,6 @@
 <script>
 export default {
 name: "user-view",
-props: {
-    id: Number
-},
 data(){
     return {
         user:{}
@@ -24,13 +21,11 @@ data(){
 created(){
     const id = this.$route.params.id;
 
-    fetch(`${process.env.VUE_APP_REMOVE_API}/user_datails/${id}`, {
+    fetch(`${process.env.VUE_APP_REMOTE_API}/account/${id}`, {
         method: "GET",
     })
-    .then(respsonse => resposne.json())
-    .then(json => {
-        this.user = json;
-    });
+    .then(response => response.json())
+    .then(json => this.user = json);
 }
 }
 
