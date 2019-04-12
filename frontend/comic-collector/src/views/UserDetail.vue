@@ -7,15 +7,21 @@
        </picture>
        <p>{{user.bio}}</p>
        <p>{{user.favorites}}</p>
+       <form v-if="isCurrentUser">
+           <input type="checkbox" id="premium_checkbox" v-model="checked">
+            <label for="checkbox">Upgrade to Premium User</label>
+       </form>
     </main>
 </template>
 
 <script>
+import auth from '@/shared/auth.js'
 export default {
 name: "user-view",
 data(){
     return {
-        user:{}
+        user:{},
+        isCurrentUser:auth.getUser().sub === user.username
     }
 },
 created(){
