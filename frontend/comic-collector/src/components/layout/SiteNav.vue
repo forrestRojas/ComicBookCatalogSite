@@ -2,12 +2,12 @@
     <nav>
         <a href="/collections">Collections</a>
         <form>
-            <input type="text" v-model="search" placeholder="search comics"/><br>
-            <input type="text" v-model="volume_search" placeholder="Comic Volume"/><br>
+            <input type="text" v-model="search_title" placeholder="comic title"/><br>
+            <input type="text" v-model="volume_search" placeholder="comic volume"/><br>
             <!-- <div v-for="comic in comics" class="single-comic">
 +                <h2>{{comic.title}}</h2>
 +                <p>{{comic.anotherproperty}}</p> -->
-+            <!-- </div> -->
+           <!-- </div> -->
         </form>
             <button type="submit" @click.stop.prevent="submit()">Submit</button>
        
@@ -21,7 +21,7 @@ export default {
     data() {
         return {
             comics:[],
-            search: '',
+            search_title: '',
             volume_search: ''
         }
     },
@@ -38,8 +38,8 @@ export default {
     computed: {
         filteredComics: function(){
             return this.comics.filter((comic) => {
-                return comic.title.match(this.search);
-             // return comic.volume.match(this.volume_search)
+                return comic.title.match(this.search_title);
+                return comic.volume.match(this.volume_search);
             })
         }
     }

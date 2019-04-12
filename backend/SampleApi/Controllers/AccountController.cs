@@ -102,7 +102,7 @@ namespace SampleApi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public User Get(int id)
+        public UserDisplay Get(int id)
         {
             return userDao.GetUserById(id);
         }
@@ -114,9 +114,9 @@ namespace SampleApi.Controllers
         /// <returns>User object</returns>
         [HttpGet("{name}")]
         [Route("/api/user/{name}")]
-        public User UserByName(string name)
+        public UserDisplay UserByName(string name)
         {
-            return userDao.GetUser(name);
+            return userDao.GetUserByName(name);
         }
 
     }
