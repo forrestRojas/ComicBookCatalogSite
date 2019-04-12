@@ -6,6 +6,7 @@ import CollectionsView from "./views/CollectionsView.vue";
 import CollectionsDetail from "./views/CollectionsDetail.vue";
 import CreateCollection from "./views/CreateCollection.vue";
 import ComicDetails from "./views/ComicDetails.vue";
+import SearchResult from "./views/SearchResult.vue";
 import UserDetail from "./views/UserDetail.vue";
 import auth from "./shared/auth";
 
@@ -71,7 +72,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
-
+    {
+      path: "/searchresult/:search_title/:search_volume",
+      name: "searchresult",
+      component: SearchResult,
+      meta: {
+        requiresAuth: false
+      }
+    }
     ]
   });
 

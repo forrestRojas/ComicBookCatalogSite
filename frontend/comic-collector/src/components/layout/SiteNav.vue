@@ -9,8 +9,8 @@
 +                <p>{{comic.anotherproperty}}</p> -->
            <!-- </div> -->
         </form>
-            <button type="submit" @click.stop.prevent="submit()">Search</button>
-       
+            <button type="submit" @click.stop.prevent="submit()">Search</button><br>
+       <a href="/create/" v-if="auth = true">Create Collection</a>
         
     </nav>
 </template>
