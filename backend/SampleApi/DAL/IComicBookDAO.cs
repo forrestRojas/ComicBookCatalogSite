@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SampleApi.DAL
 {
+    /// <summary>
+    /// Interface definition for comic book data communication
+    /// </summary>
     public interface IComicBookDAO
     {
         /// <summary>
