@@ -52,6 +52,9 @@ namespace SampleApi.Models
         /// </summary>
         public string Credits { get; set; }
 
+        /// <summary>
+        /// Publisher of comicbook
+        /// </summary>
         public string Publisher { get; set; }
     }
 }

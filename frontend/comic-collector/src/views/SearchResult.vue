@@ -1,9 +1,8 @@
 <template>
     <form>
-        <input type="text" v-model="search" placeholder="search comics"/><br>
-        <button type="submit" @click.stop.prevent="submit()">Submit</button>
+        <input type="text" v-model="search_issue" placeholder="search issue number"/><br>
+        <button type="submit" @click.stop.prevent="submit()">Search</button>
     </form>
-    
 </template>
 
 <script>
@@ -11,18 +10,18 @@ export default {
     data() {
         return {
             comics:[],
-            search: ''
+            search_issue: ''
         }
     },
     methods: {
         submit() {
-            this.$router.push("/SearchResult?"+this.search);
+            this.$router.push("/SearchResult?"+this.search_issue);
         }
     },
     computed: {
         filteredComics: function(){
             return this.comics.filter((comic) => {
-                return comic.match(this.search);
+                return comic.issueNumber.match(this.search_issue);
             })
         }
     }
