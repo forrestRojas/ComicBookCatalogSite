@@ -21,7 +21,8 @@ export default {
     data() {
         return {
             comics:[],
-            search: ''
+            search: '',
+            volume_search: ''
         }
     },
     methods: {
@@ -30,13 +31,15 @@ export default {
         }
     },
     created() {
-            //   logic to retrieve all comics  
+        this.$http.get(/*api goes here*/).then(function(data){
+            this.comics = data.body.slice(0, /*total number of api comics*/);
+        })
     },
     computed: {
         filteredComics: function(){
             return this.comics.filter((comic) => {
                 return comic.title.match(this.search);
-             // return comic.volume.match(this.search)
+             // return comic.volume.match(this.volume_search)
             })
         }
     }
