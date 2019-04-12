@@ -1,9 +1,9 @@
 <template>
-  <aside>
-    <button :form="formId">Add to Collecton</button>
+  <aside v-if="this.comicId">
+    <button :form="formId" v-on:click="displayDialog">Add to Collecton</button>
     
-    <dialog>
-      <form :id="formId" v-on:submit.prevent="addToCollection">
+    <dialog :id="dialogId">
+      <form :id="formId" v-on:submit.prevent="AddToCollection">
         <select :form="formId" v-model="selected" >
             <option disabled value="">Please select one</option>
             <option 
@@ -16,7 +16,7 @@
         </select>
 
         <section>
-          <button :form="formId" class="btn-cancel" value="Cancel">
+          <button :form="formId" class="btn-cancel" value="Cancel" v-on:click="closeDailog">
             Cancel
           </button>
 
@@ -45,18 +45,41 @@ export default {
     return {
       collections: [],
       formId: `${this.comicId}-add-comic-form`,
+      dialogId: `${this.comicId}-add-comic-dialog`,
       selected: '',
       userId: Number
     }
   },
   created() {
-    const dialog = document.querySelector('dialog');
-    dialogPolyfill.registerDialog(dialog);
+
     // Now dialog acts like a native <dialog>.
-    dialog.showModal();
+    //dialog.showModal();
+  },
+  watch: {
+    comicId(newID, oldID) {
+      if( newID === undefined || newID === oldID) {
+          return;
+      } else {
+        this.formId = this.comicId;
+        this.dialogId = this.comicId;
+      }
+    }
   },
   methods: {
-    addToCollection() {
+    displayDialog() {
+      const dialog = document.getElementById(this.dialogId);
+      this.polyfillDialog();
+      this.GetCollections();
+      
+      dialog.showModal();
+    },
+    closeDailog() {
+      const dialog = document.getElementById(this.dialogId);
+      this.polyfillDialog();
+      dialog.close();
+    },
+
+    GetCollections() {
       fetch(`${process.env.VUE_APP_REMOTE_API}/user/${auth.getUser().sub}`, {
           method: 'GET'
       })
@@ -67,12 +90,29 @@ export default {
         method: 'GET'
       })
       .then(response => response.json())
-      .then(collections => this.collections = (() => collections.filter(collection => collection.userId === this.userId)));
+      .then(collections => this.collections = collections.filter(c => c.userId === this.userId));
+    },
+    AddToCollection() {
+
+    },
+
+    polyfillDialog() { 
+      const dialogTag = document.querySelector('dialog');
+      dialogPolyfill.registerDialog(dialogTag);
     }
   }
 }
 </script>
 
 <style>
+dialog {
+  background: var(--isabelline);
+  border-color: var(--black-olive);
+  padding: 3em;
+}
+
+dialog::backdrop {
+    background: rgba(32, 11, 7, 0.541);
+}
 
 </style>
