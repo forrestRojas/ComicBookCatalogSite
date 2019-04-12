@@ -1,6 +1,7 @@
 <template>
     <nav>
-        <a href="/collections">Collections</a>
+        <a href="/collections">Collections</a><br>
+        <a href="/create/" v-if="auth = true">Create Collection</a>
         <form>
             <input type="text" v-model="search_title" placeholder="comic title"/><br>
             <input type="text" v-model="search_volume" placeholder="comic volume"/><br>
@@ -10,7 +11,7 @@
            <!-- </div> -->
         </form>
             <button type="submit" @click.stop.prevent="submit()">Search</button><br>
-       <a href="/create/" v-if="auth = true">Create Collection</a>
+       
         
     </nav>
 </template>
