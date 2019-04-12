@@ -1,10 +1,17 @@
 <template>
     <nav>
-        <a href="/collections">Collections</a>
         <form>
-            <input type="text" v-model="search" placeholder="search comics"/><br>
-            <button type="submit" @click.stop.prevent="submit()">Submit</button>
+            <input type="text" v-model="search_title" placeholder="comic title"/><br>
+            <input type="text" v-model="search_volume" placeholder="comic volume"/><br>
+            <!-- <div v-for="comic in comics" class="single-comic">
++                <h2>{{comic.title}}</h2>
++                <p>{{comic.anotherproperty}}</p> -->
+           <!-- </div> -->
         </form>
+            <button type="submit" @click.stop.prevent="submit()">Search</button><br>
+            <a href="/collections">Collections</a><br>
+        <a href="/create/" v-if="auth = true">Create Collection</a>
+       
         
     </nav>
 </template>
@@ -15,21 +22,24 @@ export default {
     data() {
         return {
             comics:[],
-            search: ''
+            search_title: '',
+            volume_search: ''
         }
     },
     methods: {
         submit() {
-            this.$router.push("/SearchResult"+this.search);
+            this.$router.push("/SearchResult?"+this.search_title);//+"?"+this.search_volume//);
         }
     },
     created() {
-            //   logic to retrieve all comics  
+        // this.$http.get(/*api goes here*/).then(function(data){
+        //     this.comics = data.body.slice(0, /*total number of api comics*/);
+        // })
     },
     computed: {
         filteredComics: function(){
             return this.comics.filter((comic) => {
-                return comic.match(this.search);
+                return comic.title.match(this.search_title, this.search_volume);
             })
         }
     }
