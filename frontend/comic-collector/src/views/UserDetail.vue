@@ -7,7 +7,7 @@
        </picture>
        <p>{{user.bio}}</p>
        <p>{{user.favorites}}</p>
-       <form v-if="isCurrentUser">
+       <form v-if="showForm">
            <input type="checkbox" id="premium_checkbox" v-model="checked">
             <label for="checkbox">Upgrade to Premium User</label>
        </form>
@@ -21,7 +21,6 @@ name: "user-view",
 data(){
     return {
         user:{},
-        isCurrentUser:auth.getUser().sub === user.username
     }
 },
 created(){
@@ -45,7 +44,12 @@ watch: {
                 .then(json => this.user = json);
             }
         }
+},
+computed: {
+    showForm() {
+        return auth.getUser().sub === this.user.username;
     }
+}
 }
 </script>
 
