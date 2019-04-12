@@ -26,9 +26,21 @@ created(){
     })
     .then(response => response.json())
     .then(json => this.user = json);
-}
-}
+},
+watch: {
+        $route: function (to, from){
+            if( to !== from){
+                let id = this.$route.params.id;
 
+                fetch(`${process.env.VUE_APP_REMOTE_API}/account/${id}`, {
+                    method: "GET",
+                })
+                .then(response => response.json())
+                .then(json => this.user = json);
+            }
+        }
+    }
+}
 </script>
 
 <style scoped>
