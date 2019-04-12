@@ -1,14 +1,17 @@
 <template>
-    <article class="comic-summary" v-on:click="GotoComic()">
-        <h2>{{comic.name}}</h2>
-        <h3>Publisher: {{comic.publisher}}</h3>
-        <p>{{comic.issueNumber}}</p>
-        <p>{{comic.deck}}</p>
-        <picture>
-          <source :src="comic.image" />
-          <img :src="comic.image" alt="" />
-        </picture>
-    </article>
+	<article class="comic-summary" v-on:click="GotoComic()">
+		<header>
+			<h2>{{comic.name}}</h2>
+			<h3>Publisher: {{comic.publisher}}</h3>
+		</header>
+		
+		<p>{{comic.issueNumber}}</p>
+		<p>{{comic.deck}}</p>
+		<picture>
+			<source :src="comic.image" />
+			<img :src="comic.image" alt="" />
+		</picture>
+	</article>
 </template>
 
 <script>
