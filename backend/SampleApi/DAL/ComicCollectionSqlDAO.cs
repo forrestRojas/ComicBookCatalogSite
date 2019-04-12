@@ -138,5 +138,35 @@ namespace SampleApi.DAL
 
             return collection;
         }
+
+        /// <summary>
+        /// Creates a new collection
+        /// </summary>
+        /// <param name="newCollection"></param>
+        public void CreateCollection(ComicCollection newCollection)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO collection (user_id, image, title, description, public_access) VALUES (@userid, @image, @title, @description, @public_access);", conn);
+                    cmd.Parameters.AddWithValue("@userid", newCollection.UserId);
+                    cmd.Parameters.AddWithValue("@image", newCollection.Image);
+                    cmd.Parameters.AddWithValue("@title", newCollection.Title);
+                    cmd.Parameters.AddWithValue("@description", newCollection.Description);
+                    cmd.Parameters.AddWithValue("@public_access", newCollection.AccessLevel);
+
+                    cmd.ExecuteNonQuery();
+
+                    return;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }
