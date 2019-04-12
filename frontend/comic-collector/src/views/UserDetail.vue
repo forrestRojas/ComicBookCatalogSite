@@ -31,6 +31,8 @@ created(){
 
 </script>
 
-<style>
-
+<style scoped>
+    img {
+        height: 400px;
+    }
 </style>
