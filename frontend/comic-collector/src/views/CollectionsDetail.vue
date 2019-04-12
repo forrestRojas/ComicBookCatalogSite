@@ -1,17 +1,21 @@
 <template>
   <main>
     <h2>{{collection.title}}</h2>
+    <user v-bind:id="collection.userId"></user>
+    <h4>{{collection.description}}</h4>
     <comic-summary v-for="comic in collection.comics" v-bind:key="comic.id" v-bind:comic="comic"></comic-summary>
   </main>
 </template>
 
 <script>
 import ComicSummary from '@/components/comics/ComicSummary.vue';
+import User from "@/components/login/User.vue";
 
 export default {
   name: 'collection-view',
   components: {
-    ComicSummary
+    ComicSummary,
+    User
   },
   data() {
     return {
