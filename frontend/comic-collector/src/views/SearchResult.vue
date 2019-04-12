@@ -1,7 +1,8 @@
 <template>
     <form>
         <input type="text" v-model="search_issue" placeholder="search issue number"/><br>
-        <button type="submit" @click.stop.prevent="submit()">Search</button>
+        <button type="submit">Search</button>
+        <!-- <button type="submit" @click.stop.prevent="submit()">Search</button> -->
     </form>
 </template>
 

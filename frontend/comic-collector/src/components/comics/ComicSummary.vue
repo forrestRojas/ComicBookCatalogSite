@@ -20,7 +20,7 @@ export default {
   props: {
     comic: Object
   },
-  	methods: {
+    methods: {
 		GotoComic() {
 			this.$router.push({ path: `/comic/${this.comic.id}` });
 		}
