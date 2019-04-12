@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace SampleApi.Models
 {
+    /// <summary>
+    /// The model for comic book information
+    /// </summary>
     public class ComicBook
     {
         /// <summary>
