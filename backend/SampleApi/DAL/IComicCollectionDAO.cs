@@ -28,5 +28,10 @@ namespace SampleApi.DAL
         /// <returns></returns>
         ComicCollection GetASingleCollection(int id);
 
+        /// <summary>
+        /// Saves a new collection
+        /// </summary>
+        /// <param name="newCollection">The new collection</param>
+        void CreateCollection(ComicCollection newCollection);
     }
 }

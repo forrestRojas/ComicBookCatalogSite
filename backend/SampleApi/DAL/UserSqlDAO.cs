@@ -108,14 +108,41 @@ namespace SampleApi.DAL
             }            
         }
 
+        public UserDisplay GetUserByName(string username)
+        {
+            UserDisplay user = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM USERS WHERE username = @username;", conn);
+                    cmd.Parameters.AddWithValue("@username", username);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        user = MapRowToUserDisplay(reader);
+                    }
+                }
+
+                return user;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+
         /// <summary>
         /// Gets the user from the database
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public User GetUserById(int id)
+        public UserDisplay GetUserById(int id)
         {
-            User user = null;
+            UserDisplay user = null;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -128,7 +155,7 @@ namespace SampleApi.DAL
 
                     if (reader.Read())
                     {
-                        user = MapRowToUser(reader);
+                        user = MapRowToUserDisplay(reader);
                     }
                 }
                 return user;
@@ -175,6 +202,19 @@ namespace SampleApi.DAL
                 Username = Convert.ToString(reader["username"]),
                 Password = Convert.ToString(reader["password"]),
                 Salt = Convert.ToString(reader["salt"]),
+                Role = Convert.ToString(reader["role"]),
+                Bio = Convert.ToString(reader["bio"]),
+                Favorites = Convert.ToString(reader["favorites"]),
+                Image = Convert.ToString(reader["user_image"])
+            };
+        }
+
+        private UserDisplay MapRowToUserDisplay(SqlDataReader reader)
+        {
+            return new UserDisplay()
+            {
+                Id = Convert.ToInt32(reader["id"]),
+                Username = Convert.ToString(reader["username"]),
                 Role = Convert.ToString(reader["role"]),
                 Bio = Convert.ToString(reader["bio"]),
                 Favorites = Convert.ToString(reader["favorites"]),

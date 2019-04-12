@@ -19,11 +19,18 @@ namespace SampleApi.DAL
         User GetUser(string username);
 
         /// <summary>
+        /// Retrieves a user from the system by username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        UserDisplay GetUserByName(string username);
+
+        /// <summary>
         /// Retrieves a user from the system by id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        User GetUserById(int id);
+        UserDisplay GetUserById(int id);
 
         /// <summary>
         /// Creates a new user.

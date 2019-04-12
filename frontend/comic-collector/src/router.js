@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import CollectionsView from "./views/CollectionsView.vue";
 import CollectionsDetail from "./views/CollectionsDetail.vue";
+import CreateCollection from "./views/CreateCollection.vue";
 import ComicDetails from "./views/ComicDetails.vue";
 import UserDetail from "./views/UserDetail.vue";
 import auth from "./shared/auth";
@@ -44,6 +45,14 @@ const router = new Router({
         component: CollectionsDetail,
         meta: {
           requiresAuth: false
+        }
+      },
+      {
+        path: "/create",
+        name: "createcollection",
+        component: CreateCollection,
+        meta: {
+          requiresAuth: true
         }
       },
       {
