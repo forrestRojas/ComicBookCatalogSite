@@ -25,10 +25,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .comic-summary {
         display: flex;
         background-color: var(--isabelline);
         margin: 10px;
+    }
+    img {
+      height: 250px;
     }
 </style>
