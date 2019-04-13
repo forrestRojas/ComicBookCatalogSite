@@ -1,0 +1,118 @@
+<template>
+  <aside v-if="this.comicId">
+    <button :form="formId" v-on:click="displayDialog">Add to Collecton</button>
+    
+    <dialog :id="dialogId">
+      <form :id="formId" v-on:submit.prevent="AddToCollection">
+        <select :form="formId" v-model="selected" >
+            <option disabled value="">Please select one</option>
+            <option 
+              v-for="{id, title} in collections" 
+              :key="id" 
+              :value="title" 
+            >
+              {{ title }}
+            </option>
+        </select>
+
+        <section>
+          <button :form="formId" class="btn-cancel" value="Cancel" v-on:click="closeDailog">
+            Cancel
+          </button>
+
+          <button :form="formId" type="submit" class="btn-add" value="Add to collection">
+            Add to collection
+          </button>
+        </section>
+      </form>
+    </dialog>
+  </aside>
+</template>
+
+<script>
+import dialogPolyfill from 'dialog-polyfill';
+import auth from '@/shared/auth.js';
+//import isElementSupported from '@ryanmorr/is-element-supported';
+
+export default {
+// get user id
+// get user collection
+
+  props: {
+    comicId: Number,
+  },
+  data() {
+    return {
+      collections: [],
+      formId: `${this.comicId}-add-comic-form`,
+      dialogId: `${this.comicId}-add-comic-dialog`,
+      selected: '',
+      userId: Number
+    }
+  },
+  created() {
+
+    // Now dialog acts like a native <dialog>.
+    //dialog.showModal();
+  },
+  watch: {
+    comicId(newID, oldID) {
+      if( newID === undefined || newID === oldID) {
+          return;
+      } else {
+        this.formId = this.comicId;
+        this.dialogId = this.comicId;
+      }
+    }
+  },
+  methods: {
+    displayDialog() {
+      const dialog = document.getElementById(this.dialogId);
+      this.polyfillDialog();
+      this.GetCollections();
+      
+      dialog.showModal();
+    },
+    closeDailog() {
+      const dialog = document.getElementById(this.dialogId);
+      this.polyfillDialog();
+      dialog.close();
+    },
+
+    GetCollections() {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/user/${auth.getUser().sub}`, {
+          method: 'GET'
+      })
+      .then(response => response.json())
+      .then(({ id }) => this.userId = id);
+
+      fetch(`${process.env.VUE_APP_REMOTE_API}/collections`, {
+        method: 'GET'
+      })
+      .then(response => response.json())
+      .then(collections => this.collections = collections.filter(c => c.userId === this.userId));
+    },
+    AddToCollection() {
+
+    },
+
+    polyfillDialog() { 
+      const dialogTag = document.querySelector('dialog');
+      dialogPolyfill.registerDialog(dialogTag);
+    }
+  }
+}
+</script>
+
+<style>
+dialog {
+  background: var(--isabelline);
+  border-color: var(--black-olive);
+  padding: 3em;
+}
+
+dialog::backdrop {
+    background: rgba(32, 11, 7, 0.541);
+}
+
+</style>

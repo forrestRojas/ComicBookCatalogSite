@@ -37,6 +37,8 @@
                 <h3>Credits</h3>
                 <p>{{comicbook.credits}}</p>
             </section>
+
+            <add-to-collection :comicId="comicbook.id"/>
         </div>
         <picture>
             <source v-bind:src="comicbook.image">
@@ -46,11 +48,16 @@
 </template>
 
 <script>
+import AddToCollection from "@/components/comics/AddToCollection.vue";
+
 export default {
-    name: "collections-detail-view",
-    props: {
-        id: Number
+    name: "comic-detail-view",
+    components: {
+        AddToCollection
     },
+    // props: {
+    //     id: Number
+    // },
     data() {
         return {
             comicbook:{}
