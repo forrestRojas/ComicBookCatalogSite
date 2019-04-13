@@ -151,7 +151,7 @@ export default {
           this.goHome();
         }
       } catch (error) {
-        console.error(error);
+        //console.error(error);
         this.error = "There was an error logging in";
       }
     },
@@ -182,7 +182,7 @@ export default {
           this.goHome();
         }
       } catch (error) {
-        console.error(error);
+        //console.error(error);
         this.error = "There was an error attempting to register";
       }
     }
