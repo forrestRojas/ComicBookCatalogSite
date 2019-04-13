@@ -41,7 +41,7 @@
             <add-to-collection :comicId="comicbook.id"/>
         </div>
         <picture>
-            <source v-bind:src="comicbook.image">
+            <source v-bind:srcset="comicbook.image">
             <img v-bind:src="comicbook.image" class="comic-photo"/>
         </picture>
    </main> 

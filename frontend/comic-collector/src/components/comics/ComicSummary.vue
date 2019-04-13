@@ -8,7 +8,7 @@
     <p>{{comic.issueNumber}}</p>
     <p>{{comic.deck}}</p>
     <picture>
-      <source :src="comic.image">
+      <source :srcset="comic.image">
       <img :src="comic.image" alt>
     </picture>
   </article>
