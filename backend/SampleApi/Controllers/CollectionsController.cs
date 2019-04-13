@@ -64,5 +64,19 @@ namespace SampleApi.Controllers
             comicCollectionDAO.CreateCollection(newCollection);
             return Ok();
         }
+
+        /// <summary>
+        /// Saves a record of a comic in a collection
+        /// </summary>
+        /// <param name="collectionId">the id of the collection</param>
+        /// <param name="comicId">the id of the comic</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/save/{collectionId}/{comicId}")]
+        public IActionResult SaveComicToCollection(int collectionId, int comicId)
+        {
+            comicCollectionDAO.AddComicToCollection(collectionId, comicId);
+            return Ok();
+        }
     }
 }

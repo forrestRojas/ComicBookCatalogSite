@@ -8,8 +8,8 @@
             <option disabled value="">Please select one</option>
             <option 
               v-for="{id, title} in collections" 
-              :key="id" 
-              :value="title" 
+              :key="title" 
+              :value="id" 
             >
               {{ title }}
             </option>
@@ -19,7 +19,6 @@
           <button :form="formId" class="btn-cancel" value="Cancel" v-on:click="closeDailog">
             Cancel
           </button>
-
           <button :form="formId" type="submit" class="btn-add" value="Add to collection">
             Add to collection
           </button>
@@ -32,6 +31,7 @@
 <script>
 import dialogPolyfill from 'dialog-polyfill';
 import auth from '@/shared/auth.js';
+import { close } from 'fs';
 //import isElementSupported from '@ryanmorr/is-element-supported';
 
 export default {
@@ -46,7 +46,7 @@ export default {
       collections: [],
       formId: `${this.comicId}-add-comic-form`,
       dialogId: `${this.comicId}-add-comic-dialog`,
-      selected: '',
+      selected: Number,
       userId: Number
     }
   },
@@ -78,7 +78,6 @@ export default {
       this.polyfillDialog();
       dialog.close();
     },
-
     GetCollections() {
       fetch(`${process.env.VUE_APP_REMOTE_API}/user/${auth.getUser().sub}`, {
           method: 'GET'
@@ -92,13 +91,26 @@ export default {
       .then(response => response.json())
       .then(collections => this.collections = collections.filter(c => c.userId === this.userId));
     },
-    AddToCollection() {
-
-    },
-
     polyfillDialog() { 
       const dialogTag = document.querySelector('dialog');
       dialogPolyfill.registerDialog(dialogTag);
+    },
+    AddToCollection() {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/save/${this.selected}/${this.comicId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: "Bearer " + auth.getToken()
+        },
+        // body: {
+        //   collectionId: this.selected.id,
+        //   comicId: this.comicId
+        // }
+      }).then(response => {
+        if(response.ok){
+          closeDailog();
+        }
+      })
     }
   }
 }
