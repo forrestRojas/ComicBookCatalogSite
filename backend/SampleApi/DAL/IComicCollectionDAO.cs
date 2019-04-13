@@ -33,5 +33,12 @@ namespace SampleApi.DAL
         /// </summary>
         /// <param name="newCollection">The new collection</param>
         void CreateCollection(ComicCollection newCollection);
+
+        /// <summary>
+        /// Saves a record of a comic in a collection
+        /// </summary>
+        /// <param name="collectionId">The Id of the collection</param>
+        /// <param name="comicId">The Id of the comic</param>
+        void AddComicToCollection(int collectionId, int comicId);
     }
 }
