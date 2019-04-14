@@ -1,5 +1,5 @@
 <template>
-   <main id="details">
+   <main id="comic-details">
         <div class="comic-book-details">
             <h2>{{comicbook.name}}</h2>
 
@@ -88,7 +88,7 @@ export default {
     transform: rotate(2deg);
 }
 
-#details {
+#comic-details {
     display: grid;
     grid-template-columns: 1fr auto;
     margin-top: 20px;
@@ -96,7 +96,7 @@ export default {
     align-items: center;
 }
 
-#details picture {
+#comic-details picture {
     margin: auto;
     margin-right: 20%;
 }
