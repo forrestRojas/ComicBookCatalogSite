@@ -39,7 +39,7 @@ export default {
   background: var(--isabelline);
   color: #2c3e50;
   display: grid;
-  height: 100%;
+  min-height: inherit;
   /* min-height: -webkit-fill-available; */
   grid-template-columns: 1fr 7fr;
   grid-template-rows: 1fr 6fr 1fr; 
