@@ -93,18 +93,18 @@ export default {
     grid-template-columns: 1fr auto;
     margin-top: 20px;
     column-gap: 20px;
+    align-items: center;
 }
 
 #details picture {
+    margin: auto;
     margin-right: 20%;
 }
 
 .comic-book-details {
-    margin-left: auto;
-    margin-top: auto;
-    margin-bottom: 1em;
+    margin: auto;
+    margin-right: 0;
     text-align: right;
-    align-self: end;
 }
 
 .comic-book-details h2, 
