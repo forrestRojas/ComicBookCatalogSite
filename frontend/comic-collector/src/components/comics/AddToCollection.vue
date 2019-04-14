@@ -93,7 +93,9 @@ export default {
       .then(collections => this.collections = collections.filter(c => c.userId === this.userId));
     },
     AddToCollection() {
-
+      fetch(`${process.env.VUE_APP_REMOTE_API}/collections`, {
+        method: 'POST'
+      })
     },
 
     polyfillDialog() { 
@@ -106,13 +108,19 @@ export default {
 
 <style>
 dialog {
+  top: 25%;
+  transition: all 1s;
   background: var(--isabelline);
   border-color: var(--black-olive);
   padding: 3em;
 }
 
+dialog[open] {
+  top: 50%;
+}
+
 dialog::backdrop {
-    background: rgba(32, 11, 7, 0.541);
+    background: rgba(32, 11, 7, 0.5);
 }
 
 </style>
