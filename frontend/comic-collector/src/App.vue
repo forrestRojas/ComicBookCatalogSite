@@ -42,11 +42,11 @@ export default {
   min-height: inherit;
   /* min-height: -webkit-fill-available; */
   grid-template-columns: 1fr 7fr;
-  grid-template-rows: 1fr 6fr 1fr; 
+  grid-template-rows: 0fr 2fr 1fr; 
   grid-template-areas: 
     "header header"
     "nav main"
-    /* footer footer */;
+    "footer footer";
 }
 
 
@@ -54,6 +54,7 @@ export default {
   grid-area: header;
 }
 #site-nav {
+  min-width: 282.33px;
   grid-area: nav;
   background: inherit;
 }
