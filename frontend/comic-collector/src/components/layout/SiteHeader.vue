@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import TheLogin from '@/components/login/TheLogin.vue'
+import TheLogin from '@/components/login/TheLogin.vue';
 export default {
   name: 'site-header',
   components: {

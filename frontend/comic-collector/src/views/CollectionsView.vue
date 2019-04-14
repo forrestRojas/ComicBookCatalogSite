@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main id="collections">
     <h2>Collections</h2>
     <collections-grid v-bind:comicCollections="collections"></collections-grid>
   </main>
