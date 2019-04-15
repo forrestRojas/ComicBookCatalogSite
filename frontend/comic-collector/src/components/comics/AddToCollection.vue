@@ -66,10 +66,12 @@ export default {
     }
   },
   methods: {
+    // Dialog methods
     displayDialog() {
       const dialog = document.getElementById(this.dialogId);
       this.polyfillDialog();
-      this.GetCollections();
+      this.getUserId();
+      this.GetAvaibleCollections();
       
       dialog.showModal();
     },
@@ -79,18 +81,20 @@ export default {
       dialog.close();
     },
 
-    GetCollections() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/user/${auth.getUser().sub}`, {
-          method: 'GET'
-      })
-      .then(response => response.json())
-      .then(({ id }) => this.userId = id);
-
-      fetch(`${process.env.VUE_APP_REMOTE_API}/collections`, {
+    // fetch methods
+    getUserId() {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/user/${auth.getUser().sub}`,{
         method: 'GET'
       })
       .then(response => response.json())
-      .then(collections => this.collections = collections.filter(c => c.userId === this.userId));
+      .then(({ id }) => this.userId=id);
+    },
+    GetAvaibleCollections() {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/collections/${this.userId}/${this.comicId}`, {
+        method: 'GET'
+      })
+      .then(response => response.json())
+      .then(collections => this.collections = collections);
     },
     AddToCollection() {
       fetch(`${process.env.VUE_APP_REMOTE_API}/collections`, {
@@ -124,3 +128,4 @@ dialog::backdrop {
 }
 
 </style>
+
