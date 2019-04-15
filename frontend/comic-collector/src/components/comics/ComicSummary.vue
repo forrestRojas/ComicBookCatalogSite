@@ -31,10 +31,12 @@ export default {
 
 <style scoped>
 .comic-summary {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  grid-template-columns: 3fr 1fr 1fr;;
   background-color: var(--isabelline);
   margin: 25px;
-  justify-content: space-evenly;
 }
 img {
     object-fit: scale-down;
@@ -48,8 +50,5 @@ img {
 }
 h2 {
   color: var(--tufts-blue);
-}
-header {
-  width: 40%
 }
 </style>
