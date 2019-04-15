@@ -16,7 +16,7 @@
         </select>
 
         <section>
-          <button :form="formId" class="btn-cancel" value="Cancel" v-on:click="closeDailog">
+          <button :form="formId" class="btn-cancel" value="Cancel" v-on:click="closeDialog">
             Cancel
           </button>
           <button :form="formId" type="submit" class="btn-add" value="Add to collection">
@@ -74,7 +74,7 @@ export default {
       
       dialog.showModal();
     },
-    closeDailog() {
+    closeDialog() {
       const dialog = document.getElementById(this.dialogId);
       this.polyfillDialog();
       dialog.close();
@@ -107,13 +107,9 @@ export default {
           'Content-Type': 'application/json',
           Authorization: "Bearer " + auth.getToken()
         },
-        // body: {
-        //   collectionId: this.selected.id,
-        //   comicId: this.comicId
-        // }
       }).then(response => {
         if(response.ok){
-          this.closeDailog();
+          this.closeDialog();
         }
       })
     }
