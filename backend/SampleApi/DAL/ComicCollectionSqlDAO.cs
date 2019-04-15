@@ -112,6 +112,11 @@ namespace SampleApi.DAL
             return isSuccessful;
         }
 
+        /// <summary>
+        /// Gets a single colleciton.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ComicCollection GetASingleCollection(int id)
         {
             ComicCollection collection = new ComicCollection();
@@ -165,6 +170,74 @@ namespace SampleApi.DAL
             catch (SqlException ex)
             {
                 throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Gets the available collections via the user id and where only the comic is not in the collction. 
+        /// </summary>
+        /// <param name="userId">the user the collecitons belong to.</param>
+        /// <param name="comicId">the id of the comic to which the collctions are not accioated to.</param>
+        public IList<ComicCollection> GetAvailableCollecitons(int userId, int comicId)
+        {
+            List<ComicCollection> collections = new List<ComicCollection>();
+
+            try
+            {
+
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    string sqlScript = @"SELECT DISTINCT *
+                                         FROM collection AS cl
+                                         WHERE cl.user_id = @userId AND cl.collection_id != (
+                                                                                       SELECT c.collection_id 
+											                                           FROM collection_comic AS c 
+											                                           Where c.comic_id = @comicId
+                                                                                       )";
+
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlScript, conn);
+                    cmd.Parameters.AddWithValue("@userid", userId);
+                    cmd.Parameters.AddWithValue("@comicId", comicId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        ComicCollection collection = ConvertSqlToCollection(reader);
+                        collections.Add(collection);
+                    }
+
+                    return collections;
+                }
+            }
+            catch (SqlException)
+            {
+                // LOG Error
+                throw;
+            }
+        }
+
+
+        /// <summary>
+        /// Adds a comic to a users collection.
+        /// </summary>
+        /// <param name="comidId"></param>
+        /// <param name="collectionId"></param>
+        public void AddComicToCollection(int comidId, int collectionId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO collection (comic_id, collection_id) VALUES (@comicId, @collectionId));", conn);
+                }
+            }
+            catch (SqlException)
+            {
+                // LOG ERROR
+                throw;
             }
         }
 
