@@ -31,7 +31,6 @@
 <script>
 import dialogPolyfill from 'dialog-polyfill';
 import auth from '@/shared/auth.js';
-import { close } from 'fs';
 //import isElementSupported from '@ryanmorr/is-element-supported';
 
 export default {
@@ -96,11 +95,6 @@ export default {
       .then(response => response.json())
       .then(collections => this.collections = collections);
     },
-    AddToCollection() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/collections`, {
-        method: 'POST'
-      })
-    },
 
     polyfillDialog() { 
       const dialogTag = document.querySelector('dialog');
@@ -119,7 +113,7 @@ export default {
         // }
       }).then(response => {
         if(response.ok){
-          closeDailog();
+          this.closeDailog();
         }
       })
     }
