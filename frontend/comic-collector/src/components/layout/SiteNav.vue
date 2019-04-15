@@ -26,7 +26,12 @@ export default {
     },
     methods: {
         submit() {
-            this.$router.push("/SearchResult?"+this.search_title);//+"?"+this.search_volume//);
+            fetch(`${process.env.VUE_APP_REMOTE_API}/search/${search_title}/${search_issue}`,{
+                method: 'GET'
+            })
+            .then (response => response.json())
+            .then(({ id }) => this.id=id);
+            this.$router.push({ path: `/comic/${found.id}`});
         }
     },
     created() {
@@ -37,7 +42,7 @@ export default {
     computed: {
         filteredComics: function(){
             return this.comics.filter((comic) => {
-                return comic.title.match(this.search_title, this.search_volume);
+                return comic.title.match(this.search_title, this.search_issue);
             })
         }
     }
