@@ -168,5 +168,32 @@ namespace SampleApi.DAL
             }
         }
 
+        /// <summary>
+        /// Saves a record of a comic in a collection
+        /// </summary>
+        /// <param name="collectionId">The Id of the collection</param>
+        /// <param name="comicId">The Id of the comic</param>
+        public void AddComicToCollection(int collectionId, int comicId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO collection_comic (collection_id, comic_id) VALUES (@collectionId, @comicId);", conn);
+                    cmd.Parameters.AddWithValue("@collectionId", collectionId);
+                    cmd.Parameters.AddWithValue("@comicId", comicId);
+
+                    cmd.ExecuteNonQuery();
+
+                    return;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+        }
     }
 }
