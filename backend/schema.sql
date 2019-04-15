@@ -50,7 +50,7 @@ CREATE TABLE comic
 (
 	comic_id			int					identity(1,1),
 	title				varchar(300)		not null,
-	description			varchar(500),		
+	description			varchar(8000),		
 	publisher			varchar(500),		
 	deck				varchar(500),		
 	image				varchar(500),		

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SampleApi.DAL
 {
+    /// <summary>
+    /// Interface definition for comic book data communication
+    /// </summary>
     public interface IComicBookDAO
     {
         /// <summary>
@@ -32,5 +35,14 @@ namespace SampleApi.DAL
         /// <param name="id"></param>
         /// <returns>A list of comic book items</returns>
         IList<ComicBook> GetComicsByCollectionID(int id);
+
+        /// <summary>
+        /// Finds a comic book by the issue number and title
+        /// </summary>
+        /// <param name="seriesTitle">Title of the comic series</param>
+        /// <param name="issueNumber">Issue number being searched for</param>
+        /// <returns></returns>
+        ComicBook GetComicBookByIssue(string seriesTitle, int issueNumber);
+
     }
 }
