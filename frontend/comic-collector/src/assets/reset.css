@@ -18,7 +18,7 @@ body {
   background-repeat: no-repeat, repeat;
   background-size: cover; 
   margin-top: 5em;
-  height: calc(100vh - 5em);
+  min-height: calc(100vh - 5em);
 }
 
 .dag-strips {

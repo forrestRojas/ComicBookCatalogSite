@@ -1,7 +1,7 @@
 <template>
-   <main id="details">
+   <main id="comic-details">
         <div class="comic-book-details">
-            <h2>{{comicbook.name}}</h2>
+            <h2 id="comic-name">{{comicbook.name}}</h2>
 
             <section id="comic-publisher">
                 <h3>Publisher</h3>
@@ -38,10 +38,10 @@
                 <p>{{comicbook.credits}}</p>
             </section>
 
-            <add-to-collection :comicId="comicbook.id"/>
+            <add-to-collection id="add-to-collection" :comicId="comicbook.id"/>
         </div>
-        <picture>
-            <source v-bind:src="comicbook.image">
+        <picture id="comic-cover">
+            <source v-bind:srcset="comicbook.image">
             <img v-bind:src="comicbook.image" class="comic-photo"/>
         </picture>
    </main> 
@@ -88,23 +88,23 @@ export default {
     transform: rotate(2deg);
 }
 
-#details {
+#comic-details {
     display: grid;
     grid-template-columns: 1fr auto;
     margin-top: 20px;
     column-gap: 20px;
+    align-items: center;
 }
 
-#details picture {
+#comic-details picture {
+    margin: auto;
     margin-right: 20%;
 }
 
 .comic-book-details {
-    margin-left: auto;
-    margin-top: auto;
-    margin-bottom: 1em;
+    margin: auto;
+    margin-right: 0;
     text-align: right;
-    align-self: end;
 }
 
 .comic-book-details h2, 

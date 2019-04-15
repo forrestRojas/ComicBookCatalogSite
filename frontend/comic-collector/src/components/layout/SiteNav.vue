@@ -2,13 +2,13 @@
     <nav>
         <form>
             <input type="text" v-model="search_title" placeholder="comic title"/><br>
-            <input type="text" v-model="search_volume" placeholder="comic issue"/><br>
+            <input type="text" v-model="search_issue" placeholder="comic issue"/><br>
             <!-- <div v-for="comic in comics" class="single-comic">
 +                <h2>{{comic.title}}</h2>
 +                <p>{{comic.anotherproperty}}</p> -->
            <!-- </div> -->
-        </form>
             <button type="submit" @click.stop.prevent="submit()">Search</button><br>
+        </form>
             <a href="/collections">Collections</a><br>
             <a href="/create/" v-if="auth = true">Create Collection</a>
     </nav>
@@ -21,7 +21,7 @@ export default {
         return {
             comics:[],
             search_title: '',
-            volume_search: ''
+            search_issue: ''
         }
     },
     methods: {
