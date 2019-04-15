@@ -219,7 +219,7 @@ namespace SampleApi.DAL
         }
 
 
- /// <summary>
+        /// <summary>
         /// Saves a record of a comic in a collection
         /// </summary>
         /// <param name="collectionId">The Id of the collection</param>
@@ -244,6 +244,6 @@ namespace SampleApi.DAL
             {
                 throw ex;
             }
-
+        }
     }
 }
