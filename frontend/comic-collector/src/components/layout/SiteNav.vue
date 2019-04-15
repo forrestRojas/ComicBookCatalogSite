@@ -7,8 +7,8 @@
 +                <h2>{{comic.title}}</h2>
 +                <p>{{comic.anotherproperty}}</p> -->
            <!-- </div> -->
-        </form>
             <button type="submit" @click.stop.prevent="submit()">Search</button><br>
+        </form>
             <a href="/collections">Collections</a><br>
             <a href="/create/" v-if="auth = true">Create Collection</a>
     </nav>
@@ -21,7 +21,7 @@ export default {
         return {
             comics:[],
             search_title: '',
-            volume_search: ''
+            search_volume: ''
         }
     },
     methods: {

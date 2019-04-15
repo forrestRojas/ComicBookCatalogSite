@@ -15,6 +15,12 @@ namespace SampleApi.DAL
         IList<ComicCollection> GetCollections();
 
         /// <summary>
+        /// Gets available collctions via the user id and whether the comic is not in the colleciton.
+        /// </summary>
+        /// <returns></returns>
+        IList<ComicCollection> GetAvailableCollecitons(int userId, int comicId);
+
+        /// <summary>
         /// Saves a list of collections to the DB.
         /// </summary>
         /// <param name="collections">The List to be saved.</param>
