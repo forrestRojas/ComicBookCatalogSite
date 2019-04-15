@@ -1,7 +1,7 @@
 <template>
    <main id="comic-details">
         <div class="comic-book-details">
-            <h2>{{comicbook.name}}</h2>
+            <h2 id="comic-name">{{comicbook.name}}</h2>
 
             <section id="comic-publisher">
                 <h3>Publisher</h3>
@@ -38,9 +38,9 @@
                 <p>{{comicbook.credits}}</p>
             </section>
 
-            <add-to-collection :comicId="comicbook.id"/>
+            <add-to-collection id="add-to-collection" :comicId="comicbook.id"/>
         </div>
-        <picture>
+        <picture id="comic-cover">
             <source v-bind:srcset="comicbook.image">
             <img v-bind:src="comicbook.image" class="comic-photo"/>
         </picture>
@@ -125,5 +125,6 @@ export default {
 .inline :not(:last-child) {
     margin-right: 1ch;
 }
+
 </style>
 
