@@ -3,10 +3,11 @@
     <header>
       <h2>{{comic.name}}</h2>
       <h3>Publisher: {{comic.publisher}}</h3>
+          <p>{{comic.deck}}</p>
+
     </header>
 
-    <p>{{comic.issueNumber}}</p>
-    <p>{{comic.deck}}</p>
+    <p>Issue: {{comic.issueNumber}}</p>
     <picture>
       <source :srcset="comic.image">
       <img :src="comic.image" alt>
@@ -32,9 +33,23 @@ export default {
 .comic-summary {
   display: flex;
   background-color: var(--isabelline);
-  margin: 10px;
+  margin: 25px;
+  justify-content: space-evenly;
 }
 img {
-  height: 250px;
+    object-fit: scale-down;
+    width: 125px;
+    padding: 5px;
+    border: 2pt solid;
+    border-color: var(--carmine-pink);
+    background-color: var(--black-olive);
+    box-shadow: 5px 5px var(--black-olive);
+    transform: rotate(2deg);
+}
+h2 {
+  color: var(--tufts-blue);
+}
+header {
+  width: 40%
 }
 </style>
