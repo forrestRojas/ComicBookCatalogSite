@@ -1,10 +1,10 @@
 <template>
     <div id="user" v-on:click.stop.prevent="GotoUser()">
-        <h2>{{user.username}}</h2>
         <picture>
            <source v-bind:src="user.image">
             <img v-bind:src="user.image" class="user-photo"/>
        </picture>
+        <h2>{{user.username}}</h2>
     </div>
 </template>
 
@@ -52,5 +52,12 @@ created(){
 <style scoped>
     img {
         height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
     }
+#user {
+    display: flex;
+    justify-content: center;
+}
 </style>
