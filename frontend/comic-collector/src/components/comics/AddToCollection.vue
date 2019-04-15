@@ -145,4 +145,3 @@ dialog::backdrop {
 }
 
 </style>
-
