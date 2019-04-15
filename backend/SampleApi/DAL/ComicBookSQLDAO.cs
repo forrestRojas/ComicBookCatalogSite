@@ -222,7 +222,7 @@ namespace SampleApi.DAL
                     else
                     {
                         ComicInfo(this, seriesTitle, issueNumber);
-                        GetComicBookByIssue(seriesTitle, issueNumber);
+                        comicbook = GetComicBookByIssue(seriesTitle, issueNumber);
                     }
                 }
             }
