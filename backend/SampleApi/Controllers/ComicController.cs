@@ -49,5 +49,13 @@ namespace SampleApi.Controllers
             dao.AddComicBook(newComic);
             return Created("", newComic);
         }
+
+        [HttpGet]
+        [Route("/api/search/{title}/{issue}")]
+        public ActionResult<ComicBook> Search(string title, int issue)
+        {
+            ComicBook comic = dao.GetComicBookByIssue(title, issue);
+            return Ok(comic);
+        }
     }
 }
