@@ -15,7 +15,7 @@
 
             <section id="description">
                 <h3>Description</h3> 
-                <p>{{comicbook.description}}</p>
+                <p v-html="comicbook.description"></p>
             </section>
 
             <section id="issue-number" class="inline">
@@ -137,6 +137,13 @@ export default {
 
 .inline :not(:last-child) {
     margin-right: 1ch;
+}
+#description {
+    margin-left: auto;
+    width: 50%;
+}
+#description>p>p{
+    margin-bottom: 1em;
 }
 </style>
 
