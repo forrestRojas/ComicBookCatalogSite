@@ -20,7 +20,7 @@
 
             <section id="issue-number" class="inline">
                 <h3>Issue Number:</h3>
-                <p>{{comicbook.issuenumber}}</p>
+                <p>{{comicbook.issueNumber}}</p>
             </section>
 
             <section id="volume-number" class="inline">
@@ -30,7 +30,7 @@
 
             <section id="cover-date" class="inline">
                 <h3>Cover Date:</h3>
-                <p>{{comicbook.coverdate}}</p>
+                <p>{{comicbook.coverDate}}</p>
             </section>
 
             <section id="credits">
@@ -71,6 +71,19 @@ export default {
         })
         .then(response => response.json())
         .then(json => this.comicbook = json);
+    },
+    watch: {
+        $route: function (to, from){
+            if( to !== from){
+                let id = this.$route.params.id;
+
+                fetch(`${process.env.VUE_APP_REMOTE_API}/comic/${id}`, {
+                    method: "GET",
+                })
+                .then(response => response.json())
+                .then(json => this.comicbook = json);
+            }
+        }
     }
 
 }
