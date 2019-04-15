@@ -125,6 +125,5 @@ export default {
 .inline :not(:last-child) {
     margin-right: 1ch;
 }
-
 </style>
 
