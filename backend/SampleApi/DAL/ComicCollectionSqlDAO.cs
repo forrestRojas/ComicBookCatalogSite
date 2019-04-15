@@ -81,7 +81,7 @@ namespace SampleApi.DAL
         {
             bool isSuccessful = false;
 
-            
+
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Open();
@@ -189,7 +189,7 @@ namespace SampleApi.DAL
                 {
                     string sqlScript = @"SELECT DISTINCT *
                                          FROM collection AS cl
-                                         WHERE cl.user_id = @userId AND cl.collection_id != (
+                                         WHERE cl.user_id = @userId AND cl.collection_id NOT IN (
                                                                                        SELECT c.collection_id 
 											                                           FROM collection_comic AS c 
 											                                           Where c.comic_id = @comicId
@@ -211,15 +211,15 @@ namespace SampleApi.DAL
                     return collections;
                 }
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
                 // LOG Error
-                throw;
+                throw ex;
             }
         }
 
 
- /// <summary>
+        /// <summary>
         /// Saves a record of a comic in a collection
         /// </summary>
         /// <param name="collectionId">The Id of the collection</param>
@@ -245,5 +245,6 @@ namespace SampleApi.DAL
                 throw ex;
             }
 
+        }
     }
 }
