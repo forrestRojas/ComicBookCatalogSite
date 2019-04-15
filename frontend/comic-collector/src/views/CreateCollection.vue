@@ -1,15 +1,16 @@
 <template>
-      <main id="new-collection">
+  <main id="new-collection">
     <h2>Create A New Collection</h2>
-    <input
-        type="text"
-        name="Collection"
-        id="title"
-        autocomplete="off"
-        placeholder="Title your collection"
-        v-model="collection.title"
-     >
     <form id="post-form">
+      <input
+          type="text"
+          name="Collection"
+          id="title"
+          autocomplete="off"
+          placeholder="Title your collection"
+          v-model="collection.title"
+      >
+      
       <vue-dropzone
         id="dropzone"
         v-bind:options="dropzoneOptions"
@@ -18,7 +19,7 @@
         @vdropzone-success="success"
       ></vue-dropzone>
       
-      <input
+      <textarea
         type="textarea"
         name="Description"
         id="description"
@@ -26,6 +27,7 @@
         placeholder="Enter a description"
         v-model="collection.description"
       >
+      </textarea>
 
       <input
         type="radio"

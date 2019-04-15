@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main id="collections">
     <h2>Collections</h2>
     <collections-grid v-bind:comicCollections="collections"></collections-grid>
   </main>
@@ -32,5 +32,14 @@ export default {
 </script>
 
 <style>
+#collections {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: stretch;
+}
+
+#collections .collections-grid {
+  flex-grow: 1;
+}
 
 </style>

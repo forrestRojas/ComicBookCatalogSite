@@ -2,7 +2,7 @@
     <main id="user">
         <h2>{{user.username}}</h2>
         <picture>
-           <source v-bind:src="user.image">
+           <source v-bind:srcset="user.image">
             <img v-bind:src="user.image" class="user-photo"/>
        </picture>
        <p>{{user.bio}}</p>

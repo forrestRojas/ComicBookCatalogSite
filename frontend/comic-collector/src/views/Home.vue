@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <main id="home">
         
     </main>
 </template>

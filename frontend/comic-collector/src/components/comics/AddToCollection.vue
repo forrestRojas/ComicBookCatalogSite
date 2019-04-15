@@ -66,10 +66,12 @@ export default {
     }
   },
   methods: {
+    // Dialog methods
     displayDialog() {
       const dialog = document.getElementById(this.dialogId);
       this.polyfillDialog();
-      this.GetCollections();
+      this.getUserId();
+      this.GetAvaibleCollections();
       
       dialog.showModal();
     },
@@ -78,19 +80,28 @@ export default {
       this.polyfillDialog();
       dialog.close();
     },
-    GetCollections() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/user/${auth.getUser().sub}`, {
-          method: 'GET'
-      })
-      .then(response => response.json())
-      .then(({ id }) => this.userId = id);
 
-      fetch(`${process.env.VUE_APP_REMOTE_API}/collections`, {
+    // fetch methods
+    getUserId() {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/user/${auth.getUser().sub}`,{
         method: 'GET'
       })
       .then(response => response.json())
-      .then(collections => this.collections = collections.filter(c => c.userId === this.userId));
+      .then(({ id }) => this.userId=id);
     },
+    GetAvaibleCollections() {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/collections/${this.userId}/${this.comicId}`, {
+        method: 'GET'
+      })
+      .then(response => response.json())
+      .then(collections => this.collections = collections);
+    },
+    AddToCollection() {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/collections`, {
+        method: 'POST'
+      })
+    },
+
     polyfillDialog() { 
       const dialogTag = document.querySelector('dialog');
       dialogPolyfill.registerDialog(dialogTag);
@@ -118,13 +129,20 @@ export default {
 
 <style>
 dialog {
+  top: 25%;
+  transition: all 1s;
   background: var(--isabelline);
   border-color: var(--black-olive);
   padding: 3em;
 }
 
+dialog[open] {
+  top: 50%;
+}
+
 dialog::backdrop {
-    background: rgba(32, 11, 7, 0.541);
+    background: rgba(32, 11, 7, 0.5);
 }
 
 </style>
+

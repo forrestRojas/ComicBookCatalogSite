@@ -23,6 +23,7 @@ namespace SampleApi.Controllers
         /// Creates a comic collections controller.
         /// </summary>
         /// <param name="comicCollectionDAO">the comic colllection dao.</param>
+        /// <param name="comicBookDAO">the comic book dao.</param>
         public CollectionsController(IComicCollectionDAO comicCollectionDAO, IComicBookDAO comicBookDAO)
         {
             this.comicCollectionDAO = comicCollectionDAO;
@@ -50,6 +51,12 @@ namespace SampleApi.Controllers
             ComicCollection collection = comicCollectionDAO.GetASingleCollection(ID);
             collection.Comics = comicBookDAO.GetComicsByCollectionID(ID);
             return collection;
+        }
+
+        [HttpGet("{userId}/{comicId}")]
+        public IEnumerable<ComicCollection> GetAvailableCollections(int userId, int comicId)
+        {
+            return comicCollectionDAO.GetAvailableCollecitons(userId, comicId);
         }
 
         /// <summary>
