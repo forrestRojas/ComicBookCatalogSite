@@ -244,7 +244,6 @@ namespace SampleApi.DAL
             {
                 throw ex;
             }
-
         }
     }
 }
