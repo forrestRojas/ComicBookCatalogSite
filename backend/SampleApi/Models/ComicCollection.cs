@@ -44,5 +44,10 @@ namespace SampleApi.Models
         /// The list of comics in the collection
         /// </summary>
         public IList<ComicBook> Comics { get; set; }
+
+        /// <summary>
+        /// A count of comics in the collection
+        /// </summary>
+        public int Count { get; set; }
     }
 }

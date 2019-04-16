@@ -36,6 +36,12 @@ namespace SampleApi.DAL
         int TotalComics();
 
         /// <summary>
+        /// The total number of collections in the database
+        /// </summary>
+        /// <returns>The number of collections</returns>
+        int TotalCollections();
+
+        /// <summary>
         /// A list of comics from a specified date range
         /// </summary>
         /// <returns>A list of comics</returns>

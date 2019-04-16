@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SampleApi.DAL;
+using SampleApi.Models;
 
 namespace SampleApi.Controllers
 {
@@ -22,10 +23,22 @@ namespace SampleApi.Controllers
             this.dao = dao;
         }
 
-        [HttpGet("total")]
+        [HttpGet("totalcomics")]
         public int TotalComics()
         {
             return dao.TotalComics();
+        }
+
+        [HttpGet("totalcollections")]
+        public int TotalCollections()
+        {
+            return dao.TotalCollections();
+        }
+
+        [HttpGet("largestcollections")]
+        public IList<ComicCollection> LargestCollections()
+        {
+            return dao.LargestCollection();
         }
     }
 }
