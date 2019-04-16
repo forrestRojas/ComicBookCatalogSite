@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 namespace SampleApi.Models
 {
     /// <summary>
-    /// Represents a Comic Collections Model.
+    /// Represents a Collections Model.
     /// </summary>
-    public class ComicCollection
+    public class Collection
     {
         /// <summary>
         /// The Collection's id.
