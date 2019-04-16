@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using SampleApi.Models;
@@ -41,9 +42,33 @@ namespace SampleApi.DAL
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Counts the total number of comics in the database
+        /// </summary>
+        /// <returns>total</returns>
         public int TotalComics()
         {
-            throw new NotImplementedException();
+            int total = 0;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT count(*) as count FROM comic;", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        total = Convert.ToInt32(reader["count"]);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return total;
         }
 
         public IList<UserDisplay> UserWithMostComics()
