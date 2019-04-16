@@ -1,7 +1,7 @@
 <template>
     <div id="user" v-on:click.stop.prevent="GotoUser()">
         <picture>
-           <source v-bind:src="user.image">
+            <source v-bind:src="user.image">
             <img v-bind:src="user.image" class="user-photo"/>
        </picture>
         <h2>{{user.username}}</h2>
