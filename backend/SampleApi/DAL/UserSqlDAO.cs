@@ -109,6 +109,69 @@ namespace SampleApi.DAL
         }
 
         /// <summary>
+        /// Retreives user by username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public UserDisplay GetUserByName(string username)
+        {
+            UserDisplay user = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM USERS WHERE username = @username;", conn);
+                    cmd.Parameters.AddWithValue("@username", username);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        user = MapRowToUserDisplay(reader);
+                    }
+                }
+
+                return user;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Gets the user from the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public UserDisplay GetUserById(int id)
+        {
+            UserDisplay user = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM USERS WHERE id = @id;", conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        user = MapRowToUserDisplay(reader);
+                    }
+                }
+                return user;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
         /// Updates the user in the database.
         /// </summary>
         /// <param name="user"></param>
@@ -136,6 +199,11 @@ namespace SampleApi.DAL
             }
         }
 
+        /// <summary>
+        /// Converts SQL data into object
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         private User MapRowToUser(SqlDataReader reader)
         {
             return new User()
@@ -144,6 +212,19 @@ namespace SampleApi.DAL
                 Username = Convert.ToString(reader["username"]),
                 Password = Convert.ToString(reader["password"]),
                 Salt = Convert.ToString(reader["salt"]),
+                Role = Convert.ToString(reader["role"]),
+                Bio = Convert.ToString(reader["bio"]),
+                Favorites = Convert.ToString(reader["favorites"]),
+                Image = Convert.ToString(reader["user_image"])
+            };
+        }
+
+        private UserDisplay MapRowToUserDisplay(SqlDataReader reader)
+        {
+            return new UserDisplay()
+            {
+                Id = Convert.ToInt32(reader["id"]),
+                Username = Convert.ToString(reader["username"]),
                 Role = Convert.ToString(reader["role"]),
                 Bio = Convert.ToString(reader["bio"]),
                 Favorites = Convert.ToString(reader["favorites"]),

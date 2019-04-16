@@ -1,16 +1,16 @@
 <template>
-    <main>
-        <h2>Collections</h2>
-        <collections v-bind:comicCollections="collections"></collections>
-    </main>
+  <main id="collections">
+    <h2>Collections</h2>
+    <collections-grid v-bind:comicCollections="collections"></collections-grid>
+  </main>
 </template>
 
 <script>
-import Collections from '@/components/collections/Collections.vue';
+import CollectionsGrid from '@/components/collections/CollectionsGrid.vue';
 export default {
   name: 'collections-view',
   components: {
-      Collections
+    CollectionsGrid
   },
   data() {
     return {
@@ -35,5 +35,14 @@ export default {
 </script>
 
 <style>
+#collections {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: stretch;
+}
+
+#collections .collections-grid {
+  flex-grow: 1;
+}
 
 </style>

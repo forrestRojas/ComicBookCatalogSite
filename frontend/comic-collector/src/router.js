@@ -3,6 +3,11 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import CollectionsView from "./views/CollectionsView.vue";
+import CollectionsDetail from "./views/CollectionsDetail.vue";
+import CreateCollection from "./views/CreateCollection.vue";
+import ComicDetails from "./views/ComicDetails.vue";
+import SearchResult from "./views/SearchResult.vue";
+import UserDetail from "./views/UserDetail.vue";
 import auth from "./shared/auth";
 
 Vue.use(Router);
@@ -16,7 +21,7 @@ const router = new Router({
         name: "home",
         component: Home,
         meta: {
-          requiesAuth: false
+          requiresAuth: false
         }
       },
       {
@@ -24,7 +29,7 @@ const router = new Router({
         name: "login",
         component: Login,
         meta: {
-          requiesAuth: false
+          requiresAuth: false
         }
       },
       {
@@ -32,9 +37,49 @@ const router = new Router({
         name: "collections",
         component: CollectionsView,
         meta: {
-          requiesAuth: false
+          requiresAuth: false
         }
       },
+      {
+        path: "/collections/:id",
+        name: "collection",
+        component: CollectionsDetail,
+        meta: {
+          requiresAuth: false
+        }
+      },
+      {
+        path: "/create",
+        name: "createcollection",
+        component: CreateCollection,
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: "/comic/:id",
+        name: "comic",
+        component: ComicDetails,
+        meta: {
+          requiresAuth: false
+        }
+      },
+      {
+      path: "/account/:id",
+      name: "user",
+      component: UserDetail,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/searchresult/:search_title/:search_volume",
+      name: "searchresult",
+      component: SearchResult,
+      meta: {
+        requiresAuth: false
+      }
+    }
     ]
   });
 
