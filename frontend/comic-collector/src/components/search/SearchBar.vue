@@ -1,8 +1,8 @@
 <template>
-  <form class="search-bar">
-    <input type="text" v-model="search_title" placeholder="comic title"/>
-    <input type="text" v-model="search_issue" placeholder="comic volume"/>
-    <button type="submit" @click.stop.prevent="submit()">Search</button>
+  <form id="search-form" name="search-form" class="search-bar">
+    <input form="search-form" type="text" v-model="search_title" placeholder="comic title" required/>
+    <input form="search-form" type="number" min="0" v-model="search_issue" placeholder="comic volume"/>
+    <button form="search-form" type="submit" @click.stop.prevent="submit()">Search</button>
   </form>
 </template>
 
