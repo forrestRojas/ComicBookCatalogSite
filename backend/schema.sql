@@ -40,6 +40,8 @@ CREATE TABLE collection
 	title				varchar(500)		not null,
 	description			varchar(500)		not null,
 	public_access		varchar(500)		not null,
+	created_date		date				DEFAULT GETDATE(),
+	updadated_date		date				not null,
 
 	CONSTRAINT pk_collection PRIMARY KEY (collection_id),
 	FOREIGN KEY (user_id) REFERENCES users (id)
@@ -67,6 +69,7 @@ CREATE TABLE collection_comic
 (
 	collection_id		int					not null,
 	comic_id			int					not null,
+
 
 	CONSTRAINT pk_collection_comic PRIMARY KEY (collection_id, comic_id),
 	FOREIGN KEY (collection_id) REFERENCES collection (collection_id),
