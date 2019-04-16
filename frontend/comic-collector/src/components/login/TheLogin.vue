@@ -1,13 +1,9 @@
 <template>
-    <div>
-        <div v-if="isAuthenticated">
-         <user v-bind:id="user.id"></user>
-            <a href="/logout" v-on:click.prevent="logout">Logout</a>
-        </div>
-        <div v-else>
-            <router-link to="/login">Login</router-link>
-        </div>
-    </div>
+    <article>
+        <user v-if="isAuthenticated" v-bind:id="user.id"></user>
+        <a v-if="isAuthenticated" href="/logout" v-on:click.prevent="logout">Logout</a>
+        <router-link v-else to="/login">Login</router-link>
+    </article>
 </template>
 
 <script>
