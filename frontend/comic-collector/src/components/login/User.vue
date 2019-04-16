@@ -57,7 +57,6 @@ created(){
    .user img {
         height: 50px;
         width: 50px;
-        si
         border-radius: 50%;
         margin-right: 10px;
     }
