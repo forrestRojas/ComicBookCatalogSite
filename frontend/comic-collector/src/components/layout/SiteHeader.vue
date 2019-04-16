@@ -32,7 +32,7 @@ export default {
     align-items: center;
     height: min-content;
     min-width: 282.33px;
-    background-color: var(--black-olive);
+    background-color: var(--emmit-yellow);
     color: var(--carmine-pink);
   }
 

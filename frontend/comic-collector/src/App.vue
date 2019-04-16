@@ -31,8 +31,10 @@ export default {
   --isabelline: #F6F7EB;
   --carmine-pink: #E94F37;
   --black-olive: #393E41;
+  /* --black-olive: #524848; */
   --tufts-blue: #3F88C5;
   --verdigris: #44BBA4;
+  --emmit-yellow: #f8c605;
 }
 
 #app {
