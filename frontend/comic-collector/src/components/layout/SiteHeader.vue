@@ -36,7 +36,15 @@ export default {
     color: var(--carmine-pink);
   }
 
+  .header h1 {
+    font-size: 5em;
+    /* font-kerning: normal;
+    letter-spacing: 0.2rem; */
+    margin: 0;
+  }
+
   .login {
     justify-self: end;
+    margin-right: 8px;
   }
 </style>
