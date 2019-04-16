@@ -1,6 +1,10 @@
 <template>
   <form id="search-form" name="search-form" class="search-bar">
-    <input form="search-form" type="text" v-model="search_title" placeholder="comic title" required/>
+    <select form="search-form" type="number">
+      <option value="byTitle">By Title</option>
+      <option value="byPublisher">By Publisher</option>
+    </select>
+    <input form="search-form" type="text" v-model="search_title" placeholder="comic title"/>
     <input form="search-form" type="number" min="0" v-model="search_issue" placeholder="comic volume"/>
     <button form="search-form" type="submit" @click.stop.prevent="submit()">Search</button>
   </form>
@@ -38,12 +42,17 @@ export default {
 
 <style>
    .search-bar {
-      grid-template-areas: ". search" " . search ";
-      display:inline-grid;
+      display: grid;
+      margin: 0 8px;
       gap: 8px;
-      grid-template-columns: 175px 85px;
-      
-      /* grid-auto-flow: column; */
+
+      /* move to media query */
+      /* grid-template-columns: 175px 85px; */
+      grid-template-columns: auto 85px;
+      grid-template-areas: 
+        ". search"
+        ". search"
+        ". search";
     }
 
     .search-bar button {
@@ -56,6 +65,7 @@ export default {
       display: inline-block;
       font-size: 16px;
       width: 85px;
+      height: 85px;
       grid-area: search;
       padding: 0;
     }
