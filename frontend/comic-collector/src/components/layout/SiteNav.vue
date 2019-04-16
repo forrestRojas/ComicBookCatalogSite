@@ -35,7 +35,7 @@ export default {
             })
             .then (response => response.json())
             .then(({ id }) => this.id=id);
-            this.$router.push({ path: `/comic/${found.id}`});
+            this.$router.push({ path: `/comic/${id}`});
         }
     },
     created() {
