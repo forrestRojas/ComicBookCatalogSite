@@ -17,7 +17,17 @@ export default {
 		ComicCollection
 	},
 	props: {
-		comicCollections: Array,
+		comicCollections: Array
+	},
+	data() {
+		return {
+			userName: ""
+		}
+	},
+	methods: {
+		created() {
+			
+		}
 	}
 }
 </script>
