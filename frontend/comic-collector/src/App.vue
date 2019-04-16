@@ -76,4 +76,10 @@ main {
   grid-area: main;
   background: inherit;
 }
+
+a {
+  text-decoration: none;
+  color: var(--carmine-pink);
+}
+
 </style>

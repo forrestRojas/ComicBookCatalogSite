@@ -1,5 +1,5 @@
 <template>
-    <article>
+    <article id="login-component">
         <user v-if="isAuthenticated" v-bind:id="user.id"></user>
         <a v-if="isAuthenticated" href="/logout" v-on:click.prevent="logout">Logout</a>
         <router-link v-else to="/login">Login</router-link>
@@ -47,8 +47,8 @@ export default {
 </script>
 
 <style>
-  a {
-    text-decoration: none;
-    color: var(--carmine-pink);
+  #login-component {
+    display: flex;
+    align-items: baseline;
   }
 </style>
