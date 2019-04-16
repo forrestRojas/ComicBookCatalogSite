@@ -8,21 +8,23 @@
       </p>
     </section>
     <section id="login-signup" v-bind:class="{ showSignupForm: !showLoginForm }">
-      <form v-if="showLoginForm" v-on:submit.prevent="login">
+      <form id="login-form" name="login-form" v-if="showLoginForm" v-on:submit.prevent="login" >
         <h2>Welcome Back!</h2>
 
         <error-message v-bind:error="error"></error-message>
 
-        <label for="email">Username</label>
+        <label form="login-form" for="email">Username</label>
         <input
+          form="login-form"
           v-model.trim="loginForm.username"
           type="text"
           placeholder="Captain America"
           id="email"
         />
 
-        <label for="password">Password</label>
+        <label form="login-form" for="password">Password</label>
         <input
+          form="login-form"
           v-model.trim="loginForm.password"
           type="password"
           placeholder="password"
@@ -30,36 +32,39 @@
         />
 
         <div class="form-actions">
-          <button class="login">Log In</button>
+          <button form="login-form" class="login">Log In</button>
           <div class="extras">
             <a v-on:click="toggleForm">Create an Account</a>
           </div>
         </div>
       </form>
 
-      <form v-else v-on:submit.prevent="signup">
+      <form id="signup-form" name="signup-form" v-else v-on:submit.prevent="signup">
         <h2>Get Started</h2>
 
         <error-message :error="error"></error-message>
 
-        <label for="email2">Username</label>
+        <label form="signup-form" for="email2">Username</label>
         <input
+          form="signup-form"
           v-model.trim="signupForm.username"
           type="text"
           placeholder="Captain America"
           id="email2"
         />
 
-        <label for="password2">Password</label>
+        <label form="signup-form" for="password2">Password</label>
         <input
+          form="signup-form"
           v-model.trim="signupForm.password"
           type="password"
           placeholder="min 6 characters"
           id="password2"
         />
 
-        <label for="password3">Confirm Password</label>
+        <label form="signup-form" for="password3">Confirm Password</label>
         <input
+          form="signup-form"
           v-model.trim="signupForm.confirmPassword"
           type="password"
           placeholder="confirm password"
@@ -67,7 +72,7 @@
         />
 
         <div class="form-actions">
-          <button>Sign Up</button>
+          <button form="signup-form">Sign Up</button>
           <div class="extras">
             <a v-on:click="toggleForm">Back to Login</a>
           </div>
