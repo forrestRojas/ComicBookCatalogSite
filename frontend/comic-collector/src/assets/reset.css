@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+
 body, html {
   margin: 0;
   padding: 0;
@@ -62,4 +64,8 @@ body {
   box-shadow: inherit;
   border: inherit;
   background-color: inherit;
+}
+
+h1 {
+  font-family: Bangers, sans-serif;
 }
