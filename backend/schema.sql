@@ -41,7 +41,7 @@ CREATE TABLE collection
 	description			varchar(500)		not null,
 	public_access		varchar(500)		not null,
 	created_date		date				DEFAULT GETDATE(),
-	updadated_date		date				not null,
+	updated_date		date				not null,
 
 	CONSTRAINT pk_collection PRIMARY KEY (collection_id),
 	FOREIGN KEY (user_id) REFERENCES users (id)

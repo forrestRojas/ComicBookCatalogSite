@@ -41,6 +41,16 @@ namespace SampleApi.Models
         public string AccessLevel { get; set; }
 
         /// <summary>
+        /// The date the collection was created
+        /// </summary>
+        public DateTime CreatedDate { get; set; }
+
+        /// <summary>
+        /// The date the last update was made to a collection
+        /// </summary>
+        public DateTime UpdatedDate { get; set; }
+
+        /// <summary>
         /// The list of comics in the collection
         /// </summary>
         public IList<ComicBook> Comics { get; set; }
