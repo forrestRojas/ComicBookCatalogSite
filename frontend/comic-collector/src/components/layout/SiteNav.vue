@@ -2,7 +2,7 @@
     <nav>
         <form>
             <input type="text" v-model="search_title" placeholder="comic title"/>
-            <input type="text" v-model="search_volume" placeholder="comic volume"/>
+            <input type="text" v-model="search_issue" placeholder="comic volume"/>
             <!-- <div v-for="comic in comics" class="single-comic">
 +                <h2>{{comic.title}}</h2>
 +                <p>{{comic.anotherproperty}}</p> -->

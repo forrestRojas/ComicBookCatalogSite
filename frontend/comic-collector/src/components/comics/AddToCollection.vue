@@ -50,7 +50,7 @@ export default {
     }
   },
   created() {
-
+    this.getUserId();
     // Now dialog acts like a native <dialog>.
     //dialog.showModal();
   },
@@ -69,7 +69,6 @@ export default {
     displayDialog() {
       const dialog = document.getElementById(this.dialogId);
       this.polyfillDialog();
-      this.getUserId();
       this.GetAvaibleCollections();
       
       dialog.showModal();
