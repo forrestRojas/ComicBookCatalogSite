@@ -38,25 +38,25 @@ export default {
 
 <style>
    .search-bar {
-        grid-template-areas: ". search" " . search ";
-        display:inline-grid;
-        gap: 8px;
-        grid-template-columns: 175px 85px;
-        
-        /* grid-auto-flow: column; */
+      grid-template-areas: ". search" " . search ";
+      display:inline-grid;
+      gap: 8px;
+      grid-template-columns: 175px 85px;
+      
+      /* grid-auto-flow: column; */
     }
 
     .search-bar button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    width: 85px;
-    grid-area: search;
-    padding: 0;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      width: 85px;
+      grid-area: search;
+      padding: 0;
     }
 </style>
