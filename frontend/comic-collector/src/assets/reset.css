@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Bangers');
 
+* {
+  box-sizing: border-box;
+}
 
 :root {
   --isabelline: #F6F7EB;
