@@ -25,28 +25,17 @@ export default {
         return {
             comics:[],
             search_title: '',
-            search_issue: '',
-            foundId: Number
+            search_issue: ''
         }
     },
     methods: {
-        async submit() {
-            //     fetch(`${process.env.VUE_APP_REMOTE_API}/search/${this.search_title}/${this.search_issue}`,{
-            //         method: 'GET'
-            // })
-            // .then (response => response.json())
-            // .then( ({ json }) => this.foundId = json.id)
-
-            let response = await
-            fetch(`${process.env.VUE_APP_REMOTE_API}/search/${this.search_title}/${this.search_issue}`,{
-                    method: 'GET'
-            });
-            let json = await response.json();
-            this.foundId = json.id
-            this.searchResults();
-        },
-        searchResults(){
-            this.$router.push({ path: `/comic/${this.foundId}`})
+        submit() {
+            fetch(`${process.env.VUE_APP_REMOTE_API}/search/${search_title}/${search_issue}`,{
+                method: 'GET'
+            })
+            .then (response => response.json())
+            .then(({ id }) => this.id=id);
+            this.$router.push({ path: `/comic/${found.id}`});
         }
     },
     created() {

@@ -108,6 +108,11 @@ namespace SampleApi.DAL
             }            
         }
 
+        /// <summary>
+        /// Retreives user by username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public UserDisplay GetUserByName(string username)
         {
             UserDisplay user = null;
@@ -194,6 +199,11 @@ namespace SampleApi.DAL
             }
         }
 
+        /// <summary>
+        /// Converts SQL data into object
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         private User MapRowToUser(SqlDataReader reader)
         {
             return new User()
