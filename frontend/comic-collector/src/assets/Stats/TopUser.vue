@@ -1,26 +1,26 @@
 <template>
     <article>
-    <h2>Best User</h2>
-    <p>{{this.bestuser}}</p>
+    <h2>Top Users</h2>
+    <p>{{this.topuser}}</p>
     </article>
 </template>
 
 <script>
 export default {
-name: "best-user",
+name: "top-user",
 data(){
     return {
-        bestuser: 0
+        topuser: 0
     }
 },
 created(){
     const id = this.$route.params.id;
 
-    fetch(`${process.env.VUE_APP_REMOTE_API}/statistics/bestuser`, {
+    fetch(`${process.env.VUE_APP_REMOTE_API}/statistics/topuser`, {
         method: "GET",
     })
     .then(response => response.json())
-    .then(({bestuser}) => this.bestuser = bestuser);
+    .then(({topuser}) => this.topuser = topuser);
 }
 }
 </script>
