@@ -14,7 +14,6 @@ data(){
     }
 },
 created(){
-    const id = this.$route.params.id;
 
     fetch(`${process.env.VUE_APP_REMOTE_API}/statistics/totalcollections`, {
         method: "GET",

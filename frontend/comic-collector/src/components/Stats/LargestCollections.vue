@@ -10,12 +10,11 @@ export default {
 name: "largest-collections",
 data(){
     return {
-        largestcollections: 0
+        largestcollections: []
         
     }
 },
 created(){
-    const id = this.$route.params.id;
 
     fetch(`${process.env.VUE_APP_REMOTE_API}/statistics/largestcollections`, {
         method: "GET",

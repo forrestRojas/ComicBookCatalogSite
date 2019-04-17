@@ -50,12 +50,30 @@ namespace SampleApi.Controllers
             return Created("", newComic);
         }
 
+        /// <summary>
+        /// Searches for a comic by title and issue number
+        /// </summary>
+        /// <param name="title">Title</param>
+        /// <param name="issue">Issue</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("/api/search/{title}/{issue}")]
         public ActionResult<ComicBook> Search(string title, int issue)
         {
             ComicBook comic = dao.GetComicBookByIssue(title, issue);
             return Ok(comic);
+        }
+
+        [HttpGet("publisher/{publisher}")]
+        public IList<ComicBook> SearchByPublisher(string publisher)
+        {
+            return dao.SearchByPublisher(publisher);
+        }
+
+        [HttpGet("date/{start}/{end}")]
+        public IList<ComicBook> SearchByDate(DateTime start, DateTime end)
+        {
+            return dao.ComicsFromDateRange(start, end);
         }
     }
 }

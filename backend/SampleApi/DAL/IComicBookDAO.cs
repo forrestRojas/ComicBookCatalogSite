@@ -50,5 +50,12 @@ namespace SampleApi.DAL
         /// </summary>
         /// <returns>A list of comics</returns>
         IList<ComicBook> ComicsFromDateRange(DateTime start, DateTime end);
+
+        /// <summary>
+        /// A list of comics from a single publisher
+        /// </summary>
+        /// <param name="publisher">The publisher</param>
+        /// <returns>A list of comic books</returns>
+        IList<ComicBook> SearchByPublisher(string publisher);
     }
 }
