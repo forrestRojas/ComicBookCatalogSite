@@ -59,7 +59,7 @@ namespace SampleApi.DAL
 
         private ComicCollection ConvertSqlToCollection(SqlDataReader reader)
         {
-            ComicCollection covertedCollection = new ComicCollection
+            ComicCollection convertedCollection = new ComicCollection
             {
                 Id = Convert.ToInt32(reader["collection_id"]),
                 UserId = Convert.ToInt32(reader["user_id"]),
@@ -71,7 +71,9 @@ namespace SampleApi.DAL
                 UpdatedDate = Convert.ToDateTime(reader["updated_date"])
             };
 
-            return covertedCollection;
+            convertedCollection.Count = GetComicCount(convertedCollection.Id);
+
+            return convertedCollection;
         }
 
         /// <summary>
@@ -246,6 +248,33 @@ namespace SampleApi.DAL
             {
                 throw ex;
             }
+        }
+
+        public int GetComicCount(int collectionId)
+        {
+            int count = 0;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"select count(*) as count from collection_comic
+                                                    where collection_id = @collectionId", conn);
+                    cmd.Parameters.AddWithValue("@collectionId", collectionId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        count = Convert.ToInt32(reader["count"]);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return count;
         }
     }
 }
