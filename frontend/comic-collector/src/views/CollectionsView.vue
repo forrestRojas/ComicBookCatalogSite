@@ -17,8 +17,7 @@ export default {
       collections: []
     };
   },
-  methods: {
-    created() {
+created() {
       fetch(`${process.env.VUE_APP_REMOTE_API}/collections`, {
         method: 'GET',
         headers: {
@@ -30,7 +29,6 @@ export default {
         this.collections = json;
       });
     }
-  }
 }
 </script>
 
