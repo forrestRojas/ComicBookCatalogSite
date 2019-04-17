@@ -15,7 +15,9 @@
 
             <section id="description">
                 <h3>Description</h3> 
-                <p v-html="comicbook.description"></p>
+                <div>
+                    <p v-html="comicbook.description"></p>
+                </div>
             </section>
 
             <section id="issue-number" class="inline">
@@ -38,12 +40,14 @@
                 <p>{{comicbook.credits}}</p>
             </section>
 
+        </div>
+        <div  id="comic-cover">
+            <picture>
+                <source v-bind:srcset="comicbook.image">
+                <img v-bind:src="comicbook.image" class="comic-photo"/>
+            </picture>
             <add-to-collection id="add-to-collection" :comicId="comicbook.id"/>
         </div>
-        <picture id="comic-cover">
-            <source v-bind:srcset="comicbook.image">
-            <img v-bind:src="comicbook.image" class="comic-photo"/>
-        </picture>
    </main> 
 </template>
 
@@ -112,14 +116,45 @@ export default {
 }
 
 #comic-cover {
-    padding: 0 2em;
+    padding: 10vh 2em 0;
     background-color: #7b7676;
     display: grid;
     height: 100%;
 }
 
 .comic-book-details {
+    padding-top: 8px;
+    display: grid;
     text-align: right;
+    grid-template-areas: 
+    "title title"
+    "desc ."
+    "desc ."
+    "desc ."
+    "desc ."
+    "desc ."
+    "desc ."
+}
+
+ #comic-name {
+    font-family: Bangers, sans-serif;
+    font-size: 2em;
+    letter-spacing: 1pt;
+    color: var(--carmine-pink);
+    grid-area: title;
+ }
+
+#description {
+    text-align: left;
+    direction: rtl;
+    grid-area: desc;
+
+}
+
+#description div {
+    direction:ltr;
+    overflow: auto;
+    height: 80vh;
 }
 
 .comic-book-details h2, 
@@ -140,11 +175,7 @@ export default {
 .inline :not(:last-child) {
     margin-right: 1ch;
 }
-#description {
-    margin-left: auto;
-    width: 50%;
-}
-#description>p>p{
+#description p > p{
     margin-bottom: 1em;
 }
 </style>
