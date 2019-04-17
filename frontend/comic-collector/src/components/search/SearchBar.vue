@@ -32,7 +32,6 @@ export default {
             end: Date
           },
           searchBy: '1',
-          id: Number
       }
   },
   methods: {
@@ -63,11 +62,11 @@ export default {
           'Content-Type': 'application/json'
   }
         })
-        let json = await response.json();
-        this.id = json.id;
-        this.searchResult();
+        const { id } = await response.json();
+        this.id = id;
+        this.searchResult({id});
       },
-      searchResult(){
+      searchResult(id){
         this.$router.push({ path: `/comic/${this.id}`});
       }
   },
