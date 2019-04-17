@@ -6,6 +6,7 @@ Vue.config.productionTip = false;
 
 require('./assets/reset.css');
 require('./assets/imageslogo-01.svg');
+require('./assets/default-avatar.jpg');
 
 new Vue({
   router,

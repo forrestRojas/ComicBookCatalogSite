@@ -10,12 +10,11 @@ export default {
 name: "publisher",
 data(){
     return {
-        publisher: 0
+        publisher: []
         
     }
 },
 created(){
-    const id = this.$route.params.id;
 
     fetch(`${process.env.VUE_APP_REMOTE_API}/statistics/publisher`, {
         method: "GET",
