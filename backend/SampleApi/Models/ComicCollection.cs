@@ -8,7 +8,7 @@ namespace SampleApi.Models
     /// <summary>
     /// Represents a Collections Model.
     /// </summary>
-    public class Collection
+    public class ComicCollection
     {
         /// <summary>
         /// The Collection's id.
