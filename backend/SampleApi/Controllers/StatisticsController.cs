@@ -13,32 +13,45 @@ namespace SampleApi.Controllers
     [ApiController]
     public class StatisticsController : ControllerBase
     {
-        private readonly IStatsDAO dao;
+        private readonly IStatsDAO statsDao;
+        private readonly IComicCollectionDAO collectionDao;
+        private readonly IComicBookDAO comicDao;
+
         /// <summary>
         /// Creates a comic collections controller.
         /// </summary>
         /// <param name="dao">the statistics dao</param>
-        public StatisticsController(IStatsDAO dao)
+        /// <param name="collectionDao">the collection dao</param>
+        /// <param name="comicDao">the comic dao</param>
+        public StatisticsController(IStatsDAO statsDao, IComicCollectionDAO collectionDao, IComicBookDAO comicDao)
         {
-            this.dao = dao;
+            this.statsDao = statsDao;
+            this.collectionDao = collectionDao;
+            this.comicDao = comicDao;
         }
 
         [HttpGet("totalcomics")]
         public int TotalComics()
         {
-            return dao.TotalComics();
+            return statsDao.TotalComics();
         }
 
         [HttpGet("totalcollections")]
         public int TotalCollections()
         {
-            return dao.TotalCollections();
+            return statsDao.TotalCollections();
         }
 
         [HttpGet("largestcollections")]
         public IList<ComicCollection> LargestCollections()
         {
-            return dao.LargestCollection();
+            IList<Search> sorted = statsDao.LargestCollection();
+            IList<ComicCollection> largestCollections = new List<ComicCollection>();
+            foreach(Search result in sorted)
+            {
+                largestCollections.Add(collectionDao.GetASingleCollection(result.Id));
+            }
+            return largestCollections;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace SampleApi.DAL
         /// A list of the largest collcetions
         /// </summary>
         /// <returns>A list of collcetions</returns>
-        IList<ComicCollection> LargestCollection();
+        IList<Search> LargestCollection();
 
         /// <summary>
         /// A list of the most collceted comics

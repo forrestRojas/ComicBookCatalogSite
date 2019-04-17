@@ -22,10 +22,9 @@ namespace SampleApi.DAL
             throw new NotImplementedException();
         }
 
-        public IList<ComicCollection> LargestCollection()
+        public IList<Search> LargestCollection()
         {
-            IList<ComicCollection> largestCollections = new List<ComicCollection>();
-            List<Search> results = new List<Search>();
+            IList<Search> results = new List<Search>();
 
             try
             {
@@ -51,33 +50,7 @@ namespace SampleApi.DAL
                 throw ex;
             }
 
-            try
-            {
-                foreach (Search result in results)
-                {
-                    using (SqlConnection conn = new SqlConnection(this.connectionString))
-                    {
-                        conn.Open();
-
-                        SqlCommand cmd = new SqlCommand("select * from collection where collection_id = @collection", conn);
-                        cmd.Parameters.AddWithValue("@collection", result.Id);
-
-                        SqlDataReader reader = cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            ComicCollection collection = ConvertSqlToCollection(reader);
-                            largestCollections.Add(collection);
-                        }
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-
-
-            return largestCollections;
+            return results;
         }
 
         public IList<ComicBook> MostPopularComic()
