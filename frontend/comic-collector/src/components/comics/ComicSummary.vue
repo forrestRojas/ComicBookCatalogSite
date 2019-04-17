@@ -36,17 +36,47 @@ export default {
   align-items: center;
   grid-template-columns: 3fr 1fr 1fr;;
   background-color: var(--isabelline);
-  margin: 25px;
+  padding: 25px;
 }
-img {
+
+
+.comic-summary:hover {
+	background: var(--carmine-pink); /* rgba(233, 79, 55) */
+	animation: gradient 300ms ease;
+	color: var(--isabelline);
+}
+
+.comic-summary:hover h2 {
+	color: var(--isabelline);
+}
+
+.comic-summary:hover img {
+	border-color: var(--tufts-blue);
+	box-shadow: 5px 10px rgba(44, 14, 9, 0.671);
+}
+
+.comic-summary picture {
+  transition: all .5s;
+  position: relative;
+  bottom: 0;
+} 
+
+.comic-summary:hover picture {
+    bottom: 4px;
+}
+
+
+.comic-summary img {
+    transition: all .5s;
     object-fit: scale-down;
     width: 125px;
     padding: 5px;
     border: 2pt solid;
+    bottom: 0;
     border-color: var(--carmine-pink);
     background-color: var(--black-olive);
     box-shadow: 5px 5px var(--black-olive);
-    transform: rotate(2deg);
+    /* transform: rotate(2deg); */
 }
 h2 {
   color: var(--tufts-blue);
