@@ -1,18 +1,6 @@
 <template>
     <nav>
-<<<<<<< HEAD
-        <form>
-            <input type="text" v-model="search_title" placeholder="comic title"/>
-            <input type="text" v-model="search_issue" placeholder="comic issue"/>
-            <!-- <div v-for="comic in comics" class="single-comic">
-+                <h2>{{comic.title}}</h2>
-+                <p>{{comic.anotherproperty}}</p> -->
-           <!-- </div> -->
-            <button type="submit" @click.stop.prevent="submit()">Search</button>
-        </form>
-=======
         <search-bar></search-bar>
->>>>>>> 337040b09cde58f61195c4eb9b5d91f396b4c3cd
         <ul>
             <li><a href="/collections">Collections</a></li> 
             <li><a href="/create/" v-if="auth = true">Create Collection</a></li>
