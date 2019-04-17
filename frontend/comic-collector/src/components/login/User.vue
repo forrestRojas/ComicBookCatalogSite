@@ -1,11 +1,11 @@
 <template>
-    <div id="user" v-on:click.stop.prevent="GotoUser()">
-        <h2>{{user.username}}</h2>
+    <article class="user" v-on:click.stop.prevent="GotoUser()">
         <picture>
-           <source v-bind:src="user.image">
+            <source v-bind:srcset="user.image">
             <img v-bind:src="user.image" class="user-photo"/>
        </picture>
-    </div>
+        <p>{{user.username}}</p>
+    </article>
 </template>
 
 <script>
@@ -49,8 +49,15 @@ created(){
 }
 </script>
 
-<style scoped>
-    img {
+<style>
+    .user {
+        display: flex;
+        justify-content: center;
+    }
+   .user img {
         height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
     }
 </style>
