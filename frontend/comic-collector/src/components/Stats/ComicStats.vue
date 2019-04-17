@@ -11,12 +11,12 @@
 
 <script>
 
-import TopUser from '@/assets/Stats/TopUser.vue';
-import LargestCollections from '@/assets/Stats/LargestCollections.vue';
-import MostPopular from '@/assets/Stats/MostPopular.vue';
-import Publisher from '@/assets/Stats/Publisher.vue';
-import TotalCollections from '@/assets/Stats/TotalCollections.vue';
-import TotalComics from '@/assets/Stats/TotalComics.vue';
+import TopUser from '@/components/Stats/TopUser.vue';
+import LargestCollections from '@/components/Stats/LargestCollections.vue';
+import MostPopular from '@/components/Stats/MostPopular.vue';
+import Publisher from '@/components/Stats/Publisher.vue';
+import TotalCollections from '@/components/Stats/TotalCollections.vue';
+import TotalComics from '@/components/Stats/TotalComics.vue';
 export default {
     data(){
         return{
