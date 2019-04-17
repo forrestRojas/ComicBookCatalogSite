@@ -45,5 +45,10 @@ namespace SampleApi.DAL
         /// <returns></returns>
         ComicBook GetComicBookByIssue(string seriesTitle, int issueNumber);
 
+        /// <summary>
+        /// A list of comics from a specified date range
+        /// </summary>
+        /// <returns>A list of comics</returns>
+        IList<ComicBook> ComicsFromDateRange(DateTime start, DateTime end);
     }
 }

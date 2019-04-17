@@ -72,5 +72,17 @@ namespace SampleApi.Controllers
         {
             return statsDao.MostPopularPublisher();
         }
+
+        [HttpGet("recentactivity")]
+        public IList<ComicCollection> RecentlyUpdated()
+        {
+            IList<Search> results = statsDao.RecentlyUpdated();
+            IList<ComicCollection> recentlyUpdated = new List<ComicCollection>();
+            foreach(Search result in results)
+            {
+                recentlyUpdated.Add(collectionDao.GetASingleCollection(result.Id));
+            }
+            return recentlyUpdated;
+        }
     }
 }
