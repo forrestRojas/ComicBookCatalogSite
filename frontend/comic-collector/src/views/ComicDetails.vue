@@ -1,7 +1,7 @@
 <template>
-   <main id="details">
+   <main id="comic-details">
         <div class="comic-book-details">
-            <h2>{{comicbook.name}}</h2>
+            <h2 id="comic-name">{{comicbook.name}}</h2>
 
             <section id="comic-publisher">
                 <h3>Publisher</h3>
@@ -15,12 +15,12 @@
 
             <section id="description">
                 <h3>Description</h3> 
-                <p>{{comicbook.description}}</p>
+                <p v-html="comicbook.description"></p>
             </section>
 
             <section id="issue-number" class="inline">
                 <h3>Issue Number:</h3>
-                <p>{{comicbook.issuenumber}}</p>
+                <p>{{comicbook.issueNumber}}</p>
             </section>
 
             <section id="volume-number" class="inline">
@@ -30,7 +30,7 @@
 
             <section id="cover-date" class="inline">
                 <h3>Cover Date:</h3>
-                <p>{{comicbook.coverdate}}</p>
+                <p>{{comicbook.coverDate}}</p>
             </section>
 
             <section id="credits">
@@ -38,10 +38,10 @@
                 <p>{{comicbook.credits}}</p>
             </section>
 
-            <add-to-collection :comicId="comicbook.id"/>
+            <add-to-collection id="add-to-collection" :comicId="comicbook.id"/>
         </div>
-        <picture>
-            <source v-bind:src="comicbook.image">
+        <picture id="comic-cover">
+            <source v-bind:srcset="comicbook.image">
             <img v-bind:src="comicbook.image" class="comic-photo"/>
         </picture>
    </main> 
@@ -71,6 +71,19 @@ export default {
         })
         .then(response => response.json())
         .then(json => this.comicbook = json);
+    },
+    watch: {
+        $route: function (to, from){
+            if( to !== from){
+                let id = this.$route.params.id;
+
+                fetch(`${process.env.VUE_APP_REMOTE_API}/comic/${id}`, {
+                    method: "GET",
+                })
+                .then(response => response.json())
+                .then(json => this.comicbook = json);
+            }
+        }
     }
 
 }
@@ -85,26 +98,26 @@ export default {
     border-color: var(--carmine-pink);
     background-color: var(--black-olive);
     box-shadow: 5px 5px var(--black-olive);
-    transform: rotate(2deg);
+    /* transform: rotate(2deg); */
 }
 
-#details {
+#comic-details {
     display: grid;
     grid-template-columns: 1fr auto;
     margin-top: 20px;
     column-gap: 20px;
+    align-items: center;
 }
 
-#details picture {
+#comic-details picture {
+    margin: auto;
     margin-right: 20%;
 }
 
 .comic-book-details {
-    margin-left: auto;
-    margin-top: auto;
-    margin-bottom: 1em;
+    margin: auto;
+    margin-right: 0;
     text-align: right;
-    align-self: end;
 }
 
 .comic-book-details h2, 
@@ -124,6 +137,13 @@ export default {
 
 .inline :not(:last-child) {
     margin-right: 1ch;
+}
+#description {
+    margin-left: auto;
+    width: 50%;
+}
+#description>p>p{
+    margin-bottom: 1em;
 }
 </style>
 

@@ -10,6 +10,9 @@ using Newtonsoft.Json.Linq;
 
 namespace SampleApi.DAL
 {
+    /// <summary>
+    /// Moderates the data communication used for the comic book model.
+    /// </summary>
     public class ComicBookSQLDAO : IComicBookDAO
     {
         private string connectionString;
@@ -222,7 +225,7 @@ namespace SampleApi.DAL
                     else
                     {
                         ComicInfo(this, seriesTitle, issueNumber);
-                        GetComicBookByIssue(seriesTitle, issueNumber);
+                        comicbook = GetComicBookByIssue(seriesTitle, issueNumber);
                     }
                 }
             }
@@ -245,7 +248,6 @@ namespace SampleApi.DAL
         {
             ComicApiInfo comicApiInfo = new ComicApiInfo();
             int volumeId = 0;
-            string publisherName = "";
             ComicBook book = new ComicBook();
             volumeId = comicApiInfo.GetVolumeInfo(seriesTitle);
             book = comicApiInfo.GetIssueInfo(volumeId, issueNumber);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace SampleApi.Models
 {
     /// <summary>
-    /// Represents a Comic Collections Model.
+    /// Represents a Collections Model.
     /// </summary>
     public class ComicCollection
     {
@@ -41,8 +41,23 @@ namespace SampleApi.Models
         public string AccessLevel { get; set; }
 
         /// <summary>
+        /// The date the collection was created
+        /// </summary>
+        public DateTime CreatedDate { get; set; }
+
+        /// <summary>
+        /// The date the last update was made to a collection
+        /// </summary>
+        public DateTime UpdatedDate { get; set; }
+
+        /// <summary>
         /// The list of comics in the collection
         /// </summary>
         public IList<ComicBook> Comics { get; set; }
+
+        /// <summary>
+        /// A count of comics in the collection
+        /// </summary>
+        public int Count { get; set; }
     }
 }

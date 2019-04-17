@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main id="collections-detail">
     <h2>{{collection.title}}</h2>
     <user v-bind:id="collection.userId"></user>
     <h4>{{collection.description}}</h4>
@@ -38,4 +38,7 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  font-size: 3em;
+}
 </style>

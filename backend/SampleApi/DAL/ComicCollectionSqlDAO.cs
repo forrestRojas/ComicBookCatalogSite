@@ -59,17 +59,21 @@ namespace SampleApi.DAL
 
         private ComicCollection ConvertSqlToCollection(SqlDataReader reader)
         {
-            ComicCollection covertedCollection = new ComicCollection
+            ComicCollection convertedCollection = new ComicCollection
             {
                 Id = Convert.ToInt32(reader["collection_id"]),
                 UserId = Convert.ToInt32(reader["user_id"]),
                 Title = Convert.ToString(reader["title"]),
                 Image = Convert.ToString(reader["image"]),
                 Description = Convert.ToString(reader["description"]),
-                AccessLevel = Convert.ToString(reader["public_access"])
+                AccessLevel = Convert.ToString(reader["public_access"]),
+                CreatedDate = Convert.ToDateTime(reader["created_date"]),
+                UpdatedDate = Convert.ToDateTime(reader["updated_date"])
             };
 
-            return covertedCollection;
+            convertedCollection.Count = GetComicCount(convertedCollection.Id);
+
+            return convertedCollection;
         }
 
         /// <summary>
@@ -81,7 +85,7 @@ namespace SampleApi.DAL
         {
             bool isSuccessful = false;
 
-            
+
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Open();
@@ -112,6 +116,11 @@ namespace SampleApi.DAL
             return isSuccessful;
         }
 
+        /// <summary>
+        /// Gets a single colleciton.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ComicCollection GetASingleCollection(int id)
         {
             ComicCollection collection = new ComicCollection();
@@ -169,6 +178,52 @@ namespace SampleApi.DAL
         }
 
         /// <summary>
+        /// Gets the available collections via the user id and where only the comic is not in the collction. 
+        /// </summary>
+        /// <param name="userId">the user the collecitons belong to.</param>
+        /// <param name="comicId">the id of the comic to which the collctions are not accioated to.</param>
+        public IList<ComicCollection> GetAvailableCollecitons(int userId, int comicId)
+        {
+            List<ComicCollection> collections = new List<ComicCollection>();
+
+            try
+            {
+
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    string sqlScript = @"SELECT DISTINCT *
+                                         FROM collection AS cl
+                                         WHERE cl.user_id = @userId AND cl.collection_id NOT IN (
+                                                                                       SELECT c.collection_id 
+											                                           FROM collection_comic AS c 
+											                                           Where c.comic_id = @comicId
+                                                                                       )";
+
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlScript, conn);
+                    cmd.Parameters.AddWithValue("@userid", userId);
+                    cmd.Parameters.AddWithValue("@comicId", comicId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        ComicCollection collection = ConvertSqlToCollection(reader);
+                        collections.Add(collection);
+                    }
+
+                    return collections;
+                }
+            }
+            catch (SqlException ex)
+            {
+                // LOG Error
+                throw ex;
+            }
+        }
+
+
+        /// <summary>
         /// Saves a record of a comic in a collection
         /// </summary>
         /// <param name="collectionId">The Id of the collection</param>
@@ -193,7 +248,33 @@ namespace SampleApi.DAL
             {
                 throw ex;
             }
+        }
 
+        public int GetComicCount(int collectionId)
+        {
+            int count = 0;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"select count(*) as count from collection_comic
+                                                    where collection_id = @collectionId", conn);
+                    cmd.Parameters.AddWithValue("@collectionId", collectionId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        count = Convert.ToInt32(reader["count"]);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return count;
         }
     }
 }
