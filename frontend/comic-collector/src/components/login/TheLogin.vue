@@ -53,6 +53,8 @@ export default {
     display: flex;
     position: relative;
     align-items: baseline;
+    padding-bottom: 17px;
+    margin-bottom: -17px;
   }
   
   #login-component > .user {
@@ -70,7 +72,7 @@ export default {
     position: absolute;
     padding: 0;
     width: inherit;
-    border: 3px solid var(--black-olive);
+    border: 3px solid var(--emmit-yellow);
     border-top: none;
     background-color: var(--isabelline);
     margin: 0;

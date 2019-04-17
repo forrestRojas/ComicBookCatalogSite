@@ -104,19 +104,21 @@ export default {
 #comic-details {
     display: grid;
     grid-template-columns: 1fr auto;
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    /* padding: 2em; */
+    /* padding-left: 0; */
     column-gap: 20px;
     align-items: center;
 }
 
-#comic-details picture {
-    margin: auto;
-    margin-right: 20%;
+#comic-cover {
+    padding: 0 2em;
+    background-color: #7b7676;
+    display: grid;
+    height: 100%;
 }
 
 .comic-book-details {
-    margin: auto;
-    margin-right: 0;
     text-align: right;
 }
 
