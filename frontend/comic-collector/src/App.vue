@@ -36,7 +36,7 @@ export default {
   --carmine-pink: #c92f24;
   --black-olive: #393E41;
   /* --black-olive: #524848; */
-  --tufts-blue: #3F88C5;
+  --tufts-blue: #46668a;
   --verdigris: #44BBA4;
   --emmit-yellow: #f8c605;
 }
@@ -66,8 +66,9 @@ export default {
 
 #site-footer {
   grid-area: footer;
-  background-color: var(--emmit-yellow);
-  color: var(--carmine-pink);
+  font-weight: 300;
+  background-color: var(--tufts-blue);
+  color: var(--isabelline);
 }
 
 #site-header {
