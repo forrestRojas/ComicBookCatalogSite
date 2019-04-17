@@ -3,12 +3,17 @@
     <select  v-model="searchBy" form="search-form">
       <option value="1" selected>By Title</option>
       <option value="2">By Publisher</option>
+      <option value="3">By Date</option>
     </select>
     
     <input v-if="searchBy == 1" form="search-form" type="text" v-model="search_title" placeholder="comic title"/>
     <input v-if="searchBy == 1" form="search-form" type="number" min="0" v-model="search_issue" placeholder="comic issue"/>
 
     <input v-if="searchBy == 2" form="search-form" type="text" v-model="search_publisher" placeholder="publisher name"/>
+    
+    <input v-if="searchBy == 3" form="search-form" type="text" v-model="search_date.start" placeholder="start date"/>
+    <input v-if="searchBy == 3" form="search-form" type="text" v-model="search_date.end" placeholder="end date"/>
+    
     <button form="search-form" type="submit" @click.stop.prevent="submit()">Search</button>
   </form>
 </template>
@@ -22,7 +27,11 @@ export default {
           search_title: '',
           search_issue: '',
           search_publisher: '',
-          searchBy: '',
+          search_date: {
+            start: Date,
+            end: Date
+          },
+          searchBy: '1',
           id: Number
       }
   },
@@ -36,15 +45,25 @@ export default {
         case 2:
           searchUrl = `comic/publisher/${this.search_publisher}`;
           break;
+        case 3:
+          () => {
+            let { start, end } = this.search_date;
+            searchUrl = `comic/date/${start}${end}`;
+          }
+          break;
       }
       return searchUrl;
     },
 
     async submit() {
-      let searchUrl = await this.getSerachUrl()
+      let searchUrl = await this.getSerachUrl();
       let response = await
       fetch(`${process.env.VUE_APP_REMOTE_API}/${searchUrl}`,{
-        method: 'GET'
+        method: 'GET',
+          headers:{
+          'Access-Control-Request-Headers': 'content-type',
+          'Content-Type': 'application/json'
+  }
         })
         let json = await response.json();
         this.id = json.id;
