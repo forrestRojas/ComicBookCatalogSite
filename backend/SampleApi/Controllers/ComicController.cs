@@ -63,5 +63,11 @@ namespace SampleApi.Controllers
         {
             return dao.SearchByPublisher(publisher);
         }
+
+        [HttpGet("date/{start}/{end}")]
+        public IList<ComicBook> SearchByDate(DateTime start, DateTime end)
+        {
+            return dao.ComicsFromDateRange(start, end);
+        }
     }
 }

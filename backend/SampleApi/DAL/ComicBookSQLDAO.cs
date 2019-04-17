@@ -339,7 +339,33 @@ namespace SampleApi.DAL
 
         public IList<ComicBook> ComicsFromDateRange(DateTime start, DateTime end)
         {
-            throw new NotImplementedException();
+            IList<ComicBook> comics = new List<ComicBook>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT * FROM comic 
+                                                    WHERE cover_date >= @start && cover_date <= @end", conn);
+                    cmd.Parameters.AddWithValue("@start", start);
+                    cmd.Parameters.AddWithValue("@end", end);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        ComicBook book = ConvertReaderToComicBook(reader);
+                        comics.Add(book);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred retrieving the comic book by Date.");
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            return comics;
         }
 
         /// <summary>
@@ -378,7 +404,6 @@ namespace SampleApi.DAL
                 throw;
             }
             return comics;
-
         }
 
     }
