@@ -1,15 +1,23 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+/* @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,400i,700'); */
+
+* {
+  box-sizing: border-box;
 }
 
 :root {
-  --isabelline: #F6F7EB;
+  /* --isabelline: #F6F7EB;
   --carmine-pink: #E94F37;
   --black-olive: #393E41;
+  --black-olive: #524848;
   --tufts-blue: #3F88C5;
-  --verdigris: #44BBA4;
+  --verdigris: #44BBA4; */
+  font-size: 16px;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -19,47 +27,12 @@ body {
   background-size: cover; 
   margin-top: 5em;
   min-height: calc(100vh - 5em);
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
 }
 
-.dag-strips {
-  display: block;
-  position: absolute;
-  height: 420px;
-  width: 22px;
-  transform: rotate(70deg);
-  z-index: -1;
-  top: -181px;
-  left: 163px;
-  background-color: inherit;
-  box-shadow: 5px 10px rgba(44, 14, 9, 0.671);
-  border-left: 3px solid;
-  border-left-color: var(--isabelline);
-}
 
-.dag-strips::after {
-  content: "";
-  display: block;
-  position: absolute;
-  height: inherit;
-  width: 29px;
-  z-index: inherit;
-  top: -147px;
-  left: 61px;
-  background-color: inherit;
-  box-shadow: inherit;
-  border: inherit;
-}
 
-.dag-strips::before {
-  content: "";
-  display: block;
-  position: absolute;
-  height: inherit;
-  width: 10px;
-  z-index: inherit;
-  top: -116px;
-  left: 30px;
-  box-shadow: inherit;
-  border: inherit;
-  background-color: inherit;
+h1 {
+  font-family: Bangers, sans-serif;
 }

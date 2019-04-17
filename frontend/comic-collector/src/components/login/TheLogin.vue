@@ -1,13 +1,11 @@
 <template>
-    <div>
-        <div v-if="isAuthenticated">
-         <user v-bind:id="user.id"></user>
-            <a href="/logout" v-on:click.prevent="logout">Logout</a>
-        </div>
-        <div v-else>
-            <router-link to="/login">Login</router-link>
-        </div>
-    </div>
+    <article id="login-component">
+        <user v-if="isAuthenticated" v-bind:id="user.id"></user>
+        <ul v-if="isAuthenticated" class="dropdown">
+          <li><a v-if="isAuthenticated" href="/logout" v-on:click.prevent="logout">Logout</a></li>
+        </ul>
+        <router-link v-else to="/login">Login</router-link>
+    </article>
 </template>
 
 <script>
@@ -22,7 +20,7 @@ export default {
   data() {
     return {
       isAuthenticated: auth.getUser() !== null,
-      user: {}
+      user: {},
     };
   },
   methods: {
@@ -51,8 +49,57 @@ export default {
 </script>
 
 <style>
-  a {
-    text-decoration: none;
-    color: var(--carmine-pink);
+  #login-component {
+    display: flex;
+    position: relative;
+    align-items: baseline;
   }
+  
+  #login-component > .user {
+    position: relative;
+  }
+
+  #login-component:hover .dropdown, .dropdown:hover {
+    visibility: visible;
+  }
+
+  .dropdown {
+    list-style: none;
+    visibility: hidden;
+    /* overflow-y: auto; */
+    position: absolute;
+    padding: 0;
+    width: inherit;
+    border: 3px solid var(--black-olive);
+    border-top: none;
+    background-color: var(--isabelline);
+    margin: 0;
+    margin-right: -8px;
+    right: 0;
+    top: 70px;
+  }
+
+  .dropdown::before {
+    content: '';
+    position: absolute;
+    margin: 0 41%;
+    right: 0px;
+    top: -20px;
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid var(--isabelline);
+  }
+
+  .dropdown li {
+    padding: 0;
+    margin: 0;
+  }
+
+  .dropdown a {
+    display: block;
+    padding: .5em 2em;
+  }
+
 </style>
