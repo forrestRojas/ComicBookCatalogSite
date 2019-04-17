@@ -1,7 +1,7 @@
 <template>
     <article>
     <h2>Total Comics</h2>
-    <p>{{this.totalcomics}}</p>
+    <p>{{totalcomics}}</p>
     </article>
 </template>
 
@@ -10,7 +10,7 @@ export default {
 name: "total-comics",
 data(){
     return {
-        totalcomics: 0
+        totalcomics: Number
     }
 },
 created(){
@@ -18,7 +18,7 @@ created(){
         method: "GET",
     })
     .then(response => response.json())
-    .then(({totalcomics}) => this.totalcomics = totalcomics);
+    .then(json => {this.totalcomics = json});
 }
 }
 </script>
