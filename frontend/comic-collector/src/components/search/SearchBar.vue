@@ -34,7 +34,7 @@ export default {
           searchUrl = `search/${this.search_title}/${this.search_issue}`;
           break;
         case 2:
-          searchUrl = `api/comic/publisher/${this.search_publisher}`;
+          searchUrl = `comic/publisher/${this.search_publisher}`;
           break;
       }
       return searchUrl;
