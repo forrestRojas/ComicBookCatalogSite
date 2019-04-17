@@ -1,16 +1,16 @@
 <template>
     <article>
     <h2>Largest Collections</h2>
-    <p>{{this.totalcollections}}</p>
+    <p>{{this.largestcollections}}</p>
     </article>
 </template>
 
 <script>
 export default {
-name: "total-collections",
+name: "largest-collections",
 data(){
     return {
-        totalcollections: 0
+        largestcollections: 0
         
     }
 },
@@ -21,11 +21,11 @@ created(){
         method: "GET",
     })
     .then(response => response.json())
-    .then(({largestcollections}) => this.totalcollections = totalcollections);
+    .then(({largestcollections}) => this.largestcollections = largestcollections);
 }
 }
 </script>
 
 <style>
 
-</style>s
+</style>
