@@ -27,7 +27,7 @@ namespace SampleApi.DAL
         /// A list of the most collceted comics
         /// </summary>
         /// <returns>A likst of comic books</returns>
-        IList<ComicBook> MostPopularComic();
+        IList<Search> MostPopularComic();
 
         /// <summary>
         /// The total number of comics in the database
@@ -45,18 +45,18 @@ namespace SampleApi.DAL
         /// A list of comics from a specified date range
         /// </summary>
         /// <returns>A list of comics</returns>
-        IList<ComicBook> ComicsFromDateRange();
+        IList<ComicBook> ComicsFromDateRange(DateTime start, DateTime end);
 
         /// <summary>
         /// A list of the publishers that shows up the most in the collection
         /// </summary>
         /// <returns>Name of publisher and count of appearances</returns>
-        IList<(string, int)> MostPopularPublisher();
+        IList<Search> MostPopularPublisher();
 
         /// <summary>
         /// A list of user's with the biggest total number of comics
         /// </summary>
         /// <returns>A list of users</returns>
-        IList<UserDisplay> UserWithMostComics();
+        IList<Search> UserWithMostComics();
     }
 }

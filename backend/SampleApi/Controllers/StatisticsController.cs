@@ -53,5 +53,24 @@ namespace SampleApi.Controllers
             }
             return largestCollections;
         }
+
+        [HttpGet("mostpopular")]
+        public IList<Search> MostPopularComic()
+        {
+            return statsDao.MostPopularComic();
+        }
+
+        [HttpGet("bestuser")]
+        public IList<Search> UsersWithMostComics()
+        {
+            return statsDao.UserWithMostComics();
+        }
+
+
+        [HttpGet("publisher")]
+        public IList<Search> MostPopularPublisher()
+        {
+            return statsDao.MostPopularPublisher();
+        }
     }
 }

@@ -17,11 +17,15 @@ namespace SampleApi.DAL
         }
 
 
-        public IList<ComicBook> ComicsFromDateRange()
+        public IList<ComicBook> ComicsFromDateRange(DateTime start, DateTime end)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// A list of search objects for the largest collections
+        /// </summary>
+        /// <returns>search objects for largest collections</returns>
         public IList<Search> LargestCollection()
         {
             IList<Search> results = new List<Search>();
@@ -53,14 +57,71 @@ namespace SampleApi.DAL
             return results;
         }
 
-        public IList<ComicBook> MostPopularComic()
+        /// <summary>
+        /// A list of search objects for the most popular comics
+        /// </summary>
+        /// <returns>search objects for most popular comics</returns>
+        public IList<Search> MostPopularComic()
         {
-            throw new NotImplementedException();
+            IList<Search> results = new List<Search>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"select top 10 count(*) as count, comic_id from collection_comic
+                                                    group by comic_id
+                                                    order by count desc;", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Search search = new Search();
+
+                        search.Id = Convert.ToInt32(reader["comic_id"]);
+                        search.Value = Convert.ToInt32(reader["count"]);
+                        results.Add(search);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return results;
         }
 
-        public IList<(string, int)> MostPopularPublisher()
+        public IList<Search> MostPopularPublisher()
         {
-            throw new NotImplementedException();
+            IList<Search> results = new List<Search>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"select count(*) as count, publisher from comic
+                                                    group by publisher
+                                                    order by count desc;", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Search search = new Search();
+
+                        search.Name = Convert.ToString(reader["publisher"]);
+                        search.Value = Convert.ToInt32(reader["count"]);
+                        results.Add(search);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return results;
+
         }
 
         public IList<ComicCollection> RecentlyUpdated()
@@ -97,6 +158,10 @@ namespace SampleApi.DAL
             return total;
         }
 
+        /// <summary>
+        /// Counts the number of collections in the database
+        /// </summary>
+        /// <returns>The number of collections</returns>
         public int TotalCollections()
         {
             int total = 0;
@@ -123,9 +188,37 @@ namespace SampleApi.DAL
 
         }
 
-        public IList<UserDisplay> UserWithMostComics()
+        public IList<Search> UserWithMostComics()
         {
-            throw new NotImplementedException();
+            IList<Search> results = new List<Search>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"select top 10 count(*) as count, id as userId from users
+                                                    join collection on users.id = collection.user_id
+                                                    join collection_comic on collection.collection_id = collection_comic.collection_id
+                                                    group by users.id
+                                                    order by count desc;", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Search search = new Search();
+
+                        search.Id = Convert.ToInt32(reader["userId"]);
+                        search.Value = Convert.ToInt32(reader["count"]);
+                        results.Add(search);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return results;
         }
 
         private ComicCollection ConvertSqlToCollection(SqlDataReader reader)

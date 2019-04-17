@@ -16,6 +16,11 @@ namespace SampleApi.Models
         public int Id { get; set; }
 
         /// <summary>
+        /// The name of the data
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Its attached value
         /// </summary>
         public int Value { get; set; }
