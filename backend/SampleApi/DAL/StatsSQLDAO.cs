@@ -16,12 +16,6 @@ namespace SampleApi.DAL
             this.connectionString = connectionString;
         }
 
-
-        public IList<ComicBook> ComicsFromDateRange(DateTime start, DateTime end)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// A list of search objects for the largest collections
         /// </summary>

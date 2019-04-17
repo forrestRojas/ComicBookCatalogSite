@@ -336,6 +336,11 @@ namespace SampleApi.DAL
                 return book;
             }
         }
+
+        public IList<ComicBook> ComicsFromDateRange(DateTime start, DateTime end)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

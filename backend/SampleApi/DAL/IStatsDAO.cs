@@ -42,12 +42,6 @@ namespace SampleApi.DAL
         int TotalCollections();
 
         /// <summary>
-        /// A list of comics from a specified date range
-        /// </summary>
-        /// <returns>A list of comics</returns>
-        IList<ComicBook> ComicsFromDateRange(DateTime start, DateTime end);
-
-        /// <summary>
         /// A list of the publishers that shows up the most in the collection
         /// </summary>
         /// <returns>Name of publisher and count of appearances</returns>
