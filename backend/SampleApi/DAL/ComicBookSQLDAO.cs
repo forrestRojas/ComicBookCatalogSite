@@ -318,7 +318,7 @@ namespace SampleApi.DAL
                     book.Description = String.Empty;
                 }
                 book.ID = (int)results[0]["id"];
-                book.Image = (string)results[0]["image"]["thumb_url"];
+                book.Image = (string)results[0]["image"]["small_url"];
                 book.IssueNumber = (int)results[0]["issue_number"];
                 book.Credits = (string)results[0]["person_credits"];
                 if (book.Credits == null)
