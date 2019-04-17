@@ -15,7 +15,7 @@ namespace SampleApi.DAL
         /// A list of recently updated collections
         /// </summary>
         /// <returns>A list of collections</returns>
-        IList<ComicCollection> RecentlyUpdated();
+        IList<Search> RecentlyUpdated();
 
         /// <summary>
         /// A list of the largest collcetions
@@ -40,12 +40,6 @@ namespace SampleApi.DAL
         /// </summary>
         /// <returns>The number of collections</returns>
         int TotalCollections();
-
-        /// <summary>
-        /// A list of comics from a specified date range
-        /// </summary>
-        /// <returns>A list of comics</returns>
-        IList<ComicBook> ComicsFromDateRange(DateTime start, DateTime end);
 
         /// <summary>
         /// A list of the publishers that shows up the most in the collection

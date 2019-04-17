@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SampleApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,5 +45,17 @@ namespace SampleApi.DAL
         /// <returns></returns>
         ComicBook GetComicBookByIssue(string seriesTitle, int issueNumber);
 
+        /// <summary>
+        /// A list of comics from a specified date range
+        /// </summary>
+        /// <returns>A list of comics</returns>
+        IList<ComicBook> ComicsFromDateRange(DateTime start, DateTime end);
+
+        /// <summary>
+        /// A list of comics from a single publisher
+        /// </summary>
+        /// <param name="publisher">The publisher</param>
+        /// <returns>A list of comic books</returns>
+        IList<ComicBook> SearchByPublisher(string publisher);
     }
 }

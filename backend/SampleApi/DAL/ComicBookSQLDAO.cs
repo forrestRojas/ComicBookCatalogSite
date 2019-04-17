@@ -318,7 +318,7 @@ namespace SampleApi.DAL
                     book.Description = String.Empty;
                 }
                 book.ID = (int)results[0]["id"];
-                book.Image = (string)results[0]["image"]["thumb_url"];
+                book.Image = (string)results[0]["image"]["small_url"];
                 book.IssueNumber = (int)results[0]["issue_number"];
                 book.Credits = (string)results[0]["person_credits"];
                 if (book.Credits == null)
@@ -336,6 +336,76 @@ namespace SampleApi.DAL
                 return book;
             }
         }
+
+        public IList<ComicBook> ComicsFromDateRange(DateTime start, DateTime end)
+        {
+            IList<ComicBook> comics = new List<ComicBook>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"SELECT * FROM comic 
+                                                    WHERE cover_date >= @start && cover_date <= @end", conn);
+                    cmd.Parameters.AddWithValue("@start", start);
+                    cmd.Parameters.AddWithValue("@end", end);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        ComicBook book = ConvertReaderToComicBook(reader);
+                        comics.Add(book);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred retrieving the comic book by Date.");
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            return comics;
+        }
+
+        /// <summary>
+        /// A list of comics from a single publisher
+        /// </summary>
+        /// <param name="publisher">The publisher</param>
+        /// <returns>A list of comic books</returns>
+        public IList<ComicBook> SearchByPublisher(string publisher)
+        {
+            IList<ComicBook> comics = new List<ComicBook>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    //Do comic_id and @ID need to be switched
+                    SqlCommand cmd = new SqlCommand(@"SELECT * FROM comic 
+                                                    WHERE publisher = @publisher", conn);
+                    //@comic_id might need to be @ID?
+                    cmd.Parameters.AddWithValue("@publisher", publisher);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        ComicBook book = ConvertReaderToComicBook(reader);
+                        // possibly incorrect?
+                        comics.Add(book);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred retrieving the comic book by the Publisher.");
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            return comics;
+        }
+
     }
 }
 

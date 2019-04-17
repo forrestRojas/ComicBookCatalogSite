@@ -10,7 +10,7 @@ export default {
 name: "publisher",
 data(){
     return {
-        publisher: 0
+        publisher: []
         
     }
 },

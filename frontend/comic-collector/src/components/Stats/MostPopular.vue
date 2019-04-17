@@ -10,11 +10,10 @@ export default {
 name: "most-popular",
 data(){
     return {
-        mostpopular: 0
+        mostpopular: []
     }
 },
 created(){
-    const id = this.$route.params.id;
 
     fetch(`${process.env.VUE_APP_REMOTE_API}/statistics/mostpopular`, {
         method: "GET",
