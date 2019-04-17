@@ -45,5 +45,10 @@ namespace SampleApi.Models
         /// A field for user's favorites
         /// </summary>
         public string Favorites { get; set; }
+
+        /// <summary>
+        /// A link for a user image
+        /// </summary>
+        public string Image { get; set; }
     }
 }

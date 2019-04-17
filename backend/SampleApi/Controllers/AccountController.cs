@@ -42,7 +42,7 @@ namespace SampleApi.Controllers
         /// <returns></returns>
         [HttpPost("register")]
         public IActionResult Register(AuthenticationModel model)
-        {            
+        {
             // Does user already exist
             if (userDao.GetUser(model.Username) != null)
             {
@@ -56,7 +56,7 @@ namespace SampleApi.Controllers
             var passwordHash = passwordHasher.ComputeHash(model.Password);
 
             // Create a user object
-            var user = new User { Password = passwordHash.Password, Salt = passwordHash.Salt, Role = "User", Username = model.Username };
+            var user = new User { Password = passwordHash.Password, Salt = passwordHash.Salt, Role = "Standard", Username = model.Username };
 
             // Save the user
             userDao.CreateUser(user);
@@ -95,5 +95,29 @@ namespace SampleApi.Controllers
 
             return result;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public UserDisplay Get(int id)
+        {
+            return userDao.GetUserById(id);
+        }
+
+        /// <summary>
+        /// Gets user by name
+        /// </summary>
+        /// <param name="name">user name</param>
+        /// <returns>User object</returns>
+        [HttpGet("{name}")]
+        [Route("/api/user/{name}")]
+        public UserDisplay UserByName(string name)
+        {
+            return userDao.GetUserByName(name);
+        }
+
     }
 }
