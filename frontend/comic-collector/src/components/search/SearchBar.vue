@@ -1,11 +1,14 @@
 <template>
   <form id="search-form" name="search-form" class="search-bar">
-    <select form="search-form" type="number">
-      <option value="byTitle">By Title</option>
-      <option value="byPublisher">By Publisher</option>
+    <select  v-model="searchBy" form="search-form">
+      <option value="1" selected>By Title</option>
+      <option value="2">By Publisher</option>
     </select>
-    <input form="search-form" type="text" v-model="search_title" placeholder="comic title"/>
-    <input form="search-form" type="number" min="0" v-model="search_issue" placeholder="comic volume"/>
+    
+    <input v-if="searchBy == 1" form="search-form" type="text" v-model="search_title" placeholder="comic title"/>
+    <input v-if="searchBy == 1" form="search-form" type="number" min="0" v-model="search_issue" placeholder="comic issue"/>
+
+    <input v-if="searchBy == 2" form="search-form" type="text" v-model="search_publisher" placeholder="publisher name"/>
     <button form="search-form" type="submit" @click.stop.prevent="submit()">Search</button>
   </form>
 </template>
@@ -18,13 +21,29 @@ export default {
           comics:[],
           search_title: '',
           search_issue: '',
+          search_publisher: '',
+          searchBy: '',
           id: Number
       }
   },
   methods: {
+    getSerachUrl(){
+      let searchUrl = '';
+      switch(Number(this.searchBy)) {
+        case 1:
+          searchUrl = `search/${this.search_title}/${this.search_issue}`;
+          break;
+        case 2:
+          searchUrl = `comic/publisher/${this.search_publisher}`;
+          break;
+      }
+      return searchUrl;
+    },
+
     async submit() {
+      let searchUrl = await this.getSerachUrl()
       let response = await
-      fetch(`${process.env.VUE_APP_REMOTE_API}/search/${this.search_title}/${this.search_issue}`,{
+      fetch(`${process.env.VUE_APP_REMOTE_API}/${searchUrl}`,{
         method: 'GET'
         })
         let json = await response.json();
