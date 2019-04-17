@@ -98,7 +98,7 @@ export default {
     border-color: var(--carmine-pink);
     background-color: var(--black-olive);
     box-shadow: 5px 5px var(--black-olive);
-    transform: rotate(2deg);
+    /* transform: rotate(2deg); */
 }
 
 #comic-details {

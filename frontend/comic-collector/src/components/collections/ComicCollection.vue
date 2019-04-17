@@ -32,7 +32,7 @@ export default {
 
 <style>
 :root {
-	--grad-color: var(--black-olive);
+	--grad-color: var(--emmit-yellow);
 }
 
 @keyframes gradient {

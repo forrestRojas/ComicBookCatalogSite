@@ -66,7 +66,9 @@ namespace SampleApi.DAL
                 Title = Convert.ToString(reader["title"]),
                 Image = Convert.ToString(reader["image"]),
                 Description = Convert.ToString(reader["description"]),
-                AccessLevel = Convert.ToString(reader["public_access"])
+                AccessLevel = Convert.ToString(reader["public_access"]),
+                CreatedDate = Convert.ToDateTime(reader["created_date"]),
+                UpdatedDate = Convert.ToDateTime(reader["updated_date"])
             };
 
             convertedCollection.Count = GetComicCount(convertedCollection.Id);
