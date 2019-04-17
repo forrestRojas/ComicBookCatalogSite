@@ -118,9 +118,33 @@ namespace SampleApi.DAL
 
         }
 
-        public IList<ComicCollection> RecentlyUpdated()
+        public IList<Search> RecentlyUpdated()
         {
-            throw new NotImplementedException();
+            IList<Search> results = new List<Search>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"select top 5 * from collection
+                                                    order by updated_date desc;", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Search search = new Search();
+
+                        search.Id = Convert.ToInt32(reader["collection_id"]);
+                        results.Add(search);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return results;
         }
 
         /// <summary>

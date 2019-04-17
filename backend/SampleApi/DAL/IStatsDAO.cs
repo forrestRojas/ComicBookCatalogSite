@@ -15,7 +15,7 @@ namespace SampleApi.DAL
         /// A list of recently updated collections
         /// </summary>
         /// <returns>A list of collections</returns>
-        IList<ComicCollection> RecentlyUpdated();
+        IList<Search> RecentlyUpdated();
 
         /// <summary>
         /// A list of the largest collcetions
