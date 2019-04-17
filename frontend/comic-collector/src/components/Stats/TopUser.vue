@@ -10,11 +10,10 @@ export default {
 name: "top-user",
 data(){
     return {
-        topuser: 0
+        topuser: []
     }
 },
 created(){
-    const id = this.$route.params.id;
 
     fetch(`${process.env.VUE_APP_REMOTE_API}/statistics/topuser`, {
         method: "GET",

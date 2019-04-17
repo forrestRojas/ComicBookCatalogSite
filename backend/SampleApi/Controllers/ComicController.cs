@@ -50,6 +50,12 @@ namespace SampleApi.Controllers
             return Created("", newComic);
         }
 
+        /// <summary>
+        /// Searches for a comic by title and issue number
+        /// </summary>
+        /// <param name="title">Title</param>
+        /// <param name="issue">Issue</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("/api/search/{title}/{issue}")]
         public ActionResult<ComicBook> Search(string title, int issue)

@@ -9,6 +9,7 @@ import ComicDetails from "./views/ComicDetails.vue";
 import SearchResult from "./views/SearchResult.vue";
 import UserDetail from "./views/UserDetail.vue";
 import auth from "./shared/auth";
+import ComicStats from "./views/ComicStats.vue";
 
 Vue.use(Router);
 
@@ -76,6 +77,14 @@ const router = new Router({
       path: "/searchresult/:search_title/:search_volume",
       name: "searchresult",
       component: SearchResult,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/statistics",
+      name: "statistics",
+      component: ComicStats,
       meta: {
         requiresAuth: false
       }
