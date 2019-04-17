@@ -57,5 +57,11 @@ namespace SampleApi.Controllers
             ComicBook comic = dao.GetComicBookByIssue(title, issue);
             return Ok(comic);
         }
+
+        [HttpGet("publisher/{publisher}")]
+        public IList<ComicBook> SearchByPublisher(string publisher)
+        {
+            return dao.SearchByPublisher(publisher);
+        }
     }
 }
