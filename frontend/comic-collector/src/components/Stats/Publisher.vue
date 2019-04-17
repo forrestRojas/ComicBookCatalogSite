@@ -1,7 +1,10 @@
 <template>
     <article>
     <h2>Publisher</h2>
-    <p>{{this.publisher}}</p>
+    <li v-for="publisher in publishers" 
+		v-bind:key="publisher.name"
+		v-bind:publishers="publishers"
+    >{{publisher.name}}: {{publisher.value}}</li>
     </article>
 </template>
 
@@ -10,7 +13,7 @@ export default {
 name: "publisher",
 data(){
     return {
-        publisher: []
+        publishers: []
         
     }
 },
@@ -20,7 +23,7 @@ created(){
         method: "GET",
     })
     .then(response => response.json())
-    .then(({publisher}) => this.publisher = publisher);
+    .then(json => {this.publishers = json});
 }
 }
 </script>
