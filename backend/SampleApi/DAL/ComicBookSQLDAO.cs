@@ -167,7 +167,8 @@ namespace SampleApi.DAL
                     //Do comic_id and @ID need to be switched
                     SqlCommand cmd = new SqlCommand(@"SELECT * FROM comic 
                                                     JOIN collection_comic ON comic.comic_id = collection_comic.comic_id
-                                                    WHERE collection_id = @ID", conn);
+                                                    WHERE collection_id = @ID
+                                                    order by comic.publisher, comic.title, comic.issue_number", conn);
                     //@comic_id might need to be @ID?
                     cmd.Parameters.AddWithValue("@ID", id);
 
@@ -346,7 +347,7 @@ namespace SampleApi.DAL
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(@"SELECT * FROM comic 
-                                                    WHERE cover_date >= @start AND cover_date <= @end", conn);
+                                                    WHERE cover_date >= @start and cover_date <= @end", conn);
                     cmd.Parameters.AddWithValue("@start", start);
                     cmd.Parameters.AddWithValue("@end", end);
 

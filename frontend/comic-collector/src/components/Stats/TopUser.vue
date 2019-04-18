@@ -1,11 +1,13 @@
 <template>
     <article>
     <h2>Top Users</h2>
+    <div class="topUsers">
         <user class="usertag" 
             v-for="user in topusers" 
             v-bind:key="user.id"
             v-bind:id="user.id"
             :data-comics="user.value"></user>
+    </div>
     </article>
 </template>
 
@@ -56,6 +58,17 @@ methods:{
 
 <style>
 .usertag::after {
-    content: attr(data-comics)
+    content: attr(data-comics);
+    margin: auto 0;
+    padding-left: 1ch;
+}
+.usertag {
+    margin-right: 30px;
+    padding-right: 1ch;
+}
+.topUsers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 </style>

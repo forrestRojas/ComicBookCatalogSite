@@ -1,12 +1,13 @@
 <template>
-    <article>
-        <top-user></top-user>
-        <largest-collections></largest-collections>
-        <most-popular></most-popular>
-        <publisher></publisher>
+    <main id="comicstats">
         <total-collections></total-collections>
         <total-comics></total-comics>
-    </article>
+        <publisher></publisher>
+        <top-user class="gridareaA"></top-user>
+        <largest-collections class="gridareaB"></largest-collections>
+        <most-popular class="gridareaC"></most-popular>
+        
+    </main>
 </template>
 
 <script>
@@ -37,6 +38,22 @@ export default {
 </script>
 
 <style>
-
+#comicstats {
+    display: grid;
+    grid-template-areas: 
+        ". . ."
+        "a a a"
+        "b b b"
+        "c c c";
+}
+.gridareaA {
+    grid-area: a;
+}
+.gridareaB {
+    grid-area: b;
+}
+.gridareaC {
+    grid-area: c;
+}
 </style>
 

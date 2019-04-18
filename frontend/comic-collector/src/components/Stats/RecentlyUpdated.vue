@@ -1,6 +1,6 @@
 <template>
     <article>
-    <h2>Largest Collections</h2>
+    <h2>Recently Updated Collections</h2>
     <collections-grid v-bind:comicCollections="largestcollections"></collections-grid>
 
     </article>
@@ -16,17 +16,17 @@ components:{
 },
 data(){
     return {
-        largestcollections: []
+        recentlyedited: []
         
     }
 },
 created(){
 
-    fetch(`${process.env.VUE_APP_REMOTE_API}/statistics/largestcollections`, {
+    fetch(`${process.env.VUE_APP_REMOTE_API}/statistics/recentactivity`, {
         method: "GET",
     })
     .then(response => response.json())
-    .then(json => {this.largestcollections = json});
+    .then(json => {this.recentlyedited = json});
 }
 }
 </script>

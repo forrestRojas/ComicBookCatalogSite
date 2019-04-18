@@ -1,10 +1,12 @@
 <template>
-    <article>
+    <article class="publishers">
     <h2>Publisher</h2>
+    <ol >
     <li v-for="publisher in publishers" 
 		v-bind:key="publisher.name"
 		v-bind:publishers="publishers"
     >{{publisher.name}}: {{publisher.value}}</li>
+    </ol>
     </article>
 </template>
 
@@ -18,6 +20,7 @@ data(){
     }
 },
 created(){
+    const id = this.$route.params.id;
 
     fetch(`${process.env.VUE_APP_REMOTE_API}/statistics/publisher`, {
         method: "GET",
@@ -29,5 +32,7 @@ created(){
 </script>
 
 <style>
-
+.publishers {
+    width: 250px; 
+}
 </style>

@@ -29,7 +29,7 @@ namespace SampleApi.DAL
                 using (SqlConnection conn = new SqlConnection(this.connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"select count(*) as count, collection_id from collection_comic
+                    SqlCommand cmd = new SqlCommand(@"select top 10 count(*) as count, collection_id from collection_comic
                                                     group by collection_id
                                                     order by count desc;", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -95,7 +95,7 @@ namespace SampleApi.DAL
                 using (SqlConnection conn = new SqlConnection(this.connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"select count(*) as count, publisher from comic
+                    SqlCommand cmd = new SqlCommand(@"select top 5 count(*) as count, publisher from comic
                                                     group by publisher
                                                     order by count desc;", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
