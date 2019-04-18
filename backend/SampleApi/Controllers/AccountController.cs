@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SampleApi.DAL;
@@ -125,7 +126,8 @@ namespace SampleApi.Controllers
         /// <param name="user"></param>
         /// <returns></returns>
         [HttpPost("UserDetail")]
-        public IActionResult UpdateUser(User user)
+        
+        public IActionResult UpdateUser([FromBody]User user)
         {
             userDao.UpdateUser(user);
             return Ok();

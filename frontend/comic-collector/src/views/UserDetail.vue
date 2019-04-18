@@ -20,7 +20,7 @@
             <section id="bio">
             <h3>Bio:</h3>
             <form id="bio-form">
-                <textarea form="bio-form" type="text" v-model="user.bio"></textarea>
+                <textarea form="bio-form" type="text" v-model="updatedUser.bio"></textarea>
             </form>
             <p>{{user.bio}}</p>
             </section>
@@ -28,7 +28,7 @@
             <section id="favorites">
             <h3>Favorites:</h3>
             <form id="favorites-form">
-                <input form="favorites-form" type="text" v-model="user.favorites">
+                <input form="favorites-form" type="text" v-model="updatedUser.favorites">
             </form>
             <p>{{user.favorites}}</p> 
             </section>
@@ -38,7 +38,7 @@
             <label for="checkbox">Upgrade to Premium User</label>
             </section>
             <button type="button" v-on:click="updateProfile" v-if="!showForm">Update Profile</button>
-            <button type="button" v-on:click="updateProfile" v-if="showForm">Cancel</button>
+            <button type="button" v-on:click="cancelUpdate" v-if="showForm">Cancel</button>
             <button type="button" v-on:click="saveProfile">Save Profile</button>
     </main>
 </template>
@@ -57,6 +57,7 @@ components: {
 data(){
     return {
         user:{},
+        updatedUser: {},
         createcollection:'',
         dropzoneOptions: {
         url: "https://api.cloudinary.com/v1_1/tech-elevator/image/upload",
@@ -75,7 +76,8 @@ created(){
         method: "GET",
     })
     .then(response => response.json())
-    .then(json => this.user = json);
+    .then(json => this.user = json)
+    
 },
 methods: {
     EditUserBio(){
@@ -121,21 +123,39 @@ methods: {
       formData.append("upload_preset", "vg8sew4g");
     },
     success: function(file, response) {
-      this.user.image = response.secure_url;
+      this.updatedUser.image = response.secure_url;
     },
 
     saveProfile(){
-        fetch(`${process.env.VUE_APP_REMOTE_API}/account/${id}`, {
+        this.user.bio = this.updatedUser.bio;
+        this.user.favorites = this.updatedUser.favorites;
+        this.user.image = this.updatedUser.image;
+        fetch(`${process.env.VUE_APP_REMOTE_API}/account/UserDetail`, {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'bearer' + auth.getToken()
+            },
         body:JSON.stringify(this.user)
             })
         .then(response => response.json())
+        vm.$forceUpdate()
+        // this.$router.push({path: `/account/${this.user.id}`})
     } ,
     updateProfile(){
-        this.EditUserBio(),
-        this.EditUserFavorites(),
-        this.EditImage()
+        this.updatedUser.bio = this.user.bio;
+        this.updatedUser.favorites = this.user.favorites;
+        this.updatedUser.image = this.user.image;
+        this.EditUserBio();
+        this.EditUserFavorites();
+        this.EditImage();
         this.showForm = !this.showForm;
+    },
+    cancelUpdate(){
+        this.updatedUser.bio = this.user.bio;
+        this.updatedUser.favorites = this.user.favorites;
+        this.updatedUser.image = this.user.image;
+        this.updateProfile();
     }
 },
 
