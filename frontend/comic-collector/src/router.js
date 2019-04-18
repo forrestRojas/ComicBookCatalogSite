@@ -10,6 +10,7 @@ import SearchResult from "./views/SearchResult.vue";
 import UserDetail from "./views/UserDetail.vue";
 import auth from "./shared/auth";
 import ComicStats from "./views/ComicStats.vue";
+import PageNotFound from "./views/PageNotFound.vue";
 
 Vue.use(Router);
 
@@ -85,6 +86,14 @@ const router = new Router({
       path: "/statistics",
       name: "statistics",
       component: ComicStats,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    { 
+      path: "*",
+      name: "not-found",
+      component: PageNotFound,
       meta: {
         requiresAuth: false
       }
