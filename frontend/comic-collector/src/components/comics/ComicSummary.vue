@@ -65,6 +65,9 @@ export default {
     bottom: 4px;
 }
 
+.comic-summary:active {
+	background: #f88;
+}
 
 .comic-summary img {
     transition: all .5s;
