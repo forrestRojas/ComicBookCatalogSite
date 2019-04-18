@@ -347,7 +347,7 @@ namespace SampleApi.DAL
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(@"SELECT * FROM comic 
-                                                    WHERE cover_date >= @start && cover_date <= @end", conn);
+                                                    WHERE cover_date >= @start and cover_date <= @end", conn);
                     cmd.Parameters.AddWithValue("@start", start);
                     cmd.Parameters.AddWithValue("@end", end);
 
