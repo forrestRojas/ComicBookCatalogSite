@@ -78,7 +78,7 @@ export default {
     bottom: 0;
     border-color: var(--carmine-pink);
     background-color: var(--black-olive);
-    box-shadow: 5px 5px var(--black-olive);
+    box-shadow: 5px 5px rgba(44, 14, 9, 0.671);
     /* transform: rotate(2deg); */
 }
 h2 {
