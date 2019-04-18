@@ -168,7 +168,7 @@ namespace SampleApi.DAL
                     SqlCommand cmd = new SqlCommand(@"SELECT * FROM comic 
                                                     JOIN collection_comic ON comic.comic_id = collection_comic.comic_id
                                                     WHERE collection_id = @ID
-                                                    order by comic.publisher, comic.title", conn);
+                                                    order by comic.publisher, comic.title, comic.issue_number", conn);
                     //@comic_id might need to be @ID?
                     cmd.Parameters.AddWithValue("@ID", id);
 
