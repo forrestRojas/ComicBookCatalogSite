@@ -139,8 +139,7 @@ methods: {
         body:JSON.stringify(this.user)
             })
         .then(response => response.json())
-        vm.$forceUpdate()
-        // this.$router.push({path: `/account/${this.user.id}`})
+        this.updateProfile
     } ,
     updateProfile(){
         this.updatedUser.bio = this.user.bio;
