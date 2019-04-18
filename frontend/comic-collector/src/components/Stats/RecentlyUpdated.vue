@@ -1,7 +1,7 @@
 <template>
     <article>
     <h2>Recently Updated Collections</h2>
-    <collections-grid v-bind:comicCollections="largestcollections"></collections-grid>
+    <collections-grid v-bind:comicCollections="recentlyedited"></collections-grid>
 
     </article>
 </template>
@@ -10,7 +10,7 @@
 import CollectionsGrid from '@/components/collections/CollectionsGrid.vue';
 
 export default {
-name: "largest-collections",
+name: "recently-updated",
 components:{
     CollectionsGrid
 },
