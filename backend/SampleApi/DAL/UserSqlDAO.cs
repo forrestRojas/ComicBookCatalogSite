@@ -182,10 +182,10 @@ namespace SampleApi.DAL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE users SET password = @password, salt = @salt, role = @role WHERE id = @id;", conn);                    
-                    cmd.Parameters.AddWithValue("@password", user.Password);
-                    cmd.Parameters.AddWithValue("@salt", user.Salt);
-                    cmd.Parameters.AddWithValue("@role", user.Role);
+                    SqlCommand cmd = new SqlCommand("UPDATE users SET user_image = @image, bio = @bio, favorites = @favorites WHERE id = @id;", conn);                    
+                    cmd.Parameters.AddWithValue("@image", user.Image);
+                    cmd.Parameters.AddWithValue("@bio", user.Bio);
+                    cmd.Parameters.AddWithValue("@favorites", user.Favorites);
                     cmd.Parameters.AddWithValue("@id", user.Id);
 
                     cmd.ExecuteNonQuery();
