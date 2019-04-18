@@ -11,14 +11,15 @@
 
     <input v-if="searchBy == 2" form="search-form" type="text" v-model="search_publisher" placeholder="publisher name"/>
     
-    <input v-if="searchBy == 3" form="search-form" type="text" v-model="search_date.start" placeholder="start date"/>
-    <input v-if="searchBy == 3" form="search-form" type="text" v-model="search_date.end" placeholder="end date"/>
+    <input v-if="searchBy == 3" form="search-form" type="date" v-model="search_date.start" placeholder="start date"/>
+    <input v-if="searchBy == 3" form="search-form" type="date" v-model="search_date.end" placeholder="end date"/>
     
     <button form="search-form" type="submit" @click.stop.prevent="submit()">Search</button>
   </form>
 </template>
 
 <script>
+
 export default {
   name: 'search-bar',
   data() {
@@ -42,13 +43,13 @@ export default {
           searchUrl = `search/${this.search_title}/${this.search_issue}`;
           break;
         case 2:
-          searchUrl = `comic/publisher/${this.search_publisher}`;
+          searchUrl = `publisher/${this.search_publisher}`;
           break;
         case 3:
-          () => {
-            let { start, end } = this.search_date;
-            searchUrl = `comic/date/${start}${end}`;
-          }
+          (() => {
+            const { start, end } = this.search_date;
+            searchUrl = `date/${start}%2F${end}`;
+          })();
           break;
       }
       return searchUrl;
@@ -56,21 +57,22 @@ export default {
 
     async submit() {
       let searchUrl = await this.getSerachUrl();
-      let response = await
-      fetch(`${process.env.VUE_APP_REMOTE_API}/${searchUrl}`,{
-        method: 'GET',
+      if(this.searchBy == 1) {
+        let response = await
+        fetch(`${process.env.VUE_APP_REMOTE_API}/${searchUrl}`,{
+          method: 'GET',
           headers:{
-          'Access-Control-Request-Headers': 'content-type',
-          'Content-Type': 'application/json'
-  }
+            'Access-Control-Request-Headers': 'content-type',
+            'Content-Type': 'application/json'
+          }
         })
         const { id } = await response.json();
-        this.id = id;
-        this.searchResult({id});
-      },
-      searchResult(id){
-        this.$router.push({ path: `/comic/${this.id}`});
+        this.$router.push({ path: `/comic/${id}`});
       }
+      else {
+        this.$router.push({ path: `/search/${searchUrl}` })
+      }
+    }
   },
   computed: {
     filteredComics: function(){
