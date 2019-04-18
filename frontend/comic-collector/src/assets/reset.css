@@ -21,6 +21,7 @@ body, html {
 }
 
 body {
+  transition: margin-top .2s ease;
   background-color: var(--black-olive);
   background-image: url("https://blog.booksamillion.com/wp-content/uploads/2017/03/dc-vs.-marvel-1024x661.jpg");
   background-repeat: no-repeat, repeat;
@@ -35,4 +36,11 @@ body {
 
 h1 {
   font-family: Bangers, sans-serif;
+}
+
+@media screen and (max-width: 640px) {
+  body {
+    margin-top: 0;
+    width: 100vw;
+  }
 }

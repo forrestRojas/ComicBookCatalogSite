@@ -33,26 +33,28 @@ export default {
 <style>
 :root {
 	--grad-color: var(--tufts-blue);
+	/* color: rgb(201, 47, 36) */
 }
 
 @keyframes gradient {
-  0% 	{background: radial-gradient(circle at center, rgba(233, 79, 55, 0.0 ) 	0%, var(--grad-color)	 0%, var(--grad-color) 100%);}
-	5% 	{background: radial-gradient(circle at center, rgba(233, 79, 55, 0.3 )	4%, var(--grad-color)	 5%, var(--grad-color) 100%);}
-	10% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.3 )	9%, var(--grad-color) 10%, var(--grad-color) 100%);}
-	15% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.3 ) 14%, var(--grad-color) 15%, var(--grad-color) 100%);}
-  25% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.3 ) 24%, var(--grad-color) 25%, var(--grad-color) 100%);}
-	35% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.3 ) 34%, var(--grad-color) 35%, var(--grad-color) 100%);}
-	45% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.3 ) 44%, var(--grad-color) 45%, var(--grad-color) 100%);}
-  50% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.5 ) 49%, var(--grad-color) 50%, var(--grad-color) 100%);}
-	55% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.5 ) 54%, var(--grad-color) 55%, var(--grad-color) 100%);}
-	60% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.5 ) 59%, var(--grad-color) 60%, var(--grad-color) 100%);}
-	65% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.5 ) 64%, var(--grad-color) 65%, var(--grad-color) 100%);}
-	70% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.5 ) 69%, var(--grad-color) 70%, var(--grad-color) 100%);}
-  75% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.8 ) 74%, var(--grad-color) 75%, var(--grad-color) 100%);}
-	80% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.8 ) 79%, var(--grad-color) 80%, var(--grad-color) 100%);}
-	85% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.8 ) 84%, var(--grad-color) 85%, var(--grad-color) 100%);}
-	90% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.8 ) 89%, var(--grad-color) 90%, var(--grad-color) 100%);}
-	95% {background: radial-gradient(circle at center, rgba(233, 79, 55, 0.8 ) 94%, var(--grad-color) 95%, var(--grad-color) 100%);}
+  /* 0% 	{background: radial-gradient(circle at center, rgba(233, 79, 55, 0.0 ) 	0%, var(--grad-color)	 0%, var(--grad-color) 100%);} */
+  0% 	{background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 	0%, var(--grad-color)	 0%, var(--grad-color) 100%);}
+	5% 	{background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 )	4%, var(--grad-color)	 5%, var(--grad-color) 100%);}
+	10% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 )	9%, var(--grad-color) 10%, var(--grad-color) 100%);}
+	15% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 14%, var(--grad-color) 15%, var(--grad-color) 100%);}
+  25% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 24%, var(--grad-color) 25%, var(--grad-color) 100%);}
+	35% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 34%, var(--grad-color) 35%, var(--grad-color) 100%);}
+	45% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 44%, var(--grad-color) 45%, var(--grad-color) 100%);}
+  50% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 49%, var(--grad-color) 50%, var(--grad-color) 100%);}
+	55% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 54%, var(--grad-color) 55%, var(--grad-color) 100%);}
+	60% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 59%, var(--grad-color) 60%, var(--grad-color) 100%);}
+	65% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 64%, var(--grad-color) 65%, var(--grad-color) 100%);}
+	70% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 69%, var(--grad-color) 70%, var(--grad-color) 100%);}
+  75% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 74%, var(--grad-color) 75%, var(--grad-color) 100%);}
+	80% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 79%, var(--grad-color) 80%, var(--grad-color) 100%);}
+	85% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 84%, var(--grad-color) 85%, var(--grad-color) 100%);}
+	90% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 89%, var(--grad-color) 90%, var(--grad-color) 100%);}
+	95% {background: radial-gradient(circle at center, rgba(201, 47, 36, 1.00 ) 94%, var(--grad-color) 95%, var(--grad-color) 100%);}
   100% {
     color: #fff;
     background: radial-gradient(circle at center, var(--carmine-pink) 99%, var(--grad-color) 100%, var(--grad-color) 100%);

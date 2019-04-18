@@ -152,9 +152,9 @@ export default {
 }
 
 #description div {
-    direction:ltr;
     overflow: auto;
     height: 80vh;
+    min-height: 400px;
 }
 
 .comic-book-details h2, 

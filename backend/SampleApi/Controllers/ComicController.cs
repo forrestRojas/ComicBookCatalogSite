@@ -64,13 +64,13 @@ namespace SampleApi.Controllers
             return Ok(comic);
         }
 
-        [HttpGet("publisher/{publisher}")]
+        [HttpGet("/api/search/publisher/{publisher}")]
         public IList<ComicBook> SearchByPublisher(string publisher)
         {
             return dao.SearchByPublisher(publisher);
         }
 
-        [HttpGet("date/{start}/{end}")]
+        [HttpGet("/api/search/date/{start}/{end}")]
         public IList<ComicBook> SearchByDate(DateTime start, DateTime end)
         {
             return dao.ComicsFromDateRange(start, end);

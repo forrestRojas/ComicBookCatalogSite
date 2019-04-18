@@ -89,4 +89,67 @@ a {
   color: var(--carmine-pink);
 }
 
+@media screen and (max-width: 1000px) {
+  #site-header {
+    grid-auto-flow: row;
+  }
+  #site-header h1 {
+    font-size: 6vw;
+  }
+}
+
+@media screen and (max-width: 640px) {
+
+  #app {
+    grid-template-columns: auto;
+    grid-template-rows: auto minmax(20vw, auto) 1fr; 
+    grid-template-areas: 
+      "header"
+      "nav"
+      "main"
+      "footer";
+  }
+
+  #site-header h1 {
+    font-size: 3em;
+  }
+
+  #login-component {
+    position: static;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  #login-component .user {
+    position: static;
+    
+  }
+
+  #login-component  .dropdown {
+    visibility: visible;
+    position: static;
+    top: initial;
+    border-top: 3px solid var(--emmit-yellow);
+    margin: 0;
+  }
+
+    #login-component  .dropdown::before {
+      width: 0; 
+      height: 0;
+      top: initial;
+      right: initial;
+      margin: 8% 0;
+      left: -30px;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent; 
+      border-right: 20px solid var(--isabelline);
+  }
+
+  #site-logo {
+    display: none;
+  }
+}
+
 </style>
