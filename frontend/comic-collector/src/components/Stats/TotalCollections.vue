@@ -1,5 +1,5 @@
 <template>
-    <article>
+    <article class="totalcollections">
     <h2>Total Collections</h2>
     <p>{{totalcollections}}</p>
     </article>
@@ -25,5 +25,7 @@ created(){
 </script>
 
 <style>
-
+.totalcollections {
+    width: 250px;
+}
 </style>

@@ -1,13 +1,19 @@
 <template>
     <article>
     <h2>Largest Collections</h2>
-    <p>{{this.largestcollections}}</p>
+    <collections-grid v-bind:comicCollections="largestcollections"></collections-grid>
+
     </article>
 </template>
 
 <script>
+import CollectionsGrid from '@/components/collections/CollectionsGrid.vue';
+
 export default {
 name: "largest-collections",
+components:{
+    CollectionsGrid
+},
 data(){
     return {
         largestcollections: []
@@ -20,7 +26,7 @@ created(){
         method: "GET",
     })
     .then(response => response.json())
-    .then(({largestcollections}) => this.largestcollections = largestcollections);
+    .then(json => {this.largestcollections = json});
 }
 }
 </script>
