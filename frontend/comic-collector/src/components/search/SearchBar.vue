@@ -45,10 +45,8 @@ export default {
           searchUrl = `comic/publisher/${this.search_publisher}`;
           break;
         case 3:
-          () => {
             let { start, end } = this.search_date;
             searchUrl = `comic/date/${start}${end}`;
-          }
           break;
       }
       return searchUrl;

@@ -1,5 +1,5 @@
 <template>
-    <article>
+    <article class="totalcomics">
     <h2>Total Comics</h2>
     <p>{{totalcomics}}</p>
     </article>
@@ -24,5 +24,7 @@ created(){
 </script>
 
 <style>
-
+.totalcomics {
+    width: 250px;
+}
 </style>

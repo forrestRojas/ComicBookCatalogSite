@@ -27,7 +27,7 @@ CREATE TABLE users
 	role				varchar(500)			default('standard'),
 	bio					varchar(500),
 	favorites			varchar(500),
-	user_image			varchar(1000)			default('src\assets\default-avatar.jpg'),
+	user_image			varchar(1000)			
 	
 	constraint pk_users primary key (id)
 );
