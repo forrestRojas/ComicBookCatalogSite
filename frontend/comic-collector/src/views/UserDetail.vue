@@ -127,22 +127,34 @@ methods: {
     },
 
     saveProfile(){
-        fetch(`${process.env.VUE_APP_REMOTE_API}/account/${id}`, {
+        this.user.bio = this.updatedUser.bio;
+        this.user.favorites = this.updatedUser.favorites;
+        this.user.image = this.updatedUser.image;
+        fetch(`${process.env.VUE_APP_REMOTE_API}/account/UserDetail`, {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'bearer' + auth.getToken()
+            },
         body:JSON.stringify(this.user)
             })
         .then(response => response.json())
+        vm.$forceUpdate()
+        // this.$router.push({path: `/account/${this.user.id}`})
     } ,
     updateProfile(){
         this.updatedUser.bio = this.user.bio;
         this.updatedUser.favorites = this.user.favorites;
+        this.updatedUser.image = this.user.image;
         this.EditUserBio();
         this.EditUserFavorites();
         this.EditImage();
         this.showForm = !this.showForm;
     },
     cancelUpdate(){
-        this.updatedUser = this.user;
+        this.updatedUser.bio = this.user.bio;
+        this.updatedUser.favorites = this.user.favorites;
+        this.updatedUser.image = this.user.image;
         this.updateProfile();
     }
 },
