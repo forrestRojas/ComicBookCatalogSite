@@ -119,5 +119,18 @@ namespace SampleApi.Controllers
             return userDao.GetUserByName(name);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        [HttpPost("UserDetail")]
+        public IActionResult UpdateUser(User user)
+        {
+            userDao.UpdateUser(user);
+            return Ok();
+                
+        }
+
     }
 }
