@@ -241,8 +241,11 @@ namespace SampleApi.DAL
 
                     cmd.ExecuteNonQuery();
 
-                    SqlCommand cmd2 = new SqlCommand("update collection set updated_date = getdate() where collection_id = @collection_id", conn);
-                    cmd2.Parameters.AddWithValue("@collectionId", collectionId);
+                    SqlCommand cmd2 = new SqlCommand("update collection set updated_date = @date where collection_id = @collection_id", conn);
+                    cmd2.Parameters.AddWithValue("@date", DateTime.Now);
+                    cmd2.Parameters.AddWithValue("@collection_id", collectionId);
+
+                    cmd2.ExecuteNonQuery();
 
                     return;
                 }
