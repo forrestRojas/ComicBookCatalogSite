@@ -1,6 +1,6 @@
 <template>
   <main id="not-found" onload="notFound()">
-    <h2>The Page you are looking for does not exists.</h2>
+    <h2>The Page you are looking for does not exist.</h2>
   </main>
 </template>
 
