@@ -97,8 +97,8 @@ export default {
             const p = document.querySelector("#favorites p");
             const form = document.querySelector("#favorites-form");
             if(p.style.display !=="none"){
-            p.style.display="none";
-            form.style.display="block";
+                p.style.display="none";
+                form.style.display="block";
             }
             else{
                 p.style.display="block"
@@ -109,8 +109,8 @@ export default {
             const p = document.querySelector("#image img");
             const form = document.querySelector("#image-form");
             if(p.style.display !=="none"){
-            p.style.display="none";
-            form.style.display="block";
+                p.style.display="none";
+                form.style.display="block";
             }
             else{
                 p.style.display="block"
@@ -118,12 +118,12 @@ export default {
             }
         },
         sending(file, xhr, formData) {
-        formData.append("api_key", 714725446462368);
-        formData.append("timestamp", (Date.now() / 1000) | 0);
-        formData.append("upload_preset", "vg8sew4g");
+            formData.append("api_key", 714725446462368);
+            formData.append("timestamp", (Date.now() / 1000) | 0);
+            formData.append("upload_preset", "vg8sew4g");
         },
         success(file, response) {
-        this.updatedUser.image = response.secure_url;
+            this.updatedUser.image = response.secure_url;
         },
 
         saveProfile() {
@@ -136,8 +136,8 @@ export default {
                     'Content-Type': 'application/json',
                     Authorization: 'bearer' + auth.getToken()
                 },
-            body:JSON.stringify(this.user)
-                })
+                body:JSON.stringify(this.user)
+            })
             .then(response => response.json())
             this.updateProfile
         } ,
