@@ -94,11 +94,6 @@ export default {
       .then(response => response.json())
       .then(collections => this.collections = collections);
     },
-
-    polyfillDialog() { 
-      const dialogTag = document.querySelector('dialog');
-      dialogPolyfill.registerDialog(dialogTag);
-    },
     AddToCollection() {
       fetch(`${process.env.VUE_APP_REMOTE_API}/save/${this.selected}/${this.comicId}`, {
         method: 'POST',
@@ -107,7 +102,12 @@ export default {
           Authorization: "Bearer " + auth.getToken()
         },
       }).then(this.closeDialog())
-    }
+    },
+    
+    polyfillDialog() { 
+      const dialogTag = document.querySelector('dialog');
+      dialogPolyfill.registerDialog(dialogTag);
+    },
   }
 }
 </script>
