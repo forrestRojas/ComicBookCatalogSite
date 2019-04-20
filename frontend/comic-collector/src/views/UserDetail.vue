@@ -84,8 +84,8 @@ export default {
             const p = document.querySelector("#bio p");
             const form = document.querySelector("#bio-form");
             if(p.style.display !=="none"){
-            p.style.display="none";
-            form.style.display="block";
+                p.style.display="none";
+                form.style.display="block";
             }
             else{
                 p.style.display="block"
