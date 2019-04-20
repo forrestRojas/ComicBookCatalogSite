@@ -17,7 +17,7 @@
     "npm": "^6.9.0",
     "npm-check-updates": "^3.1.8",
     "vue": "^2.6.10",
-    "vue-router": "^3.0.5",
+    "vue-router": "^3.0.6",
     "vue2-dropzone": "^3.5.8"
   },
   "devDependencies": {
