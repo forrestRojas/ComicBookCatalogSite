@@ -6,7 +6,7 @@
             <img v-if="user.image" v-bind:src="user.image" class="user-photo"/>
             <img v-else src="@/assets/default-avatar.jpg" class="user-photo"/>
             
-            <form id="image-form">
+            <!-- <form id="image-form">
                 <vue-dropzone
                     id="dropzone"
                     v-bind:options="dropzoneOptions"
@@ -14,22 +14,22 @@
                     @vdropzone-sending="sending"
                     @vdropzone-success="success"
                 ></vue-dropzone>
-            </form>
+            </form> -->
         </section>
 
         <section id="bio">
             <h3>Bio:</h3>
-            <form id="bio-form">
+            <!-- <form id="bio-form">
                 <textarea form="bio-form" type="text" v-model="updatedUser.bio"></textarea>
-            </form>
+            </form> -->
             <p>{{user.bio}}</p>
         </section>
         
         <section id="favorites">
             <h3>Favorites:</h3>
-            <form id="favorites-form">
+            <!-- <form id="favorites-form">
                 <input form="favorites-form" type="text" v-model="updatedUser.favorites">
-            </form>
+            </form> -->
             <p>{{user.favorites}}</p> 
         </section>
                                 
