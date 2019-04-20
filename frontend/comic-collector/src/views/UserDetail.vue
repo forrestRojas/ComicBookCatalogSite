@@ -34,7 +34,7 @@
         </section>
                                 
         <section>
-            <label for="checkbox">Upgrade to Premium User</label>
+            <label for="premium_checkbox">Upgrade to Premium User</label>
             <input type="checkbox" id="premium_checkbox" v-model="checked">
         </section>
         <button type="button" v-on:click="updateProfile" v-if="!showForm">Update Profile</button>
