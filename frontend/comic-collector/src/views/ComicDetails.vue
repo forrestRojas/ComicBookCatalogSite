@@ -15,9 +15,7 @@
 
             <section id="description">
                 <h3>Description</h3> 
-                <div>
-                    <p v-html="comicbook.description"></p>
-                </div>
+                <div v-html="comicbook.description"></div>
             </section>
 
             <section id="issue-number" class="inline">
@@ -150,8 +148,8 @@ export default {
 }
 
 #description > div {
-    overflow: auto;
     direction: rtl;
+    overflow: auto;
     height: 80vh;
     min-height: 400px;
 }
@@ -179,7 +177,7 @@ export default {
 .inline :not(:last-child) {
     margin-right: 1ch;
 }
-#description p > p{
+#description p{
     margin-bottom: 1em;
 }
 </style>
