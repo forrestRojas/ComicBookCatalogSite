@@ -1,5 +1,5 @@
 <template>
-    <article class="user" v-on:click.stop.prevent="GotoUser()">
+    <article class="user" v-on:click.prevent="GotoUser()">
         <img v-if="user.image" v-bind:src="user.image" class="user-photo"/>
         <img v-else src="@/assets/default-avatar.jpg" class="user-photo"/>
         <p>{{user.username}}</p>
