@@ -32,7 +32,7 @@
 
             <section id="cover-date" class="inline">
                 <h3>Cover Date:</h3>
-                <p><time :datetime="comicbook.coverDate">{{comicbook.coverDate}}</time></p>
+                <p><time :datetime="comicbook.coverDate">{{new Date(comicbook.coverDate).toDateString()}}</time></p>
             </section>
 
             <section id="credits">
@@ -147,8 +147,6 @@ export default {
 #description {
     text-align: left;
     grid-area: desc;
-    grid-row-end: -1;
-
 }
 
 #description > div {
