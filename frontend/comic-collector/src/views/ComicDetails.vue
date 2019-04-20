@@ -32,7 +32,7 @@
 
             <section id="cover-date" class="inline">
                 <h3>Cover Date:</h3>
-                <p>{{comicbook.coverDate}}</p>
+                <p><time :datetime="comicbook.coverDate">{{comicbook.coverDate}}</time></p>
             </section>
 
             <section id="credits">
@@ -68,7 +68,7 @@ export default {
         }
     },
     created(){
-        const id = this.$route.params.id;
+        const { id } = this.$route.params;
         
         fetch(`${process.env.VUE_APP_REMOTE_API}/comic/${id}`, {
             method: "GET",
@@ -146,15 +146,21 @@ export default {
 
 #description {
     text-align: left;
-    direction: rtl;
     grid-area: desc;
+    grid-row-end: -1;
 
 }
 
-#description div {
+#description > div {
     overflow: auto;
+    direction: rtl;
     height: 80vh;
     min-height: 400px;
+}
+
+#description > div * {
+    direction: initial;
+
 }
 
 .comic-book-details h2, 
