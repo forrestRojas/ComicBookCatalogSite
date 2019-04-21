@@ -3,14 +3,14 @@
     <header>
       <h2>{{comic.name}}</h2>
       <h3>Publisher: {{comic.publisher}}</h3>
-          <p>{{comic.deck}}</p>
+      <p>{{comic.deck}}</p>
 
     </header>
 
     <p>Issue: {{comic.issueNumber}}</p>
     <picture>
       <source :srcset="comic.image">
-      <img :src="comic.image" alt>
+      <img :src="comic.image" :alt="`Image of ${comic.name}, issue ${comic.issueNumber}.`">
     </picture>
   </article>
 </template>
