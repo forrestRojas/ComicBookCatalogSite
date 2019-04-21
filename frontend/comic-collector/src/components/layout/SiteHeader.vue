@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-      <h1>Comic Collection Catalog!</h1>
+      <h1 class="speach-bubble">Comic Collection Catalog!</h1>
       <the-login v-if="showHeader" class="login"></the-login>
     </header>
 </template>
@@ -33,11 +33,36 @@ export default {
     color: var(--carmine-pink);
   }
 
-  .header h1 {
+  h1 {
     font-size: 5em;
     /* font-kerning: normal;
     letter-spacing: 0.2rem; */
     margin: 0;
+  }
+
+  .speach-bubble {
+    position: relative;
+    z-index: 1;
+    background-color: var(--isabelline);
+    margin: auto;
+    margin-bottom: 0.6em;
+    padding: .2em 1ch;
+    /* border-radius: 25%; */
+  }
+
+  .speach-bubble::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    background-color: none;
+    color: none;
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-top: 51px solid var(--isabelline);
+    transform: rotate(-65deg);
+    left: 23px;
+    bottom: -40px;
   }
 
   .login {
