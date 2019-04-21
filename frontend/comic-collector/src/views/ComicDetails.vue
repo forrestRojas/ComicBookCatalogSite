@@ -214,10 +214,23 @@ export default {
     }
 
     #comic-cover {
+        display: flex;
         order: -1;
-        justify-content: left;
-        padding: 0;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em;
     }
+}
+
+@media screen and (max-width: 760px) {
+      #comic-details, .comic-information, #comic-cover {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+    .comic-information, #description {
+    text-align: center;
+  }
 }
 
 </style>
