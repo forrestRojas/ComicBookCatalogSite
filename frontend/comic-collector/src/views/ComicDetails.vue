@@ -30,7 +30,7 @@
 
             <section id="cover-date" class="inline">
                 <h3>Cover Date:</h3>
-                <p><time :datetime="comicbook.coverDate">{{new Date(comicbook.coverDate).toDateString()}}</time></p>
+                <p><time :datetime="comicbook.coverDate">{{formatedCoverDate}}</time></p>
             </section>
 
             <section id="credits">
@@ -57,15 +57,12 @@ export default {
     components: {
         AddToCollection
     },
-    // props: {
-    //     id: Number
-    // },
     data() {
         return {
-            comicbook:{}
+            comicbook: {}
         }
     },
-    created(){
+    beforeCreate() {
         const { id } = this.$route.params;
         
         fetch(`${process.env.VUE_APP_REMOTE_API}/comic/${id}`, {
@@ -74,11 +71,20 @@ export default {
         .then(response => response.json())
         .then(json => this.comicbook = json);
     },
-    watch: {
-        $route: function (to, from){
-            if( to !== from){
-                let id = this.$route.params.id;
+    create() {
 
+    },
+    computed: {
+        formatedCoverDate: function () {
+            let {coverDate} = this.comicbook;
+            return new Date(coverDate).toDateString();
+        }
+    },
+    watch: {
+        $route: function (to, from) {
+            if(to !== from){
+                let { id } = this.$route.params;
+                
                 fetch(`${process.env.VUE_APP_REMOTE_API}/comic/${id}`, {
                     method: "GET",
                 })
