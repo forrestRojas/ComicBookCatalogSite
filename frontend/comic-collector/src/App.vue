@@ -106,11 +106,18 @@ a {
   }
 }
 
-@media screen and (max-width: 816px) {
+@media screen and (max-width: 833px) {
   #site-header h1 {
-    font-size: 3em;
+    font-size: 5.5vw;
   }
 }
+
+@media screen and (max-width: 685px) {
+  #site-header h1 {
+    font-size: 4.7vw;
+  }
+}
+
 
 @media screen and (max-width: 640px) {
 
