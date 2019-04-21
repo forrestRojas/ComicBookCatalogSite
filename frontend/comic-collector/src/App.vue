@@ -89,12 +89,26 @@ a {
   color: var(--carmine-pink);
 }
 
-@media screen and (max-width: 1000px) {
-  #site-header {
+@media screen and (max-width: 1195px) {
+   #site-header {
     grid-auto-flow: row;
   }
+
+  #site-header h1 {
+    font-size: 5em;
+    margin-bottom: auto;
+  }
+}
+
+@media screen and (max-width: 1160px) {
   #site-header h1 {
     font-size: 6vw;
+  }
+}
+
+@media screen and (max-width: 816px) {
+  #site-header h1 {
+    font-size: 3em;
   }
 }
 

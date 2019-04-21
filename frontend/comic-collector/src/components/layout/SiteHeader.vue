@@ -34,6 +34,7 @@ export default {
   }
 
   h1 {
+    transition: all 75ms;
     font-size: 5em;
     /* font-kerning: normal;
     letter-spacing: 0.2rem; */
