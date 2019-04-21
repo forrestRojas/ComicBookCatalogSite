@@ -1,6 +1,6 @@
 <template>
    <main id="comic-details">
-        <div class="comic-book-details">
+        <div class="comic-information">
             <h2 id="comic-name">{{comicbook.name}}</h2>
 
             <section id="comic-publisher">
@@ -19,8 +19,8 @@
             </section>
 
             <section id="issue-number" class="inline">
-                <h3>Issue Number:</h3>
-                <p>{{comicbook.issueNumber}}</p>
+                <h3>Issue:</h3>
+                <p>No. {{comicbook.issueNumber}}</p>
             </section>
 
             <section id="volume-number" class="inline">
@@ -39,10 +39,11 @@
             </section>
 
         </div>
+
         <div  id="comic-cover">
             <picture>
                 <source v-bind:srcset="comicbook.image">
-                <img v-bind:src="comicbook.image" class="comic-photo"/>
+                <img v-bind:src="comicbook.image" :alt="`Image of ${comicbook.name}, issue ${comicbook.issueNumber}.`" class="comic-photo"/>
             </picture>
             <add-to-collection id="add-to-collection" :comicId="comicbook.id"/>
         </div>
@@ -84,7 +85,7 @@ export default {
         $route: function (to, from) {
             if(to !== from){
                 let { id } = this.$route.params;
-                
+
                 fetch(`${process.env.VUE_APP_REMOTE_API}/comic/${id}`, {
                     method: "GET",
                 })
@@ -126,10 +127,11 @@ export default {
     height: 100%;
 }
 
-.comic-book-details {
+.comic-information {
     padding-top: 8px;
     display: grid;
     text-align: right;
+    column-gap: inherit;
     grid-template-areas: 
     "title title"
     "desc ."
@@ -137,7 +139,7 @@ export default {
     "desc ."
     "desc ."
     "desc ."
-    "desc ."
+    "desc .";
 }
 
  #comic-name {
@@ -165,13 +167,13 @@ export default {
 
 }
 
-.comic-book-details h2, 
-.comic-book-details section p,
-.comic-book-details section h3 {
+.comic-information h2, 
+.comic-information section p,
+.comic-information section h3 {
     margin: 0;
 }
 
-.comic-book-details section {
+.comic-information section {
     margin-bottom: 1em;
 }
 
@@ -186,5 +188,37 @@ export default {
 #description p{
     margin-bottom: 1em;
 }
+
+@media screen and (max-width: 1375px){
+    .comic-information {
+        padding-top: 8px;
+        display: grid;
+        text-align: right;
+        column-gap: inherit;
+        grid-template-areas: 
+        "title"
+        " ."
+        " ."
+        " ."
+        " ."
+        " ."
+        " ."
+        "desc";
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    #comic-details {
+        grid-template-columns: 1fr;
+    }
+
+    #comic-cover {
+        order: -1;
+        justify-content: left;
+        padding: 0;
+    }
+}
+
 </style>
 
