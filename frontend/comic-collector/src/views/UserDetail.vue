@@ -130,6 +130,7 @@ export default {
             this.user.bio = this.updatedUser.bio;
             this.user.favorites = this.updatedUser.favorites;
             this.user.image = this.updatedUser.image;
+            //Object.assign(this.user, {bio, favorites, image});
             fetch(`${process.env.VUE_APP_REMOTE_API}/account/UserDetail`, {
                 method: "POST",
                 headers: {
