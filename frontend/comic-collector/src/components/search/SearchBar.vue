@@ -1,15 +1,15 @@
 <template>
-  <form id="search-form" name="search-form" class="search-bar">
+  <form id="search-form" name="search-form" class="search-bar" role="search">
     <select  v-model="searchBy" form="search-form">
       <option value="1" selected>By Title</option>
       <option value="2">By Publisher</option>
       <option value="3">By Date</option>
     </select>
     
-    <input v-if="searchBy == 1" form="search-form" type="text" v-model="search_title" placeholder="comic title"/>
+    <input v-if="searchBy == 1" form="search-form" type="search" v-model="search_title" placeholder="comic title"/>
     <input v-if="searchBy == 1" form="search-form" type="number" min="0" v-model="search_issue" placeholder="comic issue"/>
 
-    <input v-if="searchBy == 2" form="search-form" type="text" v-model="search_publisher" placeholder="publisher name"/>
+    <input v-if="searchBy == 2" form="search-form" type="search" v-model="search_publisher" placeholder="publisher name"/>
     
     <input v-if="searchBy == 3" form="search-form" type="date" v-model="search_date.start" placeholder="start date"/>
     <input v-if="searchBy == 3" form="search-form" type="date" v-model="search_date.end" placeholder="end date"/>
