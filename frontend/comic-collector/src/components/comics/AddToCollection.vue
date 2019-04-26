@@ -101,9 +101,25 @@ export default {
           'Content-Type': 'application/json',
           Authorization: "Bearer " + auth.getToken()
         },
-      }).then(this.closeDialog())
+      }).then(response => {
+        if(response.ok) {
+          this.success();
+        } else {
+          this.error();
+        }
+      }); 
+    },
+
+    success() {
+      const p = document.querySelector(`#${this.dialogId} > p`);
+      if(p.classList.)
+      p.classList.add('success');
     },
     
+    error() {
+
+    },
+
     polyfillDialog() { 
       const dialogTag = document.querySelector('dialog');
       dialogPolyfill.registerDialog(dialogTag);
