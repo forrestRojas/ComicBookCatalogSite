@@ -76,7 +76,7 @@ export default {
 
     },
     computed: {
-        formatedCoverDate: function () {
+        formatedCoverDate() {
             let {coverDate} = this.comicbook;
             return new Date(coverDate).toDateString();
         }
