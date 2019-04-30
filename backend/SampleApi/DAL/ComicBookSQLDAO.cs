@@ -62,18 +62,20 @@ namespace SampleApi.DAL
 
         private ComicBook ConvertReaderToComicBook(SqlDataReader reader)
         {
-            ComicBook book = new ComicBook();
-            book.ID = Convert.ToInt32(reader["comic_id"]);
-            book.Description = Convert.ToString(reader["description"]);
-            book.Publisher = Convert.ToString(reader["publisher"]);
-            book.Deck = Convert.ToString(reader["deck"]);
-            book.Image = Convert.ToString(reader["image"]);
-            book.IssueNumber = Convert.ToInt32(reader["issue_number"]);
-            book.Name = Convert.ToString(reader["name"]);
-            book.Volume = Convert.ToInt32(reader["volume"]);
-            book.CoverDate = Convert.ToDateTime(reader["cover_date"]);
-            book.Credits = Convert.ToString(reader["person_credits"]);
-            book.Title = Convert.ToString(reader["title"]);
+            ComicBook book = new ComicBook
+            {
+                ID = Convert.ToInt32(reader["comic_id"]),
+                Description = Convert.ToString(reader["description"]),
+                Publisher = Convert.ToString(reader["publisher"]),
+                Deck = Convert.ToString(reader["deck"]),
+                Image = Convert.ToString(reader["image"]),
+                IssueNumber = Convert.ToInt32(reader["issue_number"]),
+                Name = Convert.ToString(reader["name"]),
+                Volume = Convert.ToInt32(reader["volume"]),
+                CoverDate = Convert.ToDateTime(reader["cover_date"]),
+                Credits = Convert.ToString(reader["person_credits"]),
+                Title = Convert.ToString(reader["title"])
+            };
 
             return book;
         }
@@ -179,9 +181,9 @@ namespace SampleApi.DAL
                         ComicBook book = ConvertReaderToComicBook(reader);
                         // possibly incorrect?
                         comics.Add(book);
-		    }
-		}
-	    }
+                    }
+                }
+            }
             catch (Exception ex)
             {
                 Console.WriteLine("An error occurred retrieving the comic book by the ID.");
@@ -189,9 +191,9 @@ namespace SampleApi.DAL
                 throw;
             }
             return comics;
-	}
+        }
 
-	/// <summary>
+        /// <summary>
         /// Finds a comic book by the issue number and title
         /// </summary>
         /// <param name="seriesTitle">Title of the comic series</param>
@@ -248,10 +250,8 @@ namespace SampleApi.DAL
         public ComicBook ComicInfo(ComicBookSQLDAO cbsd, string seriesTitle, int issueNumber)
         {
             ComicApiInfo comicApiInfo = new ComicApiInfo();
-            int volumeId = 0;
-            ComicBook book = new ComicBook();
-            volumeId = comicApiInfo.GetVolumeInfo(seriesTitle);
-            book = comicApiInfo.GetIssueInfo(volumeId, issueNumber);
+            int volumeId = comicApiInfo.GetVolumeInfo(seriesTitle);
+            ComicBook book = comicApiInfo.GetIssueInfo(volumeId, issueNumber);
             cbsd.AddComicBook(book);
             return book;
         }
@@ -307,32 +307,32 @@ namespace SampleApi.DAL
                 JObject content = (JObject)JsonConvert.DeserializeObject(response.Content);
                 JArray results = (JArray)content["results"];
                 ComicBook book = new ComicBook();
-                book.CoverDate = DateTime.Parse((string)results[0]["cover_date"]);
-                book.Deck = (string)results[0]["deck"];
-                if (book.Deck == null)
-                {
-                    book.Deck = String.Empty;
-                }
-                book.Description = (string)results[0]["description"];
-                if (book.Description == null)
-                {
-                    book.Description = String.Empty;
-                }
                 book.ID = (int)results[0]["id"];
+                book.Description = (string)results[0]["description"];
+                book.Deck = (string)results[0]["deck"];
                 book.Image = (string)results[0]["image"]["small_url"];
                 book.IssueNumber = (int)results[0]["issue_number"];
-                book.Credits = (string)results[0]["person_credits"];
-                if (book.Credits == null)
-                {
-                    book.Credits = String.Empty;
-                }
                 book.Name = (string)results[0]["name"];
-                if (book.Name == null)
-                {
-                    book.Name = String.Empty;
-                }
+                book.CoverDate = DateTime.Parse((string)results[0]["cover_date"]);
+                book.Credits = (string)results[0]["person_credits"];
                 book.Publisher = publisherName;
                 book.Title = seriesTitle;
+                if (book.Deck == null)
+                {
+                    book.Deck = string.Empty;
+                }
+                if (book.Description == null)
+                {
+                    book.Description = string.Empty;
+                }
+                if (book.Credits == null)
+                {
+                    book.Credits = string.Empty;
+                }
+                if (book.Name == null)
+                {
+                    book.Name = string.Empty;
+                }
 
                 return book;
             }
