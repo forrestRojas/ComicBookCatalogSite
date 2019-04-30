@@ -304,7 +304,7 @@ namespace SampleApi.DAL
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("Content-Type", "application/json");
                 IRestResponse response = client.Execute(request);
-                JObject content = (JObject)JsonConvert.DeserializeObject(response.Content);
+                JObject content = JsonConvert.DeserializeObject<JObject>(response.Content);
                 JArray results = (JArray)content["results"];
                 ComicBook book = new ComicBook();
                 book.ID = (int)results[0]["id"];

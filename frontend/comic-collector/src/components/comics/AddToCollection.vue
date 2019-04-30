@@ -3,6 +3,7 @@
     <button :form="formId" v-on:click="displayDialog">Add to Collecton</button>
     
     <dialog :id="dialogId">
+      <p v-if="result">{{ resultMessage }}</p>
       <form :id="formId" v-on:submit.prevent="AddToCollection()">
         <select :form="formId" v-model="selected" >
             <option disabled value="">Please select one</option>
@@ -46,13 +47,12 @@ export default {
       formId: `${this.comicId}-add-comic-form`,
       dialogId: `${this.comicId}-add-comic-dialog`,
       selected: Number,
-      userId: Number
+      userId: Number,
+      resultMessage: ''
     }
   },
   created() {
     this.getUserId();
-    // Now dialog acts like a native <dialog>.
-    //dialog.showModal();
   },
   watch: {
     comicId(newID, oldID) {
@@ -112,7 +112,7 @@ export default {
 
     success() {
       const p = document.querySelector(`#${this.dialogId} > p`);
-      if(p.classList.)
+      //if()
       p.classList.add('success');
     },
     

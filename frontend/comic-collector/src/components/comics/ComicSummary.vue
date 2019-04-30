@@ -59,7 +59,7 @@ export default {
   transition: all .5s;
   position: relative;
   bottom: 0;
-} 
+}
 
 .comic-summary:hover picture {
     bottom: 4px;
