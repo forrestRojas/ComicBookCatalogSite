@@ -23,7 +23,7 @@ namespace SampleApi.DAL
         /// <param name="databaseConnectionString"></param>
         public ComicBookSQLDAO(string databaseConnectionString)
         {
-            connectionString = databaseConnectionString;
+            this.connectionString = databaseConnectionString;
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace SampleApi.DAL
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
                 {
                     conn.Open();
 
@@ -86,7 +86,7 @@ namespace SampleApi.DAL
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
                 {
                     conn.Open();
 
@@ -124,7 +124,7 @@ namespace SampleApi.DAL
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
                 {
                     conn.Open();
                     //Do comic_id and @ID need to be switched
@@ -161,11 +161,12 @@ namespace SampleApi.DAL
             IList<ComicBook> comics = new List<ComicBook>();
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
                 {
                     conn.Open();
                     //Do comic_id and @ID need to be switched
-                    SqlCommand cmd = new SqlCommand(@"SELECT * FROM comic 
+                    SqlCommand cmd = new SqlCommand(@"SELECT * 
+                                                    FROM comic 
                                                     JOIN collection_comic ON comic.comic_id = collection_comic.comic_id
                                                     WHERE collection_id = @ID
                                                     order by comic.publisher, comic.title, comic.issue_number", conn);
@@ -203,7 +204,13 @@ namespace SampleApi.DAL
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                // Throw would not be typical here as its user input
+                if (string.IsNullOrWhiteSpace(seriesTitle) || issueNumber < 0)
+                {
+                    throw new Exception($"Invalid search parmaters. title: {seriesTitle}, issue: {issueNumber}");
+                }
+
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
                 {
                     conn.Open();
                     //Do comic_id and @ID need to be switched
@@ -339,12 +346,18 @@ namespace SampleApi.DAL
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
         public IList<ComicBook> ComicsFromDateRange(DateTime start, DateTime end)
         {
             IList<ComicBook> comics = new List<ComicBook>();
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(@"SELECT * FROM comic 
@@ -380,7 +393,7 @@ namespace SampleApi.DAL
             IList<ComicBook> comics = new List<ComicBook>();
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
                 {
                     conn.Open();
                     //Do comic_id and @ID need to be switched
