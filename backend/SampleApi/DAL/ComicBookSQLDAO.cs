@@ -62,7 +62,7 @@ namespace SampleApi.DAL
 
         private ComicBook ConvertReaderToComicBook(SqlDataReader reader)
         {
-            ComicBook book = new ComicBook
+            return new ComicBook
             {
                 ID = Convert.ToInt32(reader["comic_id"]),
                 Description = Convert.ToString(reader["description"]),
@@ -76,8 +76,6 @@ namespace SampleApi.DAL
                 Credits = Convert.ToString(reader["person_credits"]),
                 Title = Convert.ToString(reader["title"])
             };
-
-            return book;
         }
 
         /// <summary>
