@@ -249,6 +249,7 @@ namespace SampleApi.DAL
         /// <param name="issueNumber">Issue we're looking for</param>
         public ComicBook ComicInfo(ComicBookSQLDAO cbsd, string seriesTitle, int issueNumber)
         {
+            // ComicApi should be an interface
             ComicApiInfo comicApiInfo = new ComicApiInfo();
             int volumeId = comicApiInfo.GetVolumeInfo(seriesTitle);
             ComicBook book = comicApiInfo.GetIssueInfo(volumeId, issueNumber);
@@ -262,8 +263,8 @@ namespace SampleApi.DAL
         public class ComicApiInfo
         {
             int volumeId = 0;
-            string publisherName = "";
-            string seriesTitle = "";
+            string publisherName = string.Empty;
+            string seriesTitle = string.Empty;
 
             /// <summary>
             /// Get volume information to retrieve publisher
@@ -272,16 +273,25 @@ namespace SampleApi.DAL
             /// <returns></returns>
             public int GetVolumeInfo(string seriesTitle)
             {
-                var client = new RestClient("http://www.comicvine.com/api/volumes/?api_key=c4bfb45f7bcb288c0dba5973d0888b3dd4f4b05f&format=json&filter=name:" + seriesTitle);
-                var request = new RestRequest(Method.GET);
+                if (string.IsNullOrWhiteSpace(seriesTitle))
+                {
+                    // LOG: Invalid seriesTitle
+                    return volumeId;
+                }
+
+                IRestClient client = new RestClient("http://www.comicvine.com/api/volumes/?api_key=c4bfb45f7bcb288c0dba5973d0888b3dd4f4b05f&format=json&filter=name:" + seriesTitle);
+                IRestRequest request = new RestRequest(Method.GET);
                 request.AddHeader("Content-Type", "application/json");
                 IRestResponse response = client.Execute(request);
-                JObject content = (JObject)JsonConvert.DeserializeObject(response.Content);
-                JArray results = (JArray)content["results"];
+
+                JObject content = JObject.Parse(response.Content);
+                JArray results = JArray.FromObject(content["results"]);
+
                 foreach (JObject volume in results)
                 {
-                    string title = (string)volume["name"];
-                    if (title == seriesTitle)
+                    string title = Convert.ToString(volume["name"]);
+                    bool isDesiredVolume = title == seriesTitle;
+                    if (isDesiredVolume)
                     {
                         this.seriesTitle = seriesTitle;
                         volumeId = (int)volume["id"];
@@ -300,41 +310,34 @@ namespace SampleApi.DAL
             /// <returns></returns>
             public ComicBook GetIssueInfo(int volumeId, int issueNumber)
             {
-                var client = new RestClient("http://www.comicvine.com/api/issues/?api_key=c4bfb45f7bcb288c0dba5973d0888b3dd4f4b05f&format=json&filter=volume:" + volumeId + ",issue_number:" + issueNumber);
-                var request = new RestRequest(Method.GET);
+                IRestClient client = new RestClient("http://www.comicvine.com/api/issues/?api_key=c4bfb45f7bcb288c0dba5973d0888b3dd4f4b05f&format=json&filter=volume:" + volumeId + ",issue_number:" + issueNumber);
+                IRestRequest request = new RestRequest(Method.GET);
                 request.AddHeader("Content-Type", "application/json");
                 IRestResponse response = client.Execute(request);
-                JObject content = JsonConvert.DeserializeObject<JObject>(response.Content);
-                JArray results = (JArray)content["results"];
-                ComicBook book = new ComicBook();
-                book.ID = (int)results[0]["id"];
-                book.Description = (string)results[0]["description"];
-                book.Deck = (string)results[0]["deck"];
-                book.Image = (string)results[0]["image"]["small_url"];
-                book.IssueNumber = (int)results[0]["issue_number"];
-                book.Name = (string)results[0]["name"];
-                book.CoverDate = DateTime.Parse((string)results[0]["cover_date"]);
-                book.Credits = (string)results[0]["person_credits"];
-                book.Publisher = publisherName;
-                book.Title = seriesTitle;
-                if (book.Deck == null)
-                {
-                    book.Deck = string.Empty;
-                }
-                if (book.Description == null)
-                {
-                    book.Description = string.Empty;
-                }
-                if (book.Credits == null)
-                {
-                    book.Credits = string.Empty;
-                }
-                if (book.Name == null)
-                {
-                    book.Name = string.Empty;
-                }
+
+                JObject content = JObject.Parse(response.Content);
+                JArray results = JArray.FromObject(content["results"]);
+
+                ComicBook book = ConvertComicVineResultToComicBook(results.First());
 
                 return book;
+            }
+
+            private ComicBook ConvertComicVineResultToComicBook(JToken result)
+            {
+                return new ComicBook
+                {
+                    ID = Convert.ToInt32(result["id"]),
+                    Description = Convert.ToString(result["description"]),
+                    Deck = Convert.ToString(result["deck"]),
+                    Image = Convert.ToString(result["image"]["small_url"]),
+                    IssueNumber = Convert.ToInt32(result["issue_number"]),
+                    Name = Convert.ToString(result["name"]),
+                    CoverDate = Convert.ToDateTime(result["cover_date"]),
+                    Credits = Convert.ToString(result["person_credits"]),
+                    Publisher = this.publisherName,
+                    Title = this.seriesTitle
+                };
             }
         }
 
