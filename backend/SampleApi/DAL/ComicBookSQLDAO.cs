@@ -15,7 +15,7 @@ namespace SampleApi.DAL
     /// </summary>
     public class ComicBookSQLDAO : IComicBookDAO
     {
-        private string connectionString;
+        private readonly string connectionString;
 
         /// <summary>
         /// Creates a new SQL-based ComicBook dao
