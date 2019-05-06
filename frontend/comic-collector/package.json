@@ -14,7 +14,6 @@
     "@ryanmorr/is-element-supported": "^0.1.0",
     "core-js": "^3.0.1",
     "dialog-polyfill": "^0.5.0",
-    "npm-check-updates": "^3.1.9",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
     "vue2-dropzone": "^3.5.9"
