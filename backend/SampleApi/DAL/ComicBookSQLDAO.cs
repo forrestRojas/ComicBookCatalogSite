@@ -299,8 +299,8 @@ namespace SampleApi.DAL
                     if (isDesiredVolume)
                     {
                         this.seriesTitle = seriesTitle;
-                        volumeId = (int)volume["id"];
-                        publisherName = (string)volume["publisher"]["name"];
+                        volumeId = Convert.ToInt32(volume["id"]);
+                        publisherName = Convert.ToString(volume["publisher"]["name"]);
                         break; // Found the volume we need
                     }
                 }
