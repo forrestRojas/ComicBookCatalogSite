@@ -14,16 +14,15 @@
     "@ryanmorr/is-element-supported": "^0.1.0",
     "core-js": "^3.0.1",
     "dialog-polyfill": "^0.5.0",
-    "npm": "^6.9.0",
-    "npm-check-updates": "^3.1.8",
+    "npm-check-updates": "^3.1.9",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
-    "vue2-dropzone": "^3.5.8"
+    "vue2-dropzone": "^3.5.9"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.6.0",
-    "@vue/cli-plugin-eslint": "^3.6.0",
-    "@vue/cli-service": "^3.6.0",
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.2",
